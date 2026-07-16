@@ -25,12 +25,12 @@ export function GalleryGrid({ images }: GalleryGridProps) {
             type="button"
             onClick={() => setSelectedIndex(index)}
             className="card-soft group overflow-hidden rounded-[1.5rem] border border-stone-300 bg-stone-50 text-left shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2"
-            aria-label={`Open archive photograph ${image.filename}`}
+            aria-label={`Open archive photograph: ${image.alt}`}
           >
             <span className="relative block aspect-[4/3] overflow-hidden bg-stone-200">
               <Image
                 src={image.src}
-                alt={`Henderson Cemetery archive photograph: ${image.filename}`}
+                alt={image.alt}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"

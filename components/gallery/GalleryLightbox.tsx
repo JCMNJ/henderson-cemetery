@@ -118,7 +118,7 @@ export function GalleryLightbox({ images, selectedIndex, onClose, onSelect }: Ga
           <div className="relative h-[min(1200px,calc(100dvh-9rem))] min-h-[22rem] w-full sm:h-[min(1200px,calc(100dvh-7rem))]">
             <Image
               src={selectedImage.src}
-              alt={`Henderson Cemetery archive photograph: ${selectedImage.filename}`}
+              alt={selectedImage.alt}
               fill
               sizes="100vw"
               className="object-contain"

@@ -25,7 +25,7 @@ export function GalleryHero({ featuredImage }: GalleryHeroProps) {
       <div className="relative aspect-[16/9] min-h-[20rem] bg-stone-200 sm:min-h-[30rem]">
         <Image
           src={featuredImage.src}
-          alt={`Featured Henderson Cemetery archive photograph: ${featuredImage.filename}`}
+          alt={featuredImage.alt}
           fill
           sizes="(min-width: 1024px) 1024px, 100vw"
           className="object-cover"
