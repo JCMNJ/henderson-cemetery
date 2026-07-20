@@ -51,8 +51,8 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "border-b border-stone-300 bg-[#f5f1ea]/95 shadow-[0_1px_0_rgba(120,113,108,0.08)]",
-        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[#f5f1ea]/90" : "",
+        "border-b border-stone-300 bg-stone-100/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
+        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-stone-100/90" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -75,7 +75,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                 Henderson Cemetery
               </span>
               <span className="block truncate font-serif text-lg font-semibold text-stone-900 sm:text-2xl">
-                Preservation Archive
+                Preserving Our History
               </span>
             </span>
           </Link>

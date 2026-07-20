@@ -29,20 +29,20 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader />
 
       <section className="section-reveal mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
         <PageHeader
           eyebrow="Correspondence"
           title="Contact"
-          description="Contact the Henderson Cemetery Preservation Archive for burial record questions, family history notes, cemetery information, and preservation support."
+          description="Contact Henderson Cemetery Preserving Our History for burial record questions, family history notes, cemetery information, and preservation support."
         />
 
         <PageHeroImage
           src="/images/hendersoncemeterycontactheader.png"
           alt="Henderson Cemetery contact header"
-          figureClassName="mt-7 bg-[#f5f1ea] sm:mt-8"
+          figureClassName="mt-7 bg-stone-100 sm:mt-8"
           frameClassName="relative aspect-[1983/793] w-full"
           imageClassName="object-contain mix-blend-multiply"
         />
@@ -134,8 +134,8 @@ export default function ContactPage() {
               </div>
             </article>
 
-            <article className="rounded-3xl border border-amber-700/35 bg-amber-100/70 p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-amber-800">
+            <article className="rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
+              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
                 Preservation Support
               </p>
               <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">

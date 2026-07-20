@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   description:
     "Henderson Cemetery preservation archive for Harmarville (Acmetonia), Pennsylvania, with burial records, historical context, plot maps, and stewardship resources.",
   openGraph: {
-    title: "Henderson Cemetery Preservation Archive",
+    title: "Henderson Cemetery Preserving Our History",
     description:
       "Explore burial records, history, documents, and plot-map references for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
     url: "/",
   },
   twitter: {
-    title: "Henderson Cemetery Preservation Archive",
+    title: "Henderson Cemetery Preserving Our History",
     description:
       "Explore burial records, history, documents, and plot-map references for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
   },
@@ -41,16 +41,16 @@ export default async function HomePage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader sticky />
 
       <section className="section-reveal relative overflow-hidden border-b border-stone-300">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/gallery/hendersoncemetery1.jpg')] bg-cover bg-center opacity-25" />
 
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(245,241,234,0.68),rgba(245,241,234,0.94))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(237,244,246,0.68),rgba(237,244,246,0.94))]" />
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(87,83,78,0.18),transparent_35%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(127,150,135,0.18),transparent_35%)]" />
         </div>
         <div className="relative mx-auto grid w-full max-w-6xl gap-8 px-5 py-14 sm:px-6 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:py-20">
           <div>
@@ -216,7 +216,7 @@ export default async function HomePage() {
         className="section-reveal relative overflow-hidden border-y border-stone-300 bg-stone-200/40"
       >
         <div className="absolute inset-0 bg-[url('/images/skyview-henderson-cemetery.jpg')] bg-cover bg-center opacity-10" />
-        <div className="absolute inset-0 bg-[#f5f1ea]/80" />
+        <div className="absolute inset-0 bg-stone-100/80" />
 
         <div className="relative mx-auto w-full max-w-6xl px-5 py-14 sm:px-6 sm:py-16 lg:py-20">
           <div className="grid gap-8 md:gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
@@ -297,18 +297,18 @@ export default async function HomePage() {
 
       <section
         id="support"
-        className="section-reveal border-t border-stone-300 bg-stone-200/55 text-stone-900"
+        className="section-reveal border-t border-[#405965] bg-[#526D7A] text-[#F8F6EF]"
       >
         <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-16">
-          <div className="rounded-[2rem] border border-stone-300 bg-stone-50/90 p-5 shadow-sm sm:p-7 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          <div className="rounded-[2rem] border border-[#405965] bg-[#526D7A] p-5 shadow-sm sm:p-7 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-stone-600">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#E8F0F2]">
                 Preservation Support
               </p>
               <h2 className="mt-4 max-w-xl font-serif text-3xl font-semibold sm:text-4xl md:text-5xl">
                 Help maintain the cemetery and preserve its records.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-stone-700">
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#E8F0F2]">
                 Donations, record corrections, family notes, and volunteer care
                 help protect Henderson Cemetery as a historical archive and
                 burial ground.
@@ -317,24 +317,24 @@ export default async function HomePage() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="button-soft inline-flex rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-stone-100 hover:bg-stone-700"
+                  className="button-soft inline-flex rounded-full bg-[#293F48] px-5 py-3 text-sm font-medium text-white hover:bg-[#1F333B]"
                 >
                   Donation and Contact Details
                 </Link>
                 <Link
                   href="/research"
-                  className="button-soft inline-flex rounded-full border border-stone-400 px-5 py-3 text-sm font-medium text-stone-800 hover:bg-stone-200"
+                  className="button-soft inline-flex rounded-full border border-[#F1ECDD]/70 px-5 py-3 text-sm font-medium text-[#F1ECDD] hover:bg-[#405965]"
                 >
                   Research Center
                 </Link>
               </div>
             </div>
 
-            <div className="mt-8 border-t border-stone-200 pt-6 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
+            <div className="mt-8 border-t border-[#405965] pt-6 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <p className="text-sm uppercase tracking-[0.2em] text-[#E8F0F2]">
                 Current Needs
               </p>
-              <div className="mt-4 divide-y divide-stone-200">
+              <div className="mt-4 divide-y divide-[#405965]">
                 {[
                   {
                     title: "Grounds Care",
@@ -350,20 +350,20 @@ export default async function HomePage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="py-4 first:pt-0 last:pb-0">
-                    <p className="font-serif text-xl font-semibold text-stone-950">
+                    <p className="font-serif text-xl font-semibold text-[#F8F6EF]">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-stone-700">
+                    <p className="mt-1 text-sm leading-6 text-[#E8F0F2]">
                       {item.body}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-stone-200 pt-5 text-sm">
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#405965] pt-5 text-sm">
                 <Link
                   href="/contact"
-                  className="link-soft font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-950"
+                  className="link-soft font-medium text-[#F1ECDD] underline decoration-[#F1ECDD]/60 underline-offset-4 hover:text-[#F8F6EF]"
                 >
                   Share a Correction
                 </Link>
@@ -371,7 +371,7 @@ export default async function HomePage() {
                   href={directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-soft font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-950"
+                  className="link-soft font-medium text-[#F1ECDD] underline decoration-[#F1ECDD]/60 underline-offset-4 hover:text-[#F8F6EF]"
                 >
                   Get Directions
                 </a>
@@ -379,7 +379,7 @@ export default async function HomePage() {
                   href={facebookUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-soft font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-950"
+                  className="link-soft font-medium text-[#F1ECDD] underline decoration-[#F1ECDD]/60 underline-offset-4 hover:text-[#F8F6EF]"
                 >
                   Facebook
                 </a>

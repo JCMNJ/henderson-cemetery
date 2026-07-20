@@ -2,15 +2,28 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { GalleryImage } from "@/lib/gallery";
+import type { GalleryImage, GallerySeason } from "@/lib/gallery";
 import { GalleryLightbox } from "./GalleryLightbox";
 
 type GalleryGridProps = {
   images: GalleryImage[];
 };
 
+type GalleryFilter = "all" | GallerySeason;
+
+const galleryFilters: { label: string; value: GalleryFilter }[] = [
+  { label: "All", value: "all" },
+  { label: "Spring", value: "spring" },
+  { label: "Summer", value: "summer" },
+  { label: "Fall", value: "fall" },
+  { label: "Winter", value: "winter" },
+];
+
 export function GalleryGrid({ images }: GalleryGridProps) {
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>("all");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const filteredImages =
+    activeFilter === "all" ? images : images.filter((image) => image.season === activeFilter);
 
   if (images.length === 0) {
     return null;
@@ -18,8 +31,44 @@ export function GalleryGrid({ images }: GalleryGridProps) {
 
   return (
     <>
+      <div className="mb-6 flex flex-wrap gap-2" aria-label="Filter photographs by season">
+        {galleryFilters.map((filter) => {
+          const isActive = activeFilter === filter.value;
+          const count =
+            filter.value === "all"
+              ? images.length
+              : images.filter((image) => image.season === filter.value).length;
+
+          return (
+            <button
+              key={filter.value}
+              type="button"
+              onClick={() => {
+                setActiveFilter(filter.value);
+                setSelectedIndex(null);
+              }}
+              aria-pressed={isActive}
+              className={[
+                "button-soft rounded-full border px-4 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500",
+                isActive
+                  ? "border-stone-900 bg-stone-900 text-stone-50"
+                  : "border-stone-300 bg-stone-50 text-stone-700 hover:bg-stone-100",
+              ].join(" ")}
+            >
+              {filter.label} <span className="text-xs opacity-75">({count})</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {filteredImages.length === 0 ? (
+        <p className="rounded-2xl border border-stone-300 bg-stone-50/90 px-4 py-5 text-sm text-stone-700">
+          No photographs are currently tagged for this season.
+        </p>
+      ) : null}
+
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {images.map((image, index) => (
+        {filteredImages.map((image, index) => (
           <button
             key={image.id}
             type="button"
@@ -38,9 +87,9 @@ export function GalleryGrid({ images }: GalleryGridProps) {
               />
             </span>
             <span className="block border-t border-stone-200 px-4 py-3">
-              <span className="block text-sm font-medium text-stone-900">Archive Photograph</span>
+              <span className="block text-sm font-medium text-stone-900">{image.caption}</span>
               <span className="mt-1 block text-xs uppercase tracking-[0.14em] text-stone-500">
-                {image.category ?? "Henderson Cemetery"}
+                {image.season ? `${image.season} photograph` : "Cemetery photograph"}
               </span>
             </span>
           </button>
@@ -48,7 +97,7 @@ export function GalleryGrid({ images }: GalleryGridProps) {
       </div>
 
       <GalleryLightbox
-        images={images}
+        images={filteredImages}
         selectedIndex={selectedIndex}
         onClose={() => setSelectedIndex(null)}
         onSelect={setSelectedIndex}

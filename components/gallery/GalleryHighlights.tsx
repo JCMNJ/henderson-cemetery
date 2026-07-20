@@ -69,17 +69,17 @@ export function GalleryHighlights({ images, highlightImages: highlightImageInput
           ref={scrollRef}
           className="mt-5 flex gap-3 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {highlightImages.map((image, index) => (
+          {highlightImages.map((image) => (
             <button
               key={image.id}
               type="button"
               onClick={() => setSelectedIndex(images.findIndex((galleryImage) => galleryImage.id === image.id))}
               className="image-soft group relative aspect-[4/3] w-36 shrink-0 overflow-hidden rounded-2xl border border-stone-300 bg-stone-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 sm:w-40 lg:w-44"
-              aria-label={`Open archive photograph ${index + 1}`}
+              aria-label={`Open photograph: ${image.caption}`}
             >
               <Image
                 src={image.src}
-                alt="Henderson Cemetery archive photograph"
+                alt={image.alt}
                 fill
                 sizes="(min-width: 1024px) 176px, (min-width: 640px) 160px, 144px"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.035]"

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function PlotMapViewerPage() {
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader />
 
       <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">

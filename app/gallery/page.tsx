@@ -72,7 +72,7 @@ export default async function GalleryPage() {
   const featuredImage = images[1] ?? images[0] ?? null;
 
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader sticky />
 
       <section className="section-reveal border-b border-stone-300 bg-stone-200/35">
@@ -121,8 +121,25 @@ export default async function GalleryPage() {
             Have historical photographs, family records, cemetery images, or preservation materials to share?
           </p>
           <p className="mx-auto mt-2 max-w-2xl text-base leading-7 text-stone-700">
-            Contact the Henderson Cemetery Preservation Archive to help preserve local history.
+            Contact Henderson Cemetery Preserving Our History to help preserve local history.
           </p>
+          <div className="mx-auto mt-6 grid max-w-3xl gap-3 text-left sm:grid-cols-2">
+            {[
+              "Send original-size image files when possible.",
+              "JPG files are preferred for photographs.",
+              "Include the season or date if known.",
+              "Include the photographer if known.",
+              "Describe the approximate area shown when known.",
+              "Confirm permission to publish the image online.",
+            ].map((guideline) => (
+              <p
+                key={guideline}
+                className="rounded-2xl border border-stone-200 bg-stone-100/75 px-4 py-3 text-sm leading-6 text-stone-700"
+              >
+                {guideline}
+              </p>
+            ))}
+          </div>
           <Link
             href="/contact"
             className="button-soft mt-6 inline-flex rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-stone-100 hover:bg-stone-700"

@@ -88,7 +88,7 @@ export const metadata: Metadata = {
 
 export default function ResearchPage() {
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader />
 
       <section className="section-reveal mx-auto w-full max-w-5xl px-5 py-10 sm:px-6 sm:py-12 lg:py-14">

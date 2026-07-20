@@ -33,7 +33,7 @@ export function GalleryHero({ featuredImage }: GalleryHeroProps) {
         />
       </div>
       <figcaption className="border-t border-stone-200 bg-stone-50/95 px-5 py-4 text-sm text-stone-600 sm:px-6">
-        Featured archive photograph from the Henderson Cemetery collection.
+        {featuredImage.caption}
       </figcaption>
     </figure>
   );

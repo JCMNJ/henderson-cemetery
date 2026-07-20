@@ -131,8 +131,8 @@ export function GalleryLightbox({ images, selectedIndex, onClose, onSelect }: Ga
       <div className="z-10 border-t border-stone-700/90 bg-stone-950/95 px-4 py-3 shadow-lg shadow-stone-950/30 sm:px-6">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-serif text-lg font-semibold text-stone-50 sm:text-xl">Archive Photograph</p>
-            <p className="mt-0.5 text-xs text-stone-400 sm:text-sm">Henderson Cemetery Preservation Archive</p>
+            <p className="font-serif text-lg font-semibold text-stone-50 sm:text-xl">{selectedImage.caption}</p>
+            <p className="mt-0.5 text-xs text-stone-400 sm:text-sm">Henderson Cemetery Preserving Our History</p>
           </div>
           <p className="shrink-0 text-xs text-stone-500 sm:text-sm">
             Use arrow keys to browse

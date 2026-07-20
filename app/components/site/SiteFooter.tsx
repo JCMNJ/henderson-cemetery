@@ -30,7 +30,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="flex flex-col items-start gap-1 md:items-end">
-          <p>Historical Preservation Archive</p>
+          <p>Preserving Our History</p>
           <p className="text-xs text-stone-400">
             Digital preservation by{" "}
             <Link

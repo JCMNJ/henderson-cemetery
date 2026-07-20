@@ -1,23 +1,25 @@
-import Link from "next/link";
-
 export function DonationBanner() {
+  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
+
   return (
     <section className="section-reveal mx-auto mt-10 mb-6 w-full max-w-6xl px-4 sm:mb-8 sm:px-6">
-      <div className="rounded-3xl border border-amber-700/35 bg-amber-100/75 p-4 shadow-sm sm:p-7">
-        <p className="text-xs uppercase tracking-[0.22em] text-amber-800">
+      <div className="rounded-3xl border border-[#405965] bg-[#526D7A] p-4 shadow-sm sm:p-7">
+        <p className="text-xs uppercase tracking-[0.22em] text-[#E8F0F2]">
           Preservation Support
         </p>
-        <h2 className="mt-2 font-serif text-2xl font-semibold text-stone-900 sm:text-3xl">
+        <h2 className="mt-2 font-serif text-2xl font-semibold text-[#F8F6EF] sm:text-3xl">
           Henderson Cemetery is maintained through volunteer care and donations.
         </h2>
-        <p className="mt-3 max-w-4xl text-sm leading-7 text-stone-800 sm:text-base">
+        <p className="mt-3 max-w-4xl text-sm leading-7 text-[#E8F0F2] sm:text-base">
           Donations help support mowing, stone care, record preservation, and
           ongoing maintenance.
         </p>
-        <p className="mt-3 max-w-4xl text-sm leading-7 text-stone-800">
-          Online donation options will be available in the future.
-        </p>
-        <p className="mt-4 text-sm leading-7 text-stone-800">
+        {!donationUrl ? (
+          <p className="mt-3 max-w-4xl text-sm leading-7 text-[#E8F0F2]">
+            Online donation options will be available in the future.
+          </p>
+        ) : null}
+        <p className="mt-4 text-sm leading-7 text-[#E8F0F2]">
           Harmarville Cemetery Association
           <br />
           c/o David Campbell
@@ -26,14 +28,18 @@ export function DonationBanner() {
           <br />
           Cabot, PA 16023
         </p>
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link
-            href="/contact"
-            className="button-soft inline-flex w-full justify-center rounded-full border border-stone-500 bg-stone-900 px-5 py-3 text-sm font-medium text-stone-100 hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500 sm:w-auto"
-          >
-            Donation and Contact Details
-          </Link>
-        </div>
+        {donationUrl ? (
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href={donationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-soft inline-flex w-full justify-center rounded-full border border-[#293F48] bg-[#293F48] px-5 py-3 text-sm font-medium text-white hover:bg-[#1F333B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8F0F2] sm:w-auto"
+            >
+              Donate Online
+            </a>
+          </div>
+        ) : null}
       </div>
     </section>
   );

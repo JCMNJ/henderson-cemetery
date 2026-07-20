@@ -284,7 +284,7 @@ Tenth. That a sum equal to at least one-tenth of the gross amount arising from t
 
 export default function AssociationFormationPage() {
   return (
-    <main className="min-h-screen bg-[#f5f1ea] text-stone-900">
+    <main className="min-h-screen bg-stone-100 text-stone-900">
       <SiteHeader />
 
       <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">
@@ -338,7 +338,7 @@ export default function AssociationFormationPage() {
               <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
                 {section.title}
               </h2>
-              <pre className="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-stone-200 bg-[#fbf8f1] p-4 font-serif text-sm leading-7 text-stone-800 sm:p-5 sm:text-base">
+              <pre className="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-stone-200 bg-stone-50 p-4 font-serif text-sm leading-7 text-stone-800 sm:p-5 sm:text-base">
                 {section.body}
               </pre>
             </article>
