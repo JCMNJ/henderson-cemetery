@@ -99,8 +99,10 @@ export default function ResearchPage() {
         />
 
         <PageHeroImage
-          src="/gallery/cemetery-winter-road.jpg"
-          alt="Winter road view through Henderson Cemetery"
+          src="/gallery/cemetery-wintersnow-contrast.jpg"
+          alt="Winter cemetery view with headstones and snow"
+          frameClassName="relative h-52 sm:h-60 lg:h-72"
+          imageClassName="object-cover object-[50%_58%]"
         />
 
         <section className="mt-7">

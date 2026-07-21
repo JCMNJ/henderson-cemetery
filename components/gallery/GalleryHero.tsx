@@ -28,7 +28,7 @@ export function GalleryHero({ featuredImage }: GalleryHeroProps) {
           alt={featuredImage.alt}
           fill
           sizes="(min-width: 1024px) 1024px, 100vw"
-          className="object-cover"
+          className="object-cover object-[50%_68%]"
           priority
         />
       </div>

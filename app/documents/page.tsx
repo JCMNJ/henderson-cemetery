@@ -27,7 +27,7 @@ const documentCollections = [
   {
     title: "Association Formation and Early Minutes",
     summary:
-      "Historical references describe the 1909 effort to organize cemetery care, including meeting records tied to the creation of The Harmarville Cemetery Association.",
+      "Transcribed early records document lot ownership, cemetery rules, the transfer of management authority, by-laws, founding contributions, and the 1909 charter application for the Harmarville Cemetery Association.",
     details:
       "These records provide context for how local descendants and community members formalized long-term stewardship.",
     href: "/documents/association-formation",
@@ -64,7 +64,7 @@ export default function DocumentsPage() {
         <PageHeader
           eyebrow="Archive Materials"
           title="Documents"
-          description="This section brings together historical references related to governance history, plan records, and long-running preservation notes."
+          description="This section brings together historical narratives and meeting minutes, association records, lot plans and indexes, and financial stewardship documents."
         />
 
         <PageHeroImage
@@ -77,10 +77,10 @@ export default function DocumentsPage() {
             Archive Scope
           </p>
           <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Materials include narrative history and references to association
-            records, lot plans, and stewardship documents. Where records vary by
-            date or source, the archive preserves the documented wording for
-            continuity.
+            Materials include historical narratives and meeting minutes,
+            association records, lot plans and indexes, and financial
+            stewardship documents. Where records vary by date or source, the
+            archive preserves the documented wording for continuity.
           </p>
         </div>
 

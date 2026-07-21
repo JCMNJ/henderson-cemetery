@@ -5,7 +5,17 @@ const GALLERY_PUBLIC_PATH = "/gallery";
 const GALLERY_ROOT = path.join(process.cwd(), "public", "gallery");
 const SUPPORTED_IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 const UNPUBLISHED_GALLERY_IMAGES = new Set(
-  Array.from({ length: 14 }, (_, index) => `hendersoncemetery${index + 2}.jpg`),
+  [
+    ...Array.from({ length: 14 }, (_, index) => `hendersoncemetery${index + 2}.jpg`),
+    "cemetery-fall-flagsflowers.jpg",
+    "cemetery-fall-portrait.jpg",
+    "cemetery-spring-group.jpg",
+    "cemetery-summer-view13-mown-rows-flags.jpg",
+    "cemetery-summer-view14-sloping-lawn-monuments.jpg",
+    "cemetery-summer-view15-sunlit-headstones-trees.jpg",
+    "cemetery-winter-road.jpg",
+    "cemetery-wintersnow-group2.jpg",
+  ],
 );
 
 export type GallerySeason = "spring" | "summer" | "fall" | "winter";

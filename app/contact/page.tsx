@@ -36,7 +36,7 @@ export default function ContactPage() {
         <PageHeader
           eyebrow="Correspondence"
           title="Contact"
-          description="Contact Henderson Cemetery Preserving Our History for burial record questions, family history notes, cemetery information, and preservation support."
+          description="Contact the Harmarville Cemetery Association for burial record questions, family history notes, cemetery information, and preservation support."
         />
 
         <PageHeroImage
@@ -90,8 +90,8 @@ export default function ContactPage() {
                 Association Contact
               </p>
               <p className="mt-3 text-base leading-7 text-stone-700">
-                Historical records identify the Harmarville Cemetery Association
-                as the managing body for Henderson Cemetery.
+                The Harmarville Cemetery Association is the managing body for
+                Henderson Cemetery.
               </p>
               <p className="mt-4 text-base leading-7 text-stone-700">
                 Email:{" "}

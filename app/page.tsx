@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const galleryImages = await getGalleryImages();
   const photoHighlightFeaturedImage = galleryImages.find(
-    (image) => image.src === "/gallery/cemetery-wintersnow-group2.jpg",
+    (image) => image.src === "/gallery/cemetery-wintersnow-group.jpg",
   );
   const photoHighlightImages = [
     ...(photoHighlightFeaturedImage ? [photoHighlightFeaturedImage] : []),
@@ -48,7 +48,7 @@ export default async function HomePage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/gallery/hendersoncemetery1.jpg')] bg-cover bg-center opacity-25" />
 
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(237,244,246,0.68),rgba(237,244,246,0.94))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(240,241,232,0.68),rgba(240,241,232,0.94))]" />
 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(127,150,135,0.18),transparent_35%)]" />
         </div>
@@ -150,32 +150,19 @@ export default async function HomePage() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="card-soft rounded-2xl border border-stone-300 bg-stone-50/80 p-5">
-              <p className="font-serif text-3xl font-semibold">1800s</p>
+              <p className="font-serif text-3xl font-semibold">c. 1800</p>
               <p className="mt-2 text-sm leading-6 text-stone-600">
-                Start with the earliest documented burials, family names, and
-                historical context from Henderson Cemetery&apos;s 19th-century
-                records.
+                The cemetery&apos;s history reaches back to the earliest documented
+                burials of the 19th century.
               </p>
-              <Link
-                href="/history"
-                className="link-soft mt-4 inline-flex text-sm font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-900"
-              >
-                Explore History
-              </Link>
             </div>
 
             <div className="card-soft rounded-2xl border border-stone-300 bg-stone-50/80 p-5">
-              <p className="font-serif text-3xl font-semibold">Archive</p>
+              <p className="font-serif text-3xl font-semibold">1,223 Records</p>
               <p className="mt-2 text-sm leading-6 text-stone-600">
-                Search burial records, follow plot references, and review
-                documents and stewardship notes in one connected archive.
+                Searchable burial records preserve names, dates, plot
+                references, and family history.
               </p>
-              <Link
-                href="/burial-records"
-                className="link-soft mt-4 inline-flex text-sm font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-900"
-              >
-                Open Records Archive
-              </Link>
             </div>
           </div>
         </div>
@@ -297,44 +284,44 @@ export default async function HomePage() {
 
       <section
         id="support"
-        className="section-reveal border-t border-[#405965] bg-[#526D7A] text-[#F8F6EF]"
+        className="section-reveal border-t border-[#8B8E75] bg-[#68604D] text-[#F8F6EF]"
       >
         <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-16">
-          <div className="rounded-[2rem] border border-[#405965] bg-[#526D7A] p-5 shadow-sm sm:p-7 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          <div className="rounded-[2rem] border border-[#8B8E75] bg-[#68604D] p-5 shadow-sm sm:p-7 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#E8F0F2]">
+              <p className="text-sm uppercase tracking-[0.3em] text-[#F7F6F0]">
                 Preservation Support
               </p>
               <h2 className="mt-4 max-w-xl font-serif text-3xl font-semibold sm:text-4xl md:text-5xl">
                 Help maintain the cemetery and preserve its records.
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-7 text-[#E8F0F2]">
-                Donations, record corrections, family notes, and volunteer care
-                help protect Henderson Cemetery as a historical archive and
-                burial ground.
+              <p className="mt-5 max-w-xl text-base leading-7 text-[#F7F6F0]">
+                The Harmarville Cemetery Association depends on volunteer
+                stewardship and private support to protect Henderson Cemetery,
+                its grounds, and the stories entrusted within its boundaries.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="button-soft inline-flex rounded-full bg-[#293F48] px-5 py-3 text-sm font-medium text-white hover:bg-[#1F333B]"
+                  className="button-soft inline-flex rounded-full bg-[#F7F6F0] px-5 py-3 text-sm font-medium text-[#68604D] hover:bg-[#F1ECDD]"
                 >
                   Donation and Contact Details
                 </Link>
                 <Link
                   href="/research"
-                  className="button-soft inline-flex rounded-full border border-[#F1ECDD]/70 px-5 py-3 text-sm font-medium text-[#F1ECDD] hover:bg-[#405965]"
+                  className="button-soft inline-flex rounded-full border border-[#F1ECDD]/70 px-5 py-3 text-sm font-medium text-[#F1ECDD] hover:bg-[#554F41]"
                 >
                   Research Center
                 </Link>
               </div>
             </div>
 
-            <div className="mt-8 border-t border-[#405965] pt-6 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-              <p className="text-sm uppercase tracking-[0.2em] text-[#E8F0F2]">
+            <div className="mt-8 border-t border-[#8B8E75] pt-6 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <p className="text-sm uppercase tracking-[0.2em] text-[#F7F6F0]">
                 Current Needs
               </p>
-              <div className="mt-4 divide-y divide-[#405965]">
+              <div className="mt-4 divide-y divide-[#8B8E75]">
                 {[
                   {
                     title: "Grounds Care",
@@ -353,14 +340,14 @@ export default async function HomePage() {
                     <p className="font-serif text-xl font-semibold text-[#F8F6EF]">
                       {item.title}
                     </p>
-                    <p className="mt-1 text-sm leading-6 text-[#E8F0F2]">
+                    <p className="mt-1 text-sm leading-6 text-[#F7F6F0]">
                       {item.body}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#405965] pt-5 text-sm">
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#8B8E75] pt-5 text-sm">
                 <Link
                   href="/contact"
                   className="link-soft font-medium text-[#F1ECDD] underline decoration-[#F1ECDD]/60 underline-offset-4 hover:text-[#F8F6EF]"

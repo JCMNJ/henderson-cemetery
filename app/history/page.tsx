@@ -25,24 +25,34 @@ export const metadata: Metadata = {
 
 const timeline = [
   {
+    period: "1790-1795",
+    title: "Denny and Henderson Land",
+    body: "Two prominent landowners in the Allegheny River Valley in the early 1800s were Ebenezer Denny and James Henderson. James Henderson, an Irish immigrant, acquired approximately 150 acres in 1790 through Pennsylvania's post-Revolutionary War land settlement system, cleared the wooded land, and established himself as a farmer and landowner. In 1795, Ebenezer Denny received a 640-acre tract associated with his Revolutionary War service, which he named Deer Creek. Portions of these early family lands are now connected to Henderson Cemetery.",
+  },
+  {
     period: "c. 1800-1828",
-    title: "Early Burying Ground",
-    body: "The cemetery was first known as the Denny-Henderson Cemetery, with land made available by the Denny and Henderson families for use as a public burying ground. Records suggest an approximate inception around 1800. The earliest named gravestone is Hannah Henderson (d. 1828), with earlier stones showing only initials such as J.P. (1807).",
+    title: "Early Burial Ground",
+    body: "As one of the oldest pioneer burial grounds in the Allegheny River Valley, the Denny-Henderson Cemetery was created from lands donated by the Ebenezer Denny and William Henderson families. Because the area was primarily agricultural and many families could not afford permanent grave markers, additional unmarked graves may exist within the cemetery, their identities and exact resting places now lost to history. The earliest surviving gravestone found is dated 1807 and bears only the initials J.P. The earliest inscribed headstone found belongs to Hannah Henderson, who died in 1828.",
   },
   {
     period: "Late 1800s",
-    title: "Surveyed Family Lots and Name Change",
-    body: "The Oliver Henderson family surveyed adjacent property into 54 burial lots, each with space for eight graves. As this section developed, the name shifted from Denny-Henderson Cemetery to Henderson Cemetery. A plan of lots laid out by Oliver P. Henderson was recorded in Allegheny County records on November 18, 1884 (noted in Plan Book Vol. VII, Page 114). This area is now referred to as Plan 1.",
+    title: "Surveyed Lots and Name Change",
+    body: "In 1884, Oliver Henderson contributed additional land from his property to expand the cemetery. He formally surveyed this new section into 54 lots, each designed to accommodate eight graves, with proceeds going to the Henderson family. Cemetery records refer to this section as Plan I. The burial ground became known then as Henderson Cemetery.",
   },
   {
     period: "1909",
     title: "Formation of the Harmarville Cemetery Association",
-    body: "By 1909 the grounds had become overgrown. Rev. H. J. Rose called a meeting at the cemetery on May 31, 1909 to organize care and maintenance. A charter application followed in July, and the proposed corporate name became The Harmarville Cemetery Association. Early officers and directors included Rev. Harry J. Rose, Joseph Barton, Grace B. McRoberts, William S. Carson, William Nixon, James Smeaton, and Rev. John Henderson.",
+    body: "In 1909, Rev. Harry Joseph Rose, pastor of nearby Harmarville Presbyterian Church, visited the grounds and found them grown up in weeds, brush, and waist-high grass. He organized descendants and local residents and established the Harmarville Cemetery Association, a legal entity formed to protect the gravesites. The Association's sole purpose was, and still is, to operate and manage Henderson Cemetery.",
   },
   {
-    period: "1911 and After",
+    period: "1911",
     title: "Expansion and Ongoing Stewardship",
-    body: "In 1911, Anna Melzena Spring (heir to the Denny estate) donated adjoining land. One hundred additional lots were surveyed from this gift, later shown as Plan 2 on cemetery maps. Over subsequent decades, board leadership was reorganized multiple times as generations changed, including documented boards in 1952 and 1975, helping preserve the cemetery through continued local stewardship.",
+    body: "In 1911, Anna Melzena Spring, great-granddaughter of Ebenezer Denny and heir to the Denny estate through Ebenezer's son Harmar Denny and daughter Mary O'Hara Denny, donated additional Denny land on which 100 lots were established. The gift was structured to support cemetery maintenance through funds from the sale of these lots. Cemetery records refer to this section as Plan II. Anna Spring also donated nine nearby acres to the Federation of Girls' School Societies, where the Harmarville Convalescent Home for Women was built in 1913.",
+  },
+  {
+    period: "1952",
+    title: "A Renewal",
+    body: "In 1952, Charles Nixon Carson, a descendant of two local pioneer families of the Denny and Henderson era, the Carsons and the Nixons, organized a new board of the Harmarville Cemetery Association after noticing that the cemetery grounds had once again fallen into neglect and disrepair. The Association's stewardship mission was revived, helping ensure the continued care and preservation of this historic cemetery.",
   },
 ];
 
@@ -59,14 +69,46 @@ export default function HistoryPage() {
         />
 
         <PageHeroImage
-          src="/gallery/cemetery-fall-portrait.jpg"
-          alt="Autumn view across Henderson Cemetery"
+          src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg"
+          alt="Wide summer view across Henderson Cemetery lawn and monuments"
+          imageClassName="object-cover object-[50%_78%]"
         />
 
         <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700">
           The narrative below reflects association history and documented
           cemetery records preserved over time.
         </p>
+
+        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
+          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
+            History of the Property
+          </p>
+          <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
+            Denny and Henderson family lands
+          </h2>
+          <div className="mt-4 space-y-3 text-base leading-7 text-stone-700">
+            <p>
+              Two prominent landowners in the Allegheny River Valley in the
+              early 1800s were Ebenezer Denny and James Henderson. Their efforts
+              preserved a lasting connection to the land&apos;s early history and
+              the families who settled, cultivated, and cared for it.
+            </p>
+            <p>
+              James Henderson, an Irish immigrant, acquired approximately 150
+              acres in 1790 through Pennsylvania&apos;s post-Revolutionary War land
+              settlement system, when tracts of land were opened for development
+              west of the Allegheny River. He cleared the densely wooded land
+              and established himself as a farmer and landowner. A portion of
+              his original land is where Henderson Cemetery now lies.
+            </p>
+            <p>
+              James, his wife Clara, and his grandson Oliver, who donated
+              additional land in 1884, are among the many family members and
+              descendants buried at Henderson, providing a lasting connection to
+              the property that bears their name.
+            </p>
+          </div>
+        </div>
 
         <div className="mt-8 space-y-5 sm:mt-10">
           {timeline.map((item) => (
@@ -87,23 +129,12 @@ export default function HistoryPage() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-100/80 p-5 sm:p-7">
-          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-            Preservation Note
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Historical records indicate that many burials were never fully
-            recorded, and some gravesite details changed across documents over
-            time. This archive preserves those records while ongoing review
-            continues.
-          </p>
-          <Link
-            href="/burial-records"
-            className="button-soft mt-5 inline-flex rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-          >
-            Return to Burial Records
-          </Link>
-        </div>
+        <Link
+          href="/burial-records"
+          className="button-soft mt-8 inline-flex rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+        >
+          Return to Burial Records
+        </Link>
       </section>
 
       <DonationBanner />
