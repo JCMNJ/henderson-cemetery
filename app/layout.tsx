@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   },
   description:
     "Historical preservation archive and burial records for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     title: "Henderson Cemetery Preserving Our History",
     description:
