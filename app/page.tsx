@@ -46,7 +46,7 @@ export default async function HomePage() {
 
       <section className="section-reveal relative overflow-hidden border-b border-stone-300">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/gallery/hendersoncemetery1.jpg')] bg-cover bg-center opacity-25" />
+          <div className="absolute inset-0 bg-[url('/gallery/hendersoncemetery1.jpg')] bg-cover bg-[position:center_35%] opacity-35" />
 
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(240,241,232,0.68),rgba(240,241,232,0.94))]" />
 
