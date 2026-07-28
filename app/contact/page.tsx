@@ -5,6 +5,7 @@ import { ContactForm } from "@/app/components/contact/ContactForm";
 import { FacebookFollow } from "@/app/components/site/FacebookFollow";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
+import { DROPBOX_FILE_REQUEST_URL, SUBMISSION_NOTICE } from "@/app/lib/siteLinks";
 
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=750%20Gulf%20Lab%20Road%2C%20Cheswick%2C%20PA%2015024";
@@ -78,13 +79,37 @@ export default function ContactPage() {
           {[
             ["Burial or Cemetery Question", "Ask about a record, burial, plan, lot, or cemetery visit."],
             ["Share a Correction", "Help improve names, dates, relationships, or notes."],
-            ["Contribute Records or Photographs", "Send family materials, obituaries, photographs, or local history."],
           ].map(([title, body]) => (
             <Link key={title} href="#association-contact" className="bg-white p-6 shadow-lg shadow-[#243A2E]/8 ring-1 ring-[#D8D4C8] transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">{title}</p>
               <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
             </Link>
           ))}
+          <div className="bg-white p-6 shadow-lg shadow-[#243A2E]/8 ring-1 ring-[#D8D4C8]">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
+              Contribute Records or Photographs
+            </p>
+            <p className="mt-4 text-sm leading-6 text-[#514B42]">
+              Send family materials, obituaries, photographs, or local history.
+            </p>
+            <p className="mt-4 text-xs leading-5 text-[#77746C]">
+              {SUBMISSION_NOTICE}
+            </p>
+            <a
+              href={DROPBOX_FILE_REQUEST_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Upload photos or records for Henderson Cemetery through Dropbox"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 16V4" />
+                <path d="m7 9 5-5 5 5" />
+                <path d="M5 20h14" />
+              </svg>
+              Upload Photos or Records
+            </a>
+          </div>
           <div className="bg-[#702F35] p-6 text-white shadow-xl shadow-[#702F35]/18 lg:col-span-2">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F2D68B]">
               Support Preservation

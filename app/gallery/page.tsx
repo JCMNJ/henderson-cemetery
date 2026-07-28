@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
+import { DROPBOX_FILE_REQUEST_URL, SUBMISSION_NOTICE } from "@/app/lib/siteLinks";
 import { getGalleryImages } from "@/lib/gallery";
 
 export const metadata: Metadata = {
@@ -67,25 +67,36 @@ export default async function GalleryPage() {
         <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10 lg:py-18">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#E7C16C]">
-              Help Us See More of Henderson
+              Share Photos of Henderson
             </p>
             <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-5xl">
-              Family photographs and marker images can preserve details that memory loses.
+              Have photographs connected to Henderson Cemetery?
             </h2>
             <p className="mt-5 max-w-2xl text-sm leading-6 text-white/84">
-              Share historical photographs, family images, higher-resolution
-              cemetery photographs, or help document markers.
+              Send the original, full-resolution files for review and possible
+              inclusion in the cemetery&apos;s historical collection.
+            </p>
+            <p className="mt-4 max-w-2xl text-xs leading-5 text-white/70">
+              {SUBMISSION_NOTICE}
             </p>
             <p className="mt-5 text-xs uppercase tracking-[0.18em] text-white/60">
               Photographs courtesy of Tamsen Ercole
             </p>
           </div>
-          <Link
-            href="/contact#association-contact"
-            className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]"
+          <a
+            href={DROPBOX_FILE_REQUEST_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Submit photographs of Henderson Cemetery through Dropbox"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]"
           >
-            Share Photographs
-          </Link>
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 16V4" />
+              <path d="m7 9 5-5 5 5" />
+              <path d="M5 20h14" />
+            </svg>
+            Submit Photographs
+          </a>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 const facebookUrl = "https://www.facebook.com/profile.php?id=100057152182753";
 const pagePluginUrl = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(
   facebookUrl,
-)}&tabs=timeline&width=500&height=520&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;
+)}&tabs=timeline&width=500&height=540&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;
 
 export function FacebookLogo({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -26,7 +26,7 @@ export function FacebookFollow({
   return (
     <div className={className}>
       {showFeed ? (
-        <div className="overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-[#243A2E]/10 ring-1 ring-[#D8D4C8]">
+        <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[1.25rem] bg-white shadow-xl shadow-[#243A2E]/10 ring-1 ring-[#D8D4C8] lg:mx-0">
           <div className="flex items-center justify-between gap-4 bg-[#1877F2] px-5 py-4 text-white">
             <div className="flex items-center gap-3">
               <FacebookLogo className="h-6 w-6" />
@@ -41,21 +41,29 @@ export function FacebookFollow({
               Follow
             </a>
           </div>
-          <div className="relative min-h-[520px] bg-[#F7F6F1]">
+          <div className="relative h-[500px] bg-[#F7F6F1] sm:h-[540px]">
             <iframe
               title="Henderson Cemetery Facebook timeline"
               src={pagePluginUrl}
               width="500"
-              height="520"
+              height="540"
               loading="lazy"
               allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              className="h-[520px] w-full border-0"
+              className="h-full w-full border-0"
             />
           </div>
+          <a
+            href={facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow Henderson Cemetery on Facebook"
+            className="flex items-center gap-3 border-t border-[#D8D4C8] px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1877F2]"
+          >
+            <FacebookLogo className="h-5 w-5 text-[#1877F2]" />
+            Follow Henderson Cemetery
+          </a>
         </div>
-      ) : null}
-
-      <div className={showFeed ? "mt-4" : ""}>
+      ) : (
         <a
           href={facebookUrl}
           target="_blank"
@@ -76,7 +84,7 @@ export function FacebookFollow({
             </span>
           </span>
         </a>
-      </div>
+      )}
     </div>
   );
 }

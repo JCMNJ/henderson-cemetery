@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
+import { DROPBOX_FILE_REQUEST_URL, SUBMISSION_NOTICE } from "@/app/lib/siteLinks";
 
 export const metadata: Metadata = {
   title: "Preservation",
@@ -107,7 +108,6 @@ export default function PreservationPage() {
             </Link>
             {[
               ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
-              ["Share Family History", "Photographs, documents, obituaries, relationships, and stories."],
               ["Contribute a Skill", "Research, landscaping, preservation, photography, mapping, design, technology, or outreach."],
             ].map(([title, body]) => (
               <Link key={title} href="/contact#association-contact" className="bg-white p-6 text-[#243A2E] shadow-lg shadow-black/10 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
@@ -115,6 +115,32 @@ export default function PreservationPage() {
                 <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
               </Link>
             ))}
+            <div className="bg-white p-6 text-[#243A2E] shadow-lg shadow-black/10">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
+                Help Preserve the Record
+              </p>
+              <p className="mt-4 text-sm leading-6 text-[#514B42]">
+                Family photographs, obituaries, documents, and other historical
+                materials can help complete Henderson&apos;s story.
+              </p>
+              <p className="mt-4 text-xs leading-5 text-[#77746C]">
+                {SUBMISSION_NOTICE}
+              </p>
+              <a
+                href={DROPBOX_FILE_REQUEST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Share historical materials for Henderson Cemetery through Dropbox"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 16V4" />
+                  <path d="m7 9 5-5 5 5" />
+                  <path d="M5 20h14" />
+                </svg>
+                Share Historical Materials
+              </a>
+            </div>
             <div id="donation-support" className="scroll-mt-28 bg-[#702F35] p-7 text-white shadow-xl shadow-black/15 lg:col-span-2">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
               <h3 className="mt-4 font-serif text-4xl font-semibold">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>

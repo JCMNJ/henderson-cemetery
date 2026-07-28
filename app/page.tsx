@@ -6,8 +6,16 @@ import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
 import { getGalleryImages } from "@/lib/gallery";
 
-const directionsUrl =
-  "https://www.google.com/maps/dir/?api=1&destination=750%20Gulf%20Lab%20Road%2C%20Cheswick%2C%20PA%2015024";
+type HomepageAnnouncement = {
+  id: string;
+  title: string;
+  date?: string;
+  actionLabel?: string;
+  actionHref?: string;
+  tone?: "standard" | "urgent" | "support";
+};
+
+const publishedAnnouncements: HomepageAnnouncement[] = [];
 
 export const metadata: Metadata = {
   title: "Home",
@@ -211,41 +219,83 @@ export default async function HomePage() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-10 lg:py-18">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
-              Association Information
-            </p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-[#243A2E]">
-              Current notices and community updates.
-            </h2>
-            <div className="mt-7 border-l-4 border-[#B08A3E] bg-[#F7F6F1] px-5 py-5">
-              <p className="font-serif text-2xl font-semibold text-[#243A2E]">
-                Announcements
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-stretch lg:px-10 lg:py-18">
+          <div className="relative min-h-[520px] overflow-hidden bg-[#243A2E] text-white shadow-2xl shadow-[#243A2E]/12">
+            <Image
+              src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg"
+              alt="Wide view of Henderson Cemetery grounds and monuments"
+              fill
+              sizes="(min-width: 1024px) 54vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(36,58,46,0.18)_0%,rgba(36,58,46,0.9)_100%)]" />
+            <div className="relative flex min-h-[520px] flex-col justify-end p-6 sm:p-8 lg:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#E7C16C]">
+                From the Grounds
               </p>
-              <p className="mt-2 text-sm leading-6 text-[#514B42]">
-                Work days, notices, and association updates will be shared here
-                as they become available.
+              <h2 className="mt-4 max-w-2xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">
+                Follow the Work of Preserving Henderson
+              </h2>
+              <p className="mt-5 max-w-xl text-sm leading-6 text-white/86 sm:text-base sm:leading-7">
+                See cemetery care, historical discoveries, seasonal work, and
+                the people helping carry Henderson forward.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/preservation"
+                  className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]"
+                >
+                  Help Preserve Henderson
+                </Link>
                 <Link
                   href="/contact#association-contact"
-                  className="rounded-full bg-[#243A2E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A2C22]"
+                  className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]"
                 >
-                  Ask a Question
+                  Share Photos or Records
                 </Link>
-                <a
-                  href={directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-[#D8D4C8] bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]"
-                >
-                  Get Directions
-                </a>
               </div>
             </div>
           </div>
-          <FacebookFollow showFeed />
+
+          <div className="flex w-full flex-col lg:max-w-[520px] lg:justify-start">
+            {publishedAnnouncements.length ? (
+              <div className="mb-5 space-y-3" aria-label="Henderson Cemetery announcements">
+                {publishedAnnouncements.map((announcement) => {
+                  const toneClass =
+                    announcement.tone === "urgent"
+                      ? "border-[#702F35]"
+                      : announcement.tone === "support"
+                        ? "border-[#243A2E]"
+                        : "border-[#B08A3E]";
+
+                  return (
+                    <article
+                      key={announcement.id}
+                      className={`border-l-4 ${toneClass} bg-[#F7F6F1] px-5 py-4`}
+                    >
+                      {announcement.date ? (
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#77746C]">
+                          {announcement.date}
+                        </p>
+                      ) : null}
+                      <h2 className="font-serif text-2xl font-semibold text-[#243A2E]">
+                        {announcement.title}
+                      </h2>
+                      {announcement.actionHref && announcement.actionLabel ? (
+                        <Link
+                          href={announcement.actionHref}
+                          className="mt-3 inline-flex rounded-full bg-[#243A2E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                        >
+                          {announcement.actionLabel}
+                        </Link>
+                      ) : null}
+                    </article>
+                  );
+                })}
+              </div>
+            ) : null}
+            <FacebookFollow showFeed />
+          </div>
         </div>
       </section>
 
