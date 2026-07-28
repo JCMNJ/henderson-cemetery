@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { FacebookLogo } from "@/app/components/site/FacebookFollow";
 
@@ -23,8 +23,9 @@ type SiteHeaderProps = {
 export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   const pathname = usePathname();
   const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
-  const mobileNavRef = useRef<HTMLElement>(null);
-  const activeMobileLinkRef = useRef<HTMLAnchorElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobilePanelId = useId();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -32,16 +33,37 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   };
 
   useEffect(() => {
-    const mobileNav = mobileNavRef.current;
-    const activeLink = activeMobileLinkRef.current;
+    if (!mobileMenuOpen) return;
 
-    if (!mobileNav || !activeLink) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
 
-    mobileNav.scrollTo({
-      left: activeLink.offsetLeft - mobileNav.clientWidth / 2 + activeLink.clientWidth / 2,
-      behavior: "smooth",
-    });
-  }, [pathname]);
+    document.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!mobileMenuRef.current?.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [mobileMenuOpen]);
 
   return (
     <header
@@ -53,7 +75,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
         .join(" ")}
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4 py-3 sm:py-4">
+        <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
           <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
             <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-stone-300 bg-stone-200 shadow-sm sm:h-11 sm:w-11">
               <Image
@@ -66,10 +88,10 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               />
             </span>
             <span className="min-w-0">
-              <span className="block text-[11px] uppercase tracking-[0.24em] text-stone-500">
+              <span className="block text-[9px] uppercase tracking-[0.14em] text-stone-500 min-[375px]:text-[10px] min-[375px]:tracking-[0.18em] sm:text-[11px] sm:tracking-[0.24em]">
                 Henderson Cemetery · Harmar Township
               </span>
-              <span className="block truncate font-serif text-lg font-semibold text-stone-900 sm:text-2xl">
+              <span className="block truncate font-serif text-base font-semibold text-stone-900 min-[375px]:text-lg sm:text-2xl">
                 750 Gulf Lab Road
               </span>
             </span>
@@ -130,66 +152,93 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               <FacebookLogo className="h-5 w-5" />
             </a>
           </div>
-        </div>
 
-        <nav
-          ref={mobileNavRef}
-          className="-mx-1 flex snap-x gap-2 overflow-x-auto px-1 pb-3 lg:hidden"
-          aria-label="Primary navigation"
-        >
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                ref={active ? activeMobileLinkRef : undefined}
-                aria-current={active ? "page" : undefined}
-                className={[
-                  "link-soft shrink-0 snap-start rounded-full px-3 py-2 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500",
-                  active
-                    ? "bg-stone-900 text-stone-100"
-                    : "border border-stone-300 bg-stone-50 text-stone-700 hover:bg-stone-100",
-                ].join(" ")}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <Link
-            href="/contact"
-            className="link-soft shrink-0 snap-start rounded-full border border-stone-300 bg-stone-50 px-3 py-2 text-sm text-stone-700 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-          >
-            Contact
-          </Link>
-          <Link
-            href="/preservation#current-needs"
-            className="link-soft shrink-0 snap-start rounded-full border border-[#B08D3C] bg-[#F6E6B8]/60 px-3 py-2 text-sm font-medium text-stone-900 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-          >
-            Support
-          </Link>
-          {donationUrl ? (
-            <a
-              href={donationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-soft shrink-0 snap-start rounded-full bg-[#6F1D1B] px-3 py-2 text-sm font-medium text-stone-50 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+          <div ref={mobileMenuRef} className="lg:hidden">
+            <button
+              type="button"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls={mobilePanelId}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
             >
-              Donate
-            </a>
-          ) : null}
-          <a
-            href={facebookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="link-soft inline-flex shrink-0 snap-start items-center gap-2 rounded-full bg-[#1877F2] px-3 py-2 text-sm font-medium text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-          >
-            <FacebookLogo className="h-4 w-4" />
-            Facebook
-          </a>
-        </nav>
+              <span>Menu</span>
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                {mobileMenuOpen ? (
+                  <path d="m6 6 12 12M18 6 6 18" />
+                ) : (
+                  <path d="M4 7h16M4 12h16M4 17h16" />
+                )}
+              </svg>
+            </button>
+
+            {mobileMenuOpen ? (
+              <div
+                id={mobilePanelId}
+                className="absolute inset-x-0 top-full z-50 mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-[1.25rem] bg-white p-3 shadow-2xl shadow-[#243A2E]/20 ring-1 ring-[#D8D4C8]"
+              >
+                <nav aria-label="Mobile primary navigation" className="grid gap-1">
+                  {navLinks.map((link) => {
+                    const active = isActive(link.href);
+
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        aria-current={active ? "page" : undefined}
+                        className={[
+                          "flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]",
+                          active
+                            ? "bg-[#243A2E] text-white"
+                            : "text-[#243A2E] hover:bg-[#F7F6F1]",
+                        ].join(" ")}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
+                </nav>
+
+                <div
+                  className="mt-3 grid grid-cols-[1fr_1fr_auto] items-center gap-2 border-t border-[#D8D4C8] pt-3"
+                  aria-label="Mobile utility links"
+                >
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex min-h-11 items-center justify-center rounded-full border border-stone-300 px-3 text-sm font-semibold text-stone-700 transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    href="/preservation#current-needs"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex min-h-11 items-center justify-center rounded-full border border-[#B08A3E] bg-[#F6E6B8]/80 px-3 text-sm font-semibold text-[#243A2E] transition hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                  >
+                    Support
+                  </Link>
+                  <a
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                  >
+                    <FacebookLogo className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
     </header>
   );
