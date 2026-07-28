@@ -15,7 +15,7 @@ export function GalleryStats({ photographCount }: GalleryStatsProps) {
       detail: "Documented cemetery records",
     },
     {
-      label: "History Covered",
+      label: "Years Represented",
       value: "200+ Years",
       detail: "Local family and preservation history",
     },

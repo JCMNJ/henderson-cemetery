@@ -1,14 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { PageHeader } from "@/app/components/site/PageHeader";
-import { PageHeroImage } from "@/app/components/site/PageHeroImage";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Association Formation and Early Minutes",
   description:
-    "Archival transcription of Henderson Cemetery documents related to lot ownership, association formation, early by-laws, founding contributions, and the 1909 charter record.",
+    "Transcription of Henderson Cemetery documents related to lot ownership, association formation, early by-laws, founding contributions, and the 1909 charter record.",
   openGraph: {
     title: "Association Formation and Early Minutes",
     description:
@@ -284,32 +283,60 @@ Tenth. That a sum equal to at least one-tenth of the gross amount arising from t
 
 export default function AssociationFormationPage() {
   return (
-    <main className="min-h-screen bg-stone-100 text-stone-900">
+    <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
 
-      <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">
+      <section className="mx-auto w-full max-w-[86rem] px-5 py-10 sm:px-6 lg:px-10 lg:py-14">
         <Link
           href="/documents"
-          className="link-soft text-sm font-medium text-stone-700 underline decoration-stone-400 underline-offset-4 hover:text-stone-950"
+          className="link-soft text-xs font-semibold uppercase tracking-[0.18em] text-[#77746C] underline decoration-[#B08A3E] underline-offset-4 hover:text-[#243A2E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
         >
           Back to Documents
         </Link>
 
-        <div className="mt-6">
-          <PageHeader
-            eyebrow="Archival Transcription"
-            title="Association Formation and Early Minutes"
-            description="Transcribed early records documenting lot ownership, cemetery rules, the transfer of management authority, by-laws, founding contributions, and the 1909 charter application for The Harmarville Cemetery Association."
-          />
+        <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              Henderson Cemetery Records
+            </p>
+            <h1 className="mt-4 max-w-4xl font-serif text-5xl font-semibold leading-[0.95] text-[#243A2E] sm:text-7xl">
+              Association Formation and Early Minutes
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-[#514B42]">
+              Transcribed early records from 1892 through the 1909 association charter.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#transcription"
+                className="rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+              >
+                Read Transcription
+              </a>
+              <Link
+                href="/history#association-formation"
+                className="rounded-full border border-[#B08A3E] bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+              >
+                View Related History
+              </Link>
+            </div>
+          </div>
+          <div className="relative min-h-[340px] overflow-hidden bg-white shadow-xl shadow-[#243A2E]/10">
+            <Image
+              src="/gallery/cemetery-summer-monument.jpg"
+              alt="Monument view in Henderson Cemetery"
+              fill
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
 
-        <PageHeroImage
-          src="/gallery/cemetery-summer-monument.jpg"
-          alt="Monument view in Henderson Cemetery"
-        />
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
+        <nav
+          className="mt-8 bg-white p-5 shadow-lg shadow-[#243A2E]/6 ring-1 ring-[#D8D4C8] sm:p-6"
+          aria-label="Document dates"
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#77746C]">
             Document Dates
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -317,28 +344,28 @@ export default function AssociationFormationPage() {
               <a
                 key={section.date}
                 href={`#${section.date.toLowerCase().replaceAll(" ", "-").replace(",", "")}`}
-                className="button-soft rounded-full border border-stone-300 bg-stone-100 px-4 py-2 text-sm text-stone-700 hover:bg-stone-200"
+                className="button-soft rounded-full border border-[#D8D4C8] bg-[#F7F6F1] px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
               >
                 {section.date}
               </a>
             ))}
           </div>
-        </div>
+        </nav>
 
-        <div className="mt-8 space-y-6">
+        <div id="transcription" className="mt-8 space-y-6 scroll-mt-28">
           {documentSections.map((section) => (
             <article
               key={section.date}
               id={section.date.toLowerCase().replaceAll(" ", "-").replace(",", "")}
-              className="rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7"
+              className="bg-white p-5 shadow-lg shadow-[#243A2E]/6 ring-1 ring-[#D8D4C8] sm:p-7"
             >
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B08A3E]">
                 {section.date}
               </p>
-              <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
+              <h2 className="mt-3 font-serif text-3xl font-semibold text-[#243A2E]">
                 {section.title}
               </h2>
-              <pre className="mt-5 whitespace-pre-wrap break-words rounded-2xl border border-stone-200 bg-stone-50 p-4 font-serif text-sm leading-7 text-stone-800 sm:p-5 sm:text-base">
+              <pre className="mt-5 whitespace-pre-wrap break-words border-l-4 border-[#B08A3E] bg-[#F7F6F1] p-4 font-serif text-sm leading-7 text-[#243A2E] sm:p-5 sm:text-base">
                 {section.body}
               </pre>
             </article>

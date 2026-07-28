@@ -1,139 +1,168 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { PageHeader } from "@/app/components/site/PageHeader";
-import { PageHeroImage } from "@/app/components/site/PageHeroImage";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
-import { DonationBanner } from "@/app/components/site/DonationBanner";
 
 export const metadata: Metadata = {
   title: "Preservation",
   description:
-    "Preservation mission, stewardship context, and support guidance for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+    "Volunteer, share records, and support Henderson Cemetery preservation in Harmarville, Pennsylvania.",
   openGraph: {
     title: "Henderson Cemetery Preservation",
     description:
-      "Learn why cemetery maintenance and historical preservation work matter for Henderson Cemetery records and grounds.",
+      "Learn how volunteers and supporters can help care for Henderson Cemetery.",
     url: "/preservation",
   },
   twitter: {
     title: "Henderson Cemetery Preservation",
     description:
-      "Learn why cemetery maintenance and historical preservation work matter for Henderson Cemetery records and grounds.",
+      "Learn how volunteers and supporters can help care for Henderson Cemetery.",
   },
 };
 
 export default function PreservationPage() {
+  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
+
   return (
-    <main className="min-h-screen bg-stone-100 text-stone-900">
+    <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
 
-      <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">
-        <PageHeader
-          eyebrow="Preservation Support"
-          title="Preservation"
-          description="Henderson Cemetery is maintained through volunteer stewardship, community care, and private support."
-        />
-
-        <PageHeroImage
-          src="/gallery/cemetery-wintersnow-flagsflowers2.jpg"
-          alt="Winter preservation view with flags and flowers at Henderson Cemetery"
-        />
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
-            Preservation Mission
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            A cemetery, especially a local burial ground with a rich heritage
-            like Henderson Cemetery, is a quiet record of lives, families, and
-            communities entrusted to the care of every generation. This cemetery
-            is more than two centuries old and needs protection from time, the
-            elements, and the fading of human memory.
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Henderson Cemetery is a book written by those buried within its
-            boundaries. Each gravestone tells a story of a life lived, a family
-            established, and a community built over generations. Through
-            preservation of grounds and records, stewardship honors those who
-            came before us and keeps their stories part of regional heritage.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <article className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
-              Why Maintenance Matters
+      <section className="relative overflow-hidden bg-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:py-18">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              The Next Chapter Depends on Us
             </p>
-            <p className="mt-3 text-base leading-7 text-stone-700">
-              The Harmarville Cemetery Association&apos;s only mission today, as it
-              was in 1909 at its inception, is the operation and management of
-              Henderson Cemetery. Since the board&apos;s renewal in 1952, the
-              cemetery has been sustained by dedicated volunteers and the
-              generosity of those who provide financial support.
+            <h1 className="mt-5 font-serif text-5xl font-semibold leading-[0.95] text-[#243A2E] sm:text-7xl">
+              Preservation Begins With People Who Choose to Care
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#514B42]">
+              You do not need a family connection to become part of Henderson
+              Cemetery&apos;s future.
             </p>
-          </article>
-
-          <article className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
-              Donation and Volunteer Support
-            </p>
-            <p className="mt-3 text-base leading-7 text-stone-700">
-              The tradition of volunteer stewardship that has sustained
-              Henderson Cemetery for generations now depends on finding the next
-              generation of volunteers willing to continue the work of those who
-              have faithfully protected the cemetery and the stories entrusted
-              within its boundaries.
-            </p>
-            <p className="mt-3 text-sm leading-6 text-stone-600">
-              Donation and contact details are listed on the Contact page.
-            </p>
-          </article>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
-            501(c)(3) Nonprofit Status
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Through the dedicated leadership and efforts of longtime board
-            member David Campbell, the Association was granted 501(c)(3)
-            nonprofit status. Donations made to support the cemetery are
-            tax-deductible to the extent permitted by law.
-          </p>
-          <address className="mt-4 not-italic text-sm leading-7 text-stone-700">
-            Harmarville Cemetery Association
-            <br />
-            c/o David Campbell
-            <br />
-            505 Bicker Rd
-            <br />
-            Cabot, PA 16023
-          </address>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-100/80 p-5 sm:p-7">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
-            Continue in the Archive
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link
-              href="/history"
-              className="button-soft rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-            >
-              Read Cemetery History
-            </Link>
-            <Link
-              href="/burial-records"
-              className="button-soft rounded-full bg-stone-900 px-5 py-2.5 text-sm font-medium text-stone-100 hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-            >
-              Search Burial Records
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact#association-contact" className="rounded-full bg-[#243A2E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22]">
+                Give Your Time
+              </Link>
+              <a href="#donation-support" className="rounded-full bg-[#702F35] px-6 py-3 text-sm font-semibold text-white hover:bg-[#5D252B]">
+                Support Preservation
+              </a>
+            </div>
+          </div>
+          <div className="relative min-h-[420px] overflow-hidden">
+            <Image
+              src="/gallery/cemetery-summer-view05-headstones-flag.jpg"
+              alt="Headstones on a sunny Henderson Cemetery lawn with a flag"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      <DonationBanner />
+      <section className="bg-[#F7F6F1]">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-18">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              Why Support Matters
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-[#243A2E] sm:text-5xl">
+              A cemetery survives through ordinary, repeated acts of care.
+            </h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {[
+              "Grounds require continued care.",
+              "Markers weather and deteriorate.",
+              "Burial information remains incomplete.",
+              "Documents and photographs need preservation.",
+              "Local stories can disappear.",
+              "Long-term stewardship needs a new generation.",
+            ].map((item) => (
+              <p key={item} className="border-l-4 border-[#B08A3E] bg-white p-4 text-sm font-semibold leading-6 text-[#514B42] shadow-md shadow-[#243A2E]/6">
+                {item}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="current-needs" className="scroll-mt-28 bg-[#243A2E] text-white">
+        <div className="mx-auto w-full max-w-[86rem] px-5 py-14 sm:px-6 lg:px-10 lg:py-18">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#E7C16C]">
+              Ways to Help
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-5xl">
+              Choose the work you can carry.
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.9fr_0.9fr]">
+            <Link href="/contact#association-contact" className="min-h-80 bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">Join a Work Day</p>
+              <h3 className="mt-4 font-serif text-4xl font-semibold">Grounds care, cleanup, documentation, and seasonal projects.</h3>
+            </Link>
+            {[
+              ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
+              ["Share Family History", "Photographs, documents, obituaries, relationships, and stories."],
+              ["Contribute a Skill", "Research, landscaping, preservation, photography, mapping, design, technology, or outreach."],
+            ].map(([title, body]) => (
+              <Link key={title} href="/contact#association-contact" className="bg-white p-6 text-[#243A2E] shadow-lg shadow-black/10 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">{title}</p>
+                <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
+              </Link>
+            ))}
+            <div id="donation-support" className="scroll-mt-28 bg-[#702F35] p-7 text-white shadow-xl shadow-black/15 lg:col-span-2">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
+              <h3 className="mt-4 font-serif text-4xl font-semibold">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
+              <p className="mt-5 text-sm leading-6 text-white/86">
+                The Association has 501(c)(3) nonprofit status. Donations are
+                tax-deductible to the extent permitted by law.
+              </p>
+              <address className="mt-5 not-italic text-sm leading-7 text-white/90">
+                Harmarville Cemetery Association<br />
+                c/o David Campbell<br />
+                505 Bicker Road<br />
+                Cabot, PA 16023
+              </address>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {donationUrl ? (
+                  <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
+                    Donate Online
+                  </a>
+                ) : null}
+                <Link href="/contact#association-contact" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                  Contact About Giving
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-0 opacity-22">
+          <Image src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg" alt="" fill sizes="100vw" className="object-cover" />
+        </div>
+        <div className="relative mx-auto w-full max-w-[86rem] px-5 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <div className="max-w-3xl bg-white/92 p-6 shadow-2xl shadow-[#243A2E]/12 sm:p-8">
+            <h2 className="font-serif text-4xl font-semibold text-[#243A2E] sm:text-5xl">
+              The cemetery has endured because each generation found someone willing to care.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-[#514B42]">
+              The next generation can begin here.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/contact#association-contact" className="rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22]">Volunteer</Link>
+              <Link href="/contact#association-contact" className="rounded-full border border-[#B08A3E] bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">Share Historical Material</Link>
+              <a href="#donation-support" className="rounded-full bg-[#702F35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#5D252B]">Donate</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </main>

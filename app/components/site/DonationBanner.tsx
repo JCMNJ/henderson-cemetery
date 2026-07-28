@@ -14,11 +14,6 @@ export function DonationBanner() {
           Donations help support mowing, stone care, record preservation, and
           ongoing maintenance.
         </p>
-        {!donationUrl ? (
-          <p className="mt-3 max-w-4xl text-sm leading-7 text-[#F7F6F0]">
-            Online donation options will be available in the future.
-          </p>
-        ) : null}
         <p className="mt-4 text-sm leading-7 text-[#F7F6F0]">
           Harmarville Cemetery Association
           <br />

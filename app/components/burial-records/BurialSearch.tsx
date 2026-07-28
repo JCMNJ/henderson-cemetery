@@ -9,10 +9,16 @@ import type { BurialRecord } from "./types";
 type BurialSearchProps = {
   records: BurialRecord[];
   initialQuery?: string;
+  initialPlan?: string;
 };
 
-export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) {
+export function BurialSearch({
+  records,
+  initialQuery = "",
+  initialPlan = "",
+}: BurialSearchProps) {
   const [query, setQuery] = useState(initialQuery);
+  const [planFilter, setPlanFilter] = useState(initialPlan);
   const [sortKey, setSortKey] = useState<
     "name" | "birth" | "death" | "plan" | "plot" | "photo"
   >("name");
@@ -22,12 +28,21 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
 
   const filteredRecords = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
+    const normalizedPlan = planFilter.trim().toLowerCase();
 
-    if (!normalizedQuery) {
+    if (!normalizedQuery && !normalizedPlan) {
       return records;
     }
 
     return records.filter((record) => {
+      if (normalizedPlan && record.plan.trim().toLowerCase() !== normalizedPlan) {
+        return false;
+      }
+
+      if (!normalizedQuery) {
+        return true;
+      }
+
       const searchableText = [
         record.surname,
         record.givenMiddle,
@@ -42,7 +57,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
 
       return searchableText.includes(normalizedQuery);
     });
-  }, [query, records]);
+  }, [planFilter, query, records]);
 
   const sortedRecords = useMemo(() => {
     const normalized = [...filteredRecords];
@@ -100,13 +115,13 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
   };
 
   return (
-    <div className="mt-8 sm:mt-10">
-      <div className="rounded-3xl border border-stone-300 bg-stone-50/90 p-4 sm:p-5">
+    <div>
+      <div className="bg-white p-4 shadow-2xl shadow-[#243A2E]/10 ring-1 ring-[#D8D4C8] sm:p-5">
         <label
           htmlFor="burial-search"
-          className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-600"
+          className="text-xs font-semibold uppercase tracking-[0.18em] text-[#77746C]"
         >
-          Search Records
+          Search records
         </label>
         <input
           id="burial-search"
@@ -117,45 +132,64 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
             setCurrentPage(1);
           }}
           placeholder="Surname, given name, birth, death, plan, plot, or notes"
-          className="mt-2 w-full rounded-full border border-stone-300 bg-white px-5 py-3 text-sm text-stone-800 outline-none transition focus:border-stone-600 focus:ring-2 focus:ring-stone-200"
+          className="mt-2 w-full rounded-full border border-[#D8D4C8] bg-white px-5 py-4 text-base text-[#243A2E] outline-none transition focus:border-[#243A2E] focus:ring-2 focus:ring-[#B08A3E]/35"
         />
 
-        <p className="mt-3 text-sm text-stone-600">
+        <p className="mt-3 text-sm text-[#77746C]" aria-live="polite">
           Showing {pageStart.toLocaleString()}–{pageEnd.toLocaleString()} of{" "}
           {totalRecords.toLocaleString()} records
         </p>
-        {totalRecords > pageSize ? (
-          <p className="mt-1 text-xs uppercase tracking-[0.14em] text-stone-500">
-            Scroll to browse records
-          </p>
-        ) : null}
-        <div className="mt-3 flex flex-wrap items-center gap-3">
-          <label
-            htmlFor="page-size"
-            className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-600"
-          >
-            Page size
-          </label>
-          <select
-            id="page-size"
-            value={pageSize}
-            onChange={(event) => {
-              setPageSize(Number(event.target.value));
-              setCurrentPage(1);
-            }}
-            className="rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-stone-800"
-          >
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-        </div>
-        <div className="mt-3 md:hidden">
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <label
+              htmlFor="plan-filter"
+              className="text-xs font-semibold uppercase tracking-[0.14em] text-[#77746C]"
+            >
+              Plan
+            </label>
+            <select
+              id="plan-filter"
+              value={planFilter}
+              onChange={(event) => {
+                setPlanFilter(event.target.value);
+                setCurrentPage(1);
+              }}
+              className="mt-1 w-full rounded-xl border border-[#D8D4C8] bg-white px-3 py-2 text-sm text-[#243A2E] focus:outline-none focus:ring-2 focus:ring-[#B08A3E]/35"
+            >
+              <option value="">All plans</option>
+              <option value="H/D">H/D</option>
+              <option value="1">Plan I</option>
+              <option value="2">Plan II</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="page-size"
+              className="text-xs font-semibold uppercase tracking-[0.14em] text-[#77746C]"
+            >
+              Page size
+            </label>
+            <select
+              id="page-size"
+              value={pageSize}
+              onChange={(event) => {
+                setPageSize(Number(event.target.value));
+                setCurrentPage(1);
+              }}
+              className="mt-1 w-full rounded-xl border border-[#D8D4C8] bg-white px-3 py-2 text-sm text-[#243A2E] focus:outline-none focus:ring-2 focus:ring-[#B08A3E]/35"
+            >
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <div className="md:hidden">
           <label
             htmlFor="sort-records"
-            className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-600"
+            className="text-xs font-semibold uppercase tracking-[0.14em] text-[#77746C]"
           >
-            Sort by
+            Sort
           </label>
           <select
             id="sort-records"
@@ -165,7 +199,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               setSortKey(key as typeof sortKey);
               setSortDirection(direction as typeof sortDirection);
             }}
-            className="mt-1 w-full rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm text-stone-800"
+            className="mt-1 w-full rounded-xl border border-[#D8D4C8] bg-white px-3 py-2 text-sm text-[#243A2E] focus:outline-none focus:ring-2 focus:ring-[#B08A3E]/35"
           >
             <option value="name:asc">Name (A-Z)</option>
             <option value="name:desc">Name (Z-A)</option>
@@ -180,12 +214,26 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
             <option value="photo:desc">Stone photo first</option>
             <option value="photo:asc">No photo first</option>
           </select>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              setPlanFilter("");
+              setSortKey("name");
+              setSortDirection("asc");
+              setCurrentPage(1);
+            }}
+            className="button-soft rounded-full border border-[#D8D4C8] bg-[#F7F6F1] px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] sm:self-end"
+          >
+            Clear filters
+          </button>
         </div>
       </div>
 
       <div
         id="burial-results"
-        className="relative mt-6 overflow-hidden rounded-3xl border border-stone-300 bg-stone-50/95"
+        className="relative mt-5 overflow-hidden bg-white shadow-2xl shadow-[#243A2E]/10 ring-1 ring-[#D8D4C8]"
       >
         {totalRecords === 0 ? (
           <div className="p-5 sm:p-6">
@@ -211,20 +259,20 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
                 />
               </div>
             </div>
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-stone-50/95 to-transparent md:h-8" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-stone-50/95 to-transparent md:h-8" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-white to-transparent md:h-8" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white to-transparent md:h-8" />
           </>
         )}
       </div>
 
-      <div className="mt-4 rounded-2xl border border-stone-300 bg-stone-50/80 px-4 py-3 text-sm text-stone-700">
+      <div className="mt-4 bg-white px-4 py-3 text-sm text-[#514B42] shadow-lg shadow-[#243A2E]/5 ring-1 ring-[#D8D4C8]">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setCurrentPage(1)}
               disabled={activePage <= 1}
-              className="button-soft rounded-full border border-stone-300 px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-3 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               First
             </button>
@@ -232,7 +280,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               type="button"
               onClick={() => setCurrentPage(Math.max(1, activePage - 5))}
               disabled={activePage <= 1}
-              className="button-soft rounded-full border border-stone-300 px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-3 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               -5
             </button>
@@ -240,18 +288,18 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               type="button"
               onClick={() => setCurrentPage(Math.max(1, activePage - 1))}
               disabled={activePage <= 1}
-              className="button-soft rounded-full border border-stone-300 px-4 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-4 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Previous
             </button>
           </div>
 
-          <label className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.14em] text-stone-600">
+          <label className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.14em] text-[#77746C]">
             <span>Page</span>
             <select
               value={activePage}
               onChange={(event) => setCurrentPage(Number(event.target.value))}
-              className="rounded-xl border border-stone-300 bg-white px-3 py-2 text-sm normal-case tracking-normal text-stone-800"
+              className="rounded-xl border border-[#D8D4C8] bg-white px-3 py-2 text-sm normal-case tracking-normal text-[#243A2E]"
               aria-label="Choose results page"
             >
               {pageOptions.map((page) => (
@@ -268,7 +316,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               type="button"
               onClick={() => setCurrentPage(Math.min(totalPages, activePage + 1))}
               disabled={activePage >= totalPages}
-              className="button-soft rounded-full border border-stone-300 px-4 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-4 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Next
             </button>
@@ -276,7 +324,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               type="button"
               onClick={() => setCurrentPage(Math.min(totalPages, activePage + 5))}
               disabled={activePage >= totalPages}
-              className="button-soft rounded-full border border-stone-300 px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-3 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               +5
             </button>
@@ -284,7 +332,7 @@ export function BurialSearch({ records, initialQuery = "" }: BurialSearchProps) 
               type="button"
               onClick={() => setCurrentPage(totalPages)}
               disabled={activePage >= totalPages}
-              className="button-soft rounded-full border border-stone-300 px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="button-soft rounded-full border border-[#D8D4C8] px-3 py-2 text-[#243A2E] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Last
             </button>

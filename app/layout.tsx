@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     template: "%s | Henderson Cemetery Archive",
   },
   description:
-    "Historical preservation archive and burial records for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+    "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
   openGraph: {
     title: "Henderson Cemetery Preserving Our History",
     description:
-      "Historical preservation archive and burial records for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+      "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
     type: "website",
     locale: "en_US",
     siteName: "Henderson Cemetery Archive",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Henderson Cemetery Preserving Our History",
     description:
-      "Historical preservation archive and burial records for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+      "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
   },
 };
 
@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
         className={`${cormorant.variable} ${inter.variable} antialiased`}
       >

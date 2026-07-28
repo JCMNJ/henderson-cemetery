@@ -1,164 +1,172 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
-import { PageHeader } from "@/app/components/site/PageHeader";
-import { PageHeroImage } from "@/app/components/site/PageHeroImage";
-import { DonationBanner } from "@/app/components/site/DonationBanner";
 
 export const metadata: Metadata = {
   title: "Documents",
   description:
-    "Archival document references for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania, including governance, plan records, and preservation notes.",
+    "Explore Henderson Cemetery association minutes, cemetery plans, and surviving historical documents.",
   openGraph: {
-    title: "Henderson Cemetery Documents Archive",
+    title: "Henderson Cemetery Documents",
     description:
-      "Review historical document references connected to Henderson Cemetery preservation and genealogy context.",
+      "Read the records that shaped Henderson Cemetery.",
     url: "/documents",
   },
   twitter: {
-    title: "Henderson Cemetery Documents Archive",
+    title: "Henderson Cemetery Documents",
     description:
-      "Review historical document references connected to Henderson Cemetery preservation and genealogy context.",
+      "Read the records that shaped Henderson Cemetery.",
   },
 };
 
 const documentCollections = [
   {
     title: "Association Formation and Early Minutes",
+    period: "1909",
     summary:
-      "Transcribed early records document lot ownership, cemetery rules, the transfer of management authority, by-laws, founding contributions, and the 1909 charter application for the Harmarville Cemetery Association.",
-    details:
-      "These records provide context for how local descendants and community members formalized long-term stewardship.",
+      "Early records document transfer of control, by-laws, founding contributions, and the charter application.",
     href: "/documents/association-formation",
+    transcriptionLabel: "View Transcription",
+    relatedHref: "/history#association-formation",
+    relatedLabel: "View the 1909 Timeline",
   },
   {
-    title: "Survey and Plan Book References",
+    title: "Cemetery Plans and Surveys",
+    period: "1884-1911",
     summary:
-      "Materials reference surveyed burial lots connected to Oliver P. Henderson's plan, including a county recording noted as November 18, 1884.",
-    details:
-      "These references support the documented transition to named plans, including what is now described as Plan 1.",
+      "Plan-era notes connect surveyed lots, Plan I, Plan II, and cemetery expansion.",
+    relatedHref: "/history#plan-one-survey",
+    relatedLabel: "Explore Cemetery History",
+    extraHref: "/burial-records?plan=1",
+    extraLabel: "Search Plan I Burials",
   },
   {
-    title: "Plan 2 Land Donation and Deed Era",
+    title: "Burial and Stone Records",
+    period: "2012",
     summary:
-      "Historical notes describe a 1911 adjoining land gift from Anna Melzena Spring, followed by additional surveyed lots and deed activity from 1925 through 1941.",
-    details:
-      "These entries help trace how the cemetery expanded while preserving continuity of family plots and community maintenance.",
-  },
-  {
-    title: "Burial Roster and Stone Inventory Work",
-    summary:
-      "Archived site copy references continued record-gathering by association members, including an enhanced surname roster (noted as of April 1, 2012).",
-    details:
-      "This work ties together gravestone surveys, plot references, and historical notes now reflected in the modern archive.",
+      "Roster and stone-inventory work connects names, photographs, and plot references.",
+    relatedHref: "/burial-records",
+    relatedLabel: "Search Burial Records",
   },
 ];
 
 export default function DocumentsPage() {
   return (
-    <main className="min-h-screen bg-stone-100 text-stone-900">
+    <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
 
-      <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">
-        <PageHeader
-          eyebrow="Archive Materials"
-          title="Documents"
-          description="This section brings together historical narratives and meeting minutes, association records, lot plans and indexes, and financial stewardship documents."
-        />
-
-        <PageHeroImage
-          src="/gallery/cemetery-wintersnow-flagsflowers.jpg"
-          alt="Flags and flowers marking graves in Henderson Cemetery"
-        />
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-            Archive Scope
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Materials include historical narratives and meeting minutes,
-            association records, lot plans and indexes, and financial
-            stewardship documents. Where records vary by date or source, the
-            archive preserves the documented wording for continuity.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {documentCollections.map((item) => {
-            const card = (
-              <article
-                className="card-soft h-full rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6"
-              >
-                <h2 className="font-serif text-2xl font-semibold">{item.title}</h2>
-                <p className="mt-3 text-base leading-7 text-stone-700">
-                  {item.summary}
-                </p>
-                <p className="mt-3 text-sm leading-6 text-stone-600">
-                  {item.details}
-                </p>
-                {item.href ? (
-                  <p className="mt-5 text-sm font-medium text-stone-800 underline decoration-stone-400 underline-offset-4">
-                    Read archival transcription
-                  </p>
-                ) : null}
-              </article>
-            );
-
-            return item.href ? (
-              <Link
-                key={item.title}
-                href={item.href}
-                className="group block rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-              >
-                {card}
+      <section className="relative overflow-hidden bg-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-18">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              Henderson Cemetery Records
+            </p>
+            <h1 className="mt-5 font-serif text-5xl font-semibold leading-[0.95] text-[#243A2E] sm:text-7xl">
+              Read the Records That Shaped Henderson
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#514B42]">
+              Explore association minutes, cemetery plans, and surviving
+              historical documents.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#documents" className="rounded-full bg-[#243A2E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
+                Explore the Documents
+              </a>
+              <Link href="/history" className="rounded-full bg-[#702F35] px-6 py-3 text-sm font-semibold text-white hover:bg-[#5D252B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
+                View the History
               </Link>
-            ) : (
-              <article
-              key={item.title}
-              className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6"
-            >
-              <h2 className="font-serif text-2xl font-semibold">{item.title}</h2>
-              <p className="mt-3 text-base leading-7 text-stone-700">
-                {item.summary}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-stone-600">
-                {item.details}
-              </p>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-100/80 p-5 sm:p-7">
-          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-            Preservation and Completeness
-          </p>
-          <p className="mt-3 max-w-4xl text-base leading-7 text-stone-700">
-            Historical records were compiled across many years and formats.
-            Names, dates, plot references, and notes may differ between sources.
-            This archive preserves those records as historical evidence while
-            continuing careful review and reconciliation.
-          </p>
-
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/history"
-              className="button-soft rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-            >
-              Read Cemetery History
-            </Link>
-            <Link
-              href="/burial-records"
-              className="button-soft rounded-full bg-stone-900 px-5 py-2.5 text-sm font-medium text-stone-100 hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-            >
-              Search Burial Records
-            </Link>
+            </div>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden lg:min-h-[460px]">
+            <Image
+              src="/gallery/cemetery-wintersnow-flagsflowers.jpg"
+              alt="Flags and flowers beside Henderson Cemetery markers"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      <DonationBanner />
+      <section id="documents" className="scroll-mt-28 bg-[#F7F6F1]">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-10 lg:py-18">
+          <div className="relative min-h-[360px] overflow-hidden bg-[#243A2E]">
+            <Image
+              src="/gallery/cemetery-summer-view03-obelisk-headstones.jpg"
+              alt="Henderson Cemetery monument and headstones"
+              fill
+              sizes="(min-width: 1024px) 32vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="divide-y divide-[#D8D4C8] bg-white shadow-2xl shadow-[#243A2E]/10">
+            {documentCollections.map((item) => (
+              <details key={item.title} className="group p-5 sm:p-6">
+                <summary className="grid cursor-pointer list-none grid-cols-[1fr_auto] items-center gap-4">
+                  <span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
+                      {item.period}
+                    </span>
+                    <span className="mt-2 block font-serif text-3xl font-semibold text-[#243A2E]">
+                      {item.title}
+                    </span>
+                  </span>
+                  <span className="text-3xl text-[#702F35]" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 max-w-2xl text-sm leading-6 text-[#514B42]">
+                  {item.summary}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {item.href ? (
+                    <Link href={item.href} className="rounded-full bg-[#243A2E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A2C22]">
+                      {item.transcriptionLabel}
+                    </Link>
+                  ) : null}
+                  <Link href={item.relatedHref} className="rounded-full border border-[#B08A3E] bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">
+                    {item.relatedLabel}
+                  </Link>
+                  {item.extraHref ? (
+                    <Link href={item.extraHref} className="rounded-full bg-[#702F35] px-4 py-2 text-sm font-semibold text-white hover:bg-[#5D252B]">
+                      {item.extraLabel}
+                    </Link>
+                  ) : null}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#243A2E] text-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10 lg:py-18">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#E7C16C]">
+              Help Preserve the Record
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-5xl">
+              Family documents, photographs, obituaries, and corrections can help complete Henderson&apos;s story.
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/contact#association-contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">
+              Share Historical Material
+            </Link>
+            <Link href="/contact#association-contact" className="rounded-full border border-white/55 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              Submit a Correction
+            </Link>
+            <Link href="/contact#association-contact" className="rounded-full bg-[#702F35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#5D252B]">
+              Contact the Association
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </main>

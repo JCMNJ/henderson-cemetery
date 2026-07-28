@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import type { GalleryImage } from "@/lib/gallery";
@@ -131,8 +132,15 @@ export function GalleryLightbox({ images, selectedIndex, onClose, onSelect }: Ga
       <div className="z-10 border-t border-stone-700/90 bg-stone-950/95 px-4 py-3 shadow-lg shadow-stone-950/30 sm:px-6">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-serif text-lg font-semibold text-stone-50 sm:text-xl">{selectedImage.caption}</p>
-            <p className="mt-0.5 text-xs text-stone-400 sm:text-sm">Henderson Cemetery Preserving Our History</p>
+            {selectedImage.relatedStory ? (
+              <Link
+                href={selectedImage.relatedStory.href}
+                className="mt-2 inline-flex text-sm font-medium text-stone-200 underline decoration-stone-500 underline-offset-4 hover:text-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300"
+                onClick={onClose}
+              >
+                Explore Henderson: {selectedImage.relatedStory.label}
+              </Link>
+            ) : null}
           </div>
           <p className="shrink-0 text-xs text-stone-500 sm:text-sm">
             Use arrow keys to browse

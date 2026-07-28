@@ -24,6 +24,10 @@ type GalleryImageMetadata = {
   alt: string;
   caption: string;
   season: GallerySeason | null;
+  relatedStory?: {
+    label: string;
+    href: string;
+  };
 };
 
 const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
@@ -64,6 +68,10 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
       alt: "A tall obelisk monument surrounded by headstones beneath a partly cloudy sky.",
       caption: "Obelisk monument surrounded by headstones.",
       season: "summer",
+      relatedStory: {
+        label: "Explore early burial ground history",
+        href: "/history#early-burial-ground",
+      },
     },
   "cemetery-summer-view04-rows-lawn.jpg":
     {
@@ -106,6 +114,10 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
       alt: "A broad mown cemetery lawn with scattered markers and distant monuments.",
       caption: "Broad lawn with scattered markers and monuments.",
       season: "summer",
+      relatedStory: {
+        label: "Explore Denny and Henderson lands",
+        href: "/history#denny-henderson-lands",
+      },
     },
   "cemetery-summer-view11-headstones-clouds.jpg":
     {
@@ -156,6 +168,10 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
     alt: "Flags and flowers beside grave markers in snow.",
     caption: "Flags and flowers beside grave markers in snow.",
     season: "winter",
+    relatedStory: {
+      label: "View association records",
+      href: "/documents/association-formation",
+    },
   },
   "cemetery-wintersnow-flagsflowers2.jpg": {
     alt: "Flags, flowers, and grave markers surrounded by snow.",
@@ -166,6 +182,10 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
     alt: "Cemetery monuments and headstones in winter snow.",
     caption: "Monuments and headstones in winter snow.",
     season: "winter",
+    relatedStory: {
+      label: "Support grounds preservation",
+      href: "/preservation#current-needs",
+    },
   },
   "cemetery-wintersnow-group2.jpg": {
     alt: "A group of headstones and monuments on a snow-covered cemetery lawn.",
@@ -193,6 +213,7 @@ export type GalleryImage = {
   alt: string;
   caption: string;
   season: GallerySeason | null;
+  relatedStory: GalleryImageMetadata["relatedStory"] | null;
 };
 
 function inferSeason(relativePath: string): GallerySeason | null {
@@ -264,6 +285,7 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
         alt: GALLERY_IMAGE_METADATA[relativePath]?.alt ?? "Cemetery photograph with headstones and grounds.",
         caption: GALLERY_IMAGE_METADATA[relativePath]?.caption ?? "Cemetery photograph.",
         season: GALLERY_IMAGE_METADATA[relativePath]?.season ?? inferSeason(relativePath),
+        relatedStory: GALLERY_IMAGE_METADATA[relativePath]?.relatedStory ?? null,
       };
     })
     .sort((a, b) => a.relativePath.localeCompare(b.relativePath, undefined, { sensitivity: "base" }));

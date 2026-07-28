@@ -1,151 +1,158 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { PageHeader } from "@/app/components/site/PageHeader";
-import { PageHeroImage } from "@/app/components/site/PageHeroImage";
+import { ContactForm } from "@/app/components/contact/ContactForm";
+import { FacebookFollow } from "@/app/components/site/FacebookFollow";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
-import { ContactForm } from "@/app/components/contact/ContactForm";
 
 const directionsUrl =
-  "https://www.google.com/maps/dir/?api=1&destination=40.54480%2C-79.82320";
-const facebookUrl = "https://www.facebook.com/profile.php?id=100057152182753";
+  "https://www.google.com/maps/dir/?api=1&destination=750%20Gulf%20Lab%20Road%2C%20Cheswick%2C%20PA%2015024";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact and donation information for the Harmarville Cemetery Association and Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania.",
+    "Contact the Harmarville Cemetery Association about cemetery questions, burial records, family history, volunteering, and preservation support.",
   openGraph: {
     title: "Henderson Cemetery Contact",
     description:
-      "View contact, donation, directions, and association context for Henderson Cemetery preservation inquiries.",
+      "Contact Henderson Cemetery about records, family materials, volunteering, directions, and preservation support.",
     url: "/contact",
   },
   twitter: {
     title: "Henderson Cemetery Contact",
     description:
-      "View contact, donation, directions, and association context for Henderson Cemetery preservation inquiries.",
+      "Contact Henderson Cemetery about records, family materials, volunteering, directions, and preservation support.",
   },
 };
 
 export default function ContactPage() {
+  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
+
   return (
-    <main className="min-h-screen bg-stone-100 text-stone-900">
+    <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
 
-      <section className="section-reveal mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-        <PageHeader
-          eyebrow="Correspondence"
-          title="Contact"
-          description="Contact the Harmarville Cemetery Association for burial record questions, family history notes, cemetery information, and preservation support."
-        />
+      <section className="relative overflow-hidden bg-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-10 px-5 py-12 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10 lg:py-18">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              Connect With Henderson
+            </p>
+            <h1 className="mt-5 font-serif text-5xl font-semibold leading-[0.95] text-[#243A2E] sm:text-7xl">
+              Questions, Records, Stories, and Offers to Help Are Welcome
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#514B42]">
+              Whether you are researching a family member, sharing historical
+              material, volunteering, or supporting preservation, the
+              association would like to hear from you.
+            </p>
+          </div>
+          <div className="relative min-h-[360px] overflow-hidden lg:min-h-[460px]">
+            <Image
+              src="/gallery/cemetery-summer-view08-large-tree-markers.jpg"
+              alt="Large tree and cemetery markers at Henderson Cemetery"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
 
-        <PageHeroImage
-          src="/images/hendersoncemeterycontactheader.png"
-          alt="Henderson Cemetery contact header"
-          figureClassName="mt-7 bg-stone-100 sm:mt-8"
-          frameClassName="relative aspect-[1983/793] w-full"
-          imageClassName="object-contain mix-blend-multiply"
-        />
+      <section className="mx-auto w-full max-w-[86rem] px-5 py-14 sm:px-6 lg:px-10 lg:py-18">
+        <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
+          <Link href="#association-contact" className="min-h-72 bg-[#243A2E] p-7 text-white shadow-xl shadow-[#243A2E]/16 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">
+              Volunteer or Join a Work Day
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold">
+              Tell us how you would like to help.
+            </h2>
+            <p className="mt-5 text-sm leading-6 text-white/84">
+              Include your availability, interests, skills, or resources you may
+              wish to contribute.
+            </p>
+          </Link>
+          {[
+            ["Burial or Cemetery Question", "Ask about a record, burial, plan, lot, or cemetery visit."],
+            ["Share a Correction", "Help improve names, dates, relationships, or notes."],
+            ["Contribute Records or Photographs", "Send family materials, obituaries, photographs, or local history."],
+          ].map(([title, body]) => (
+            <Link key={title} href="#association-contact" className="bg-white p-6 shadow-lg shadow-[#243A2E]/8 ring-1 ring-[#D8D4C8] transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">{title}</p>
+              <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
+            </Link>
+          ))}
+          <div className="bg-[#702F35] p-6 text-white shadow-xl shadow-[#702F35]/18 lg:col-span-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F2D68B]">
+              Support Preservation
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold">
+              Donations help maintain grounds, records, and materials.
+            </h2>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {donationUrl ? (
+                <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
+                  Donate Online
+                </a>
+              ) : null}
+              <a href="#mailing-address" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                Mailing Address
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="mt-7 grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.85fr)] lg:items-start">
+      <section id="association-contact" className="scroll-mt-28 bg-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-10 lg:py-18">
           <ContactForm />
 
-          <div className="grid gap-5">
-            <article className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-                Visit Henderson Cemetery
+          <div className="space-y-5">
+            <div className="bg-[#F7F6F1] p-6 shadow-lg shadow-[#243A2E]/8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B08A3E]">
+                Physical Location
               </p>
-              <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
-                750 Gulf Lab Road
-              </h2>
-              <p className="mt-2 text-base leading-7 text-stone-700">
-                Harmarville (Acmetonia), Pennsylvania
-              </p>
-              <p className="mt-4 text-sm leading-6 text-stone-600">
-                Historical records list GPS coordinates as latitude 40.54480 and
-                longitude -79.82320.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a
-                  href={directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-soft inline-flex rounded-full bg-stone-900 px-5 py-2.5 text-sm font-medium text-stone-100 hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-                >
-                  Get Directions
-                </a>
-                <a
-                  href={facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-soft inline-flex rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-                >
-                  Facebook
-                </a>
-              </div>
-            </article>
+              <address className="mt-4 not-italic text-base leading-7 text-[#514B42]">
+                Henderson Cemetery<br />
+                750 Gulf Lab Road<br />
+                Cheswick, PA 15024<br />
+                Located in Harmar Township
+              </address>
+              <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22]">
+                Get Directions
+              </a>
+            </div>
 
-            <article className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-                Association Contact
+            <div id="mailing-address" className="scroll-mt-28 bg-white p-6 shadow-lg shadow-[#243A2E]/8 ring-1 ring-[#D8D4C8]">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B08A3E]">
+                Association Mailing Address
               </p>
-              <p className="mt-3 text-base leading-7 text-stone-700">
-                The Harmarville Cemetery Association is the managing body for
-                Henderson Cemetery.
-              </p>
-              <p className="mt-4 text-base leading-7 text-stone-700">
-                Email:{" "}
-                <a
-                  className="underline decoration-stone-400 underline-offset-4 hover:text-stone-950"
-                  href="mailto:TamsenErcole@gmail.com"
-                >
-                  TamsenErcole@gmail.com
-                </a>
-              </p>
-            </article>
+              <address className="mt-4 not-italic text-base leading-7 text-[#514B42]">
+                Harmarville Cemetery Association<br />
+                c/o David Campbell<br />
+                505 Bicker Road<br />
+                Cabot, PA 16023
+              </address>
+            </div>
 
-            <article className="rounded-3xl border border-stone-300 bg-stone-100/80 p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-                Archive Resources
-              </p>
-              <p className="mt-3 text-sm leading-6 text-stone-700">
-                For cemetery records, plot maps, documents, photographs, and
-                outside genealogy links, start with the Research Center.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Link
-                  href="/research"
-                  className="button-soft rounded-full bg-stone-900 px-4 py-2 text-sm font-medium text-stone-100 hover:bg-stone-700"
-                >
-                  Research Center
-                </Link>
-                <Link
-                  href="/burial-records"
-                  className="button-soft rounded-full border border-stone-400 px-4 py-2 text-sm font-medium text-stone-800 hover:bg-stone-200"
-                >
-                  Burial Records
-                </Link>
-                <Link
-                  href="/documents"
-                  className="button-soft rounded-full border border-stone-400 px-4 py-2 text-sm font-medium text-stone-800 hover:bg-stone-200"
-                >
-                  Documents
-                </Link>
-              </div>
-            </article>
+            <div className="bg-white">
+              <FacebookFollow />
+            </div>
 
-            <article className="rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-                Preservation Support
+            <div className="bg-[#F7F6F1] p-6 shadow-lg shadow-[#243A2E]/8">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B08A3E]">
+                Verified Email
               </p>
-              <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
-                Volunteer care keeps the cemetery record intact.
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-stone-700">
-                Donations help support mowing, stone care, record preservation,
-                and ongoing maintenance of Henderson Cemetery.
-              </p>
-            </article>
+              <a
+                className="mt-4 inline-flex text-base font-semibold text-[#243A2E] underline decoration-[#B08A3E] decoration-2 underline-offset-4 hover:text-[#702F35]"
+                href="mailto:TamsenErcole@gmail.com"
+              >
+                TamsenErcole@gmail.com
+              </a>
+            </div>
           </div>
         </div>
       </section>

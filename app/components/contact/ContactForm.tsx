@@ -49,35 +49,18 @@ export function ContactForm() {
   };
 
   return (
-    <article className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-      <p className="text-sm uppercase tracking-[0.2em] text-stone-500">Archive Inquiry</p>
-      <p className="mt-3 text-sm leading-6 text-stone-700">
-        Send a cemetery, preservation, burial record, or family history question
-        to the archive contact. Required fields are name, email, and message.
+    <article className="bg-white p-6 shadow-2xl shadow-[#243A2E]/12 ring-1 ring-[#D8D4C8] sm:p-8">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#B08A3E]">Association Contact</p>
+      <h2 className="mt-4 font-serif text-4xl font-semibold text-[#243A2E]">
+        Send a message.
+      </h2>
+      <p className="mt-3 text-sm leading-6 text-[#514B42]">
+        For volunteering, include your preferred contact method, general
+        availability, areas of interest, and any skills or resources you may
+        wish to contribute. Required fields are name, email, and message.
       </p>
 
-      <div className="mt-5 rounded-2xl border border-stone-200 bg-stone-100/75 p-4">
-        <p className="text-sm uppercase tracking-[0.18em] text-stone-500">
-          Donation Mailing Details
-        </p>
-        <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start">
-          <p className="text-sm leading-6 text-stone-700">
-            Harmarville Cemetery Association
-            <br />
-            c/o David Campbell
-            <br />
-            505 Bicker Rd
-            <br />
-            Cabot, PA 16023
-          </p>
-          <p className="text-sm leading-6 text-stone-600 sm:max-w-56">
-            Checks may be made payable to &ldquo;Harmarville Cemetery
-            Association.&rdquo;
-          </p>
-        </div>
-      </div>
-
-      <form onSubmit={onSubmit} className="mt-4 grid gap-3">
+      <form onSubmit={onSubmit} className="mt-6 grid gap-3">
         <input
           type="text"
           name="website"
@@ -95,7 +78,7 @@ export function ContactForm() {
           onChange={(event) => setForm((prev) => ({ ...prev, name: event.target.value }))}
           placeholder="Name"
           required
-          className="rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-base text-stone-900 placeholder:text-stone-500 outline-none focus:border-stone-600"
+          className="rounded-xl border border-[#D8D4C8] bg-white px-4 py-3 text-base text-[#243A2E] placeholder:text-[#77746C] outline-none focus:border-[#243A2E] focus:ring-2 focus:ring-[#B08A3E]/30"
         />
 
         <input
@@ -105,7 +88,7 @@ export function ContactForm() {
           onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
           placeholder="Email"
           required
-          className="rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-base text-stone-900 placeholder:text-stone-500 outline-none focus:border-stone-600"
+          className="rounded-xl border border-[#D8D4C8] bg-white px-4 py-3 text-base text-[#243A2E] placeholder:text-[#77746C] outline-none focus:border-[#243A2E] focus:ring-2 focus:ring-[#B08A3E]/30"
         />
 
         <input
@@ -113,7 +96,7 @@ export function ContactForm() {
           value={form.phone}
           onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
           placeholder="Phone (optional)"
-          className="rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-base text-stone-900 placeholder:text-stone-500 outline-none focus:border-stone-600"
+          className="rounded-xl border border-[#D8D4C8] bg-white px-4 py-3 text-base text-[#243A2E] placeholder:text-[#77746C] outline-none focus:border-[#243A2E] focus:ring-2 focus:ring-[#B08A3E]/30"
         />
 
         <textarea
@@ -123,13 +106,13 @@ export function ContactForm() {
           placeholder="Message"
           rows={6}
           required
-          className="rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-base text-stone-900 placeholder:text-stone-500 outline-none focus:border-stone-600"
+          className="rounded-xl border border-[#D8D4C8] bg-white px-4 py-3 text-base text-[#243A2E] placeholder:text-[#77746C] outline-none focus:border-[#243A2E] focus:ring-2 focus:ring-[#B08A3E]/30"
         />
 
         <button
           type="submit"
           disabled={status === "loading"}
-          className="button-soft inline-flex w-full justify-center rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-stone-100 hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+          className="button-soft inline-flex w-full justify-center rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         >
           {status === "loading" ? "Sending..." : "Send Message"}
         </button>

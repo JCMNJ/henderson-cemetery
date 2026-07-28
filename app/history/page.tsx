@@ -1,143 +1,246 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { HistoricalLinks } from "@/app/components/history/HistoricalLinks";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
-import { PageHeader } from "@/app/components/site/PageHeader";
-import { PageHeroImage } from "@/app/components/site/PageHeroImage";
-import { DonationBanner } from "@/app/components/site/DonationBanner";
+import { historicalItems, type HistoricalItem } from "@/app/data/historical-exploration";
 
 export const metadata: Metadata = {
   title: "History",
   description:
-    "Historical narrative and timeline for Henderson Cemetery in Harmarville (Acmetonia), Pennsylvania, including association stewardship and cemetery development.",
+    "Follow Henderson Cemetery history through Harmarville land stories, burial records, association minutes, source links, and stewardship work.",
   openGraph: {
     title: "Henderson Cemetery History",
     description:
-      "Read the preserved historical timeline for Henderson Cemetery, including early burials, plan development, and community stewardship.",
+      "A connected history of Henderson Cemetery, Harmarville land stories, association records, and preservation.",
     url: "/history",
   },
   twitter: {
     title: "Henderson Cemetery History",
     description:
-      "Read the preserved historical timeline for Henderson Cemetery, including early burials, plan development, and community stewardship.",
+      "A connected history of Henderson Cemetery, Harmarville land stories, association records, and preservation.",
   },
 };
 
-const timeline = [
-  {
-    period: "1790-1795",
-    title: "Denny and Henderson Land",
-    body: "Two prominent landowners in the Allegheny River Valley in the early 1800s were Ebenezer Denny and James Henderson. James Henderson, an Irish immigrant, acquired approximately 150 acres in 1790 through Pennsylvania's post-Revolutionary War land settlement system, cleared the wooded land, and established himself as a farmer and landowner. In 1795, Ebenezer Denny received a 640-acre tract associated with his Revolutionary War service, which he named Deer Creek. Portions of these early family lands are now connected to Henderson Cemetery.",
-  },
-  {
-    period: "c. 1800-1828",
-    title: "Early Burial Ground",
-    body: "As one of the oldest pioneer burial grounds in the Allegheny River Valley, the Denny-Henderson Cemetery was created from lands donated by the Ebenezer Denny and William Henderson families. Because the area was primarily agricultural and many families could not afford permanent grave markers, additional unmarked graves may exist within the cemetery, their identities and exact resting places now lost to history. The earliest surviving gravestone found is dated 1807 and bears only the initials J.P. The earliest inscribed headstone found belongs to Hannah Henderson, who died in 1828.",
-  },
-  {
-    period: "Late 1800s",
-    title: "Surveyed Lots and Name Change",
-    body: "In 1884, Oliver Henderson contributed additional land from his property to expand the cemetery. He formally surveyed this new section into 54 lots, each designed to accommodate eight graves, with proceeds going to the Henderson family. Cemetery records refer to this section as Plan I. The burial ground became known then as Henderson Cemetery.",
-  },
-  {
-    period: "1909",
-    title: "Formation of the Harmarville Cemetery Association",
-    body: "In 1909, Rev. Harry Joseph Rose, pastor of nearby Harmarville Presbyterian Church, visited the grounds and found them grown up in weeds, brush, and waist-high grass. He organized descendants and local residents and established the Harmarville Cemetery Association, a legal entity formed to protect the gravesites. The Association's sole purpose was, and still is, to operate and manage Henderson Cemetery.",
-  },
-  {
-    period: "1911",
-    title: "Expansion and Ongoing Stewardship",
-    body: "In 1911, Anna Melzena Spring, great-granddaughter of Ebenezer Denny and heir to the Denny estate through Ebenezer's son Harmar Denny and daughter Mary O'Hara Denny, donated additional Denny land on which 100 lots were established. The gift was structured to support cemetery maintenance through funds from the sale of these lots. Cemetery records refer to this section as Plan II. Anna Spring also donated nine nearby acres to the Federation of Girls' School Societies, where the Harmarville Convalescent Home for Women was built in 1913.",
-  },
-  {
-    period: "1952",
-    title: "A Renewal",
-    body: "In 1952, Charles Nixon Carson, a descendant of two local pioneer families of the Denny and Henderson era, the Carsons and the Nixons, organized a new board of the Harmarville Cemetery Association after noticing that the cemetery grounds had once again fallen into neglect and disrepair. The Association's stewardship mission was revived, helping ensure the continued care and preservation of this historic cemetery.",
-  },
+const historyOrder = [
+  "denny-henderson-lands",
+  "ebenezer-denny",
+  "harmar-denny",
+  "early-burial-ground",
+  "plan-one-survey",
+  "association-formation",
+  "plan-two-expansion",
+  "stewardship-renewal",
 ];
 
+const sectionKickers: Record<string, string> = {
+  "denny-henderson-lands": "A Burial Ground in a Changing Landscape",
+  "ebenezer-denny": "Ebenezer and Harmar Denny",
+  "harmar-denny": "Public Service and Family Legacy",
+  "early-burial-ground": "The Early Burial Ground",
+  "plan-one-survey": "Plan I and the Organized Cemetery",
+  "association-formation": "Association Stewardship Begins",
+  "plan-two-expansion": "Plan II and Continued Stewardship",
+  "stewardship-renewal": "The 1952 Renewal",
+};
+
+const sourceLabel: Record<HistoricalItem["confidence"], string> = {
+  verified: "Supported by outside historical sources.",
+  "association-records": "Documented in association history or records.",
+  "local-records": "Identified in local cemetery records.",
+  researching: "This connection is still being researched.",
+};
+
+function getItem(id: string) {
+  const item = historicalItems.find((entry) => entry.id === id);
+  if (!item) throw new Error(`Missing historical item: ${id}`);
+  return item;
+}
+
 export default function HistoryPage() {
+  const timelineItems = historyOrder.map(getItem);
+
   return (
-    <main className="min-h-screen bg-stone-100 text-stone-900">
+    <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
 
-      <section className="section-reveal mx-auto w-full max-w-6xl px-5 py-12 sm:px-6 sm:py-14 lg:py-20">
-        <PageHeader
-          eyebrow="Historical Stewardship"
-          title="History"
-          description="Henderson Cemetery in Acmetonia (near Harmarville, Pennsylvania) reflects more than two centuries of local family history, community stewardship, and preservation work."
-        />
-
-        <PageHeroImage
-          src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg"
-          alt="Wide summer view across Henderson Cemetery lawn and monuments"
-          imageClassName="object-cover object-[50%_78%]"
-        />
-
-        <p className="mt-4 max-w-3xl text-base leading-7 text-stone-700">
-          The narrative below reflects association history and documented
-          cemetery records preserved over time.
-        </p>
-
-        <div className="mt-8 rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7">
-          <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-            History of the Property
+      <section className="relative overflow-hidden bg-white">
+        <div className="absolute inset-0">
+          <Image
+            src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg"
+            alt="Wide view of Henderson Cemetery lawn and monuments"
+            fill
+            sizes="100vw"
+            className="object-cover object-[50%_78%] opacity-34"
+            priority
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(95deg,rgba(247,246,241,0.98),rgba(247,246,241,0.82),rgba(247,246,241,0.36))]" />
+        </div>
+        <div className="relative mx-auto w-full max-w-[86rem] px-5 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+            More Than Two Centuries of Memory
           </p>
-          <h2 className="mt-3 font-serif text-2xl font-semibold text-stone-950">
-            Denny and Henderson family lands
-          </h2>
-          <div className="mt-4 space-y-3 text-base leading-7 text-stone-700">
-            <p>
-              Two prominent landowners in the Allegheny River Valley in the
-              early 1800s were Ebenezer Denny and James Henderson. Their efforts
-              preserved a lasting connection to the land&apos;s early history and
-              the families who settled, cultivated, and cared for it.
-            </p>
-            <p>
-              James Henderson, an Irish immigrant, acquired approximately 150
-              acres in 1790 through Pennsylvania&apos;s post-Revolutionary War land
-              settlement system, when tracts of land were opened for development
-              west of the Allegheny River. He cleared the densely wooded land
-              and established himself as a farmer and landowner. A portion of
-              his original land is where Henderson Cemetery now lies.
-            </p>
-            <p>
-              James, his wife Clara, and his grandson Oliver, who donated
-              additional land in 1884, are among the many family members and
-              descendants buried at Henderson, providing a lasting connection to
-              the property that bears their name.
-            </p>
+          <h1 className="mt-5 max-w-4xl font-serif text-5xl font-semibold leading-[0.95] text-[#243A2E] sm:text-7xl">
+            A Small Cemetery Woven Into Harmarville&apos;s Story
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#514B42]">
+            Henderson Cemetery holds family records, local memory, and the
+            continuing work of people who chose to care. The story is strongest
+            when records, maps, documents, and sources stay connected.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#timeline"
+              className="rounded-full bg-[#243A2E] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+            >
+              Follow the Timeline
+            </a>
+            <Link
+              href="/burial-records"
+              className="rounded-full bg-[#702F35] px-6 py-3 text-sm font-semibold text-white hover:bg-[#5D252B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+            >
+              Search the Records
+            </Link>
           </div>
         </div>
-
-        <div className="mt-8 space-y-5 sm:mt-10">
-          {timeline.map((item) => (
-            <article
-              key={`${item.period}-${item.title}`}
-              className="card-soft rounded-3xl border border-stone-300 bg-stone-50/90 p-5 sm:p-7"
-            >
-              <p className="text-sm uppercase tracking-[0.2em] text-stone-500">
-                {item.period}
-              </p>
-              <h2 className="mt-2 font-serif text-2xl font-semibold sm:text-3xl">
-                {item.title}
-              </h2>
-              <p className="mt-4 max-w-4xl text-base leading-7 text-stone-700">
-                {item.body}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <Link
-          href="/burial-records"
-          className="button-soft mt-8 inline-flex rounded-full border border-stone-400 px-5 py-2.5 text-sm font-medium text-stone-800 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-        >
-          Return to Burial Records
-        </Link>
       </section>
 
-      <DonationBanner />
+      <section id="timeline" className="scroll-mt-28 bg-[#F7F6F1]">
+        <div className="mx-auto w-full max-w-[86rem] px-5 py-14 sm:px-6 lg:px-10 lg:py-20">
+          <div className="grid gap-7 lg:grid-cols-[0.35fr_1fr]">
+            <div className="hidden border-r border-[#D8D4C8] lg:block" />
+            <div className="space-y-16">
+              {timelineItems.map((item, index) => (
+                <article
+                  id={item.id}
+                  key={item.id}
+                  className="scroll-mt-28"
+                >
+                  <div
+                    className={[
+                      "grid gap-8 lg:items-center",
+                      index % 2 === 0
+                        ? "lg:grid-cols-[0.9fr_1.1fr]"
+                        : "lg:grid-cols-[1.1fr_0.9fr]",
+                    ].join(" ")}
+                  >
+                    <div className={index % 2 === 0 ? "" : "lg:order-2"}>
+                      <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+                        {sectionKickers[item.id]}
+                      </p>
+                      <div className="mt-4 flex items-baseline gap-4">
+                        <p className="font-serif text-5xl font-semibold text-[#702F35] sm:text-6xl">
+                          {item.period}
+                        </p>
+                      </div>
+                      <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-[#243A2E]">
+                        {item.title}
+                      </h2>
+                      <p className="mt-4 max-w-2xl text-lg leading-8 text-[#514B42]">
+                        {item.summary}
+                      </p>
+                      <details className="mt-5 bg-white p-5 shadow-lg shadow-[#243A2E]/8 ring-1 ring-[#D8D4C8]">
+                        <summary className="cursor-pointer text-sm font-semibold text-[#243A2E]">
+                          Sources and context
+                        </summary>
+                        <p className="mt-3 text-sm leading-6 text-[#514B42]">
+                          {item.context}
+                        </p>
+                        <p className="mt-2 text-xs uppercase tracking-[0.16em] text-[#77746C]">
+                          {sourceLabel[item.confidence]}
+                        </p>
+                        <HistoricalLinks links={item.links} />
+                      </details>
+                    </div>
+                    <div className="relative min-h-[300px] overflow-hidden bg-[#243A2E] shadow-xl shadow-[#243A2E]/12 sm:min-h-[380px]">
+                      <Image
+                        src={
+                          item.image ??
+                          (index % 2 === 0
+                            ? "/gallery/cemetery-wintersnow-flagsflowers.jpg"
+                            : "/gallery/cemetery-summer-view03-obelisk-headstones.jpg")
+                        }
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 42vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-6 px-5 py-14 sm:px-6 lg:grid-cols-3 lg:px-10">
+          {[
+            ["Named for Harmar", "Harmar Denny was named for General Josiah Harmar."],
+            ["Neighboring Lands", "James Henderson's tract was recorded immediately east of Ebenezer Denny's property."],
+            ["Still Unproven", "Evidence does not yet establish which tract contained the original burial parcel."],
+          ].map(([title, body]) => (
+            <div key={title} className="border-l-4 border-[#B08A3E] bg-[#F7F6F1] p-6">
+              <p className="font-serif text-2xl font-semibold text-[#702F35]">
+                {title}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-[#514B42]">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#F7F6F1]">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-10 lg:py-18">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#B08A3E]">
+              The People Behind the Places
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-[#243A2E]">
+              Local stories are still being connected.
+            </h2>
+          </div>
+          <div className="bg-white p-6 shadow-xl shadow-[#243A2E]/8 sm:p-8">
+            <p className="text-base leading-7 text-[#514B42]">
+              Research is continuing into connections between cemetery families
+              and Harmarville&apos;s roads, institutions, and community history.
+              Unsupported profiles are not published as fact.
+            </p>
+            <Link
+              href="/contact#association-contact"
+              className="mt-6 inline-flex rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22]"
+            >
+              Help Research a Local Story
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#243A2E] text-white">
+        <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center lg:px-10 lg:py-18">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#E7C16C]">
+              Henderson&apos;s Next Generation
+            </p>
+            <h2 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">
+              History survives when someone carries it forward.
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/contact#association-contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">
+              Share Family Records
+            </Link>
+            <Link href="/contact#association-contact" className="rounded-full border border-white/55 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              Submit Photographs
+            </Link>
+            <Link href="/preservation#current-needs" className="rounded-full bg-[#702F35] px-5 py-3 text-sm font-semibold text-white hover:bg-[#5D252B]">
+              Support Preservation
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </main>

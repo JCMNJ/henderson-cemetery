@@ -37,34 +37,34 @@ export function PlotMapViewer() {
   const resetZoom = () => setZoom(1);
 
   return (
-    <div className="rounded-3xl border border-stone-300 bg-stone-50/90 p-4 sm:p-5">
+    <div className="bg-white p-4 shadow-2xl shadow-[#243A2E]/12 ring-1 ring-[#D8D4C8] sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs uppercase tracking-[0.16em] text-stone-500">
-          Drag to pan on desktop · Scroll/pinch on mobile
+        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#77746C]">
+          Select a cemetery plan to view it in greater detail.
         </p>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={zoomOut}
-            className="button-soft rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-stone-700"
+            className="button-soft rounded-full border border-[#D8D4C8] bg-white px-4 py-2 text-xs font-semibold text-[#243A2E] focus-visible:ring-[#B08A3E]"
           >
             Zoom out
           </button>
           <button
             type="button"
             onClick={zoomIn}
-            className="button-soft rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-stone-700"
+            className="button-soft rounded-full bg-[#243A2E] px-4 py-2 text-xs font-semibold text-white focus-visible:ring-[#B08A3E]"
           >
             Zoom in
           </button>
           <button
             type="button"
             onClick={resetZoom}
-            className="button-soft rounded-full border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-stone-700"
+            className="button-soft rounded-full border border-[#D8D4C8] bg-white px-4 py-2 text-xs font-semibold text-[#243A2E] focus-visible:ring-[#B08A3E]"
           >
             Reset
           </button>
-          <span className="text-xs text-stone-500">{Math.round(zoom * 100)}%</span>
+          <span className="rounded-full bg-[#F7F6F1] px-3 py-2 text-xs font-semibold text-[#77746C]">{Math.round(zoom * 100)}%</span>
         </div>
       </div>
       <div
@@ -74,7 +74,7 @@ export function PlotMapViewer() {
         onMouseUp={endDrag}
         onMouseLeave={endDrag}
         className={[
-          "mt-3 max-h-[72vh] overflow-auto rounded-2xl border border-stone-300 bg-stone-100",
+          "mt-4 max-h-[76vh] overflow-auto bg-[#F7F6F1] ring-1 ring-[#D8D4C8]",
           isDragging ? "cursor-grabbing" : "cursor-grab",
         ].join(" ")}
       >
