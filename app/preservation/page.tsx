@@ -101,21 +101,21 @@ export default function PreservationPage() {
               Choose the work you can carry.
             </h2>
           </div>
-          <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.9fr_0.9fr]">
-            <Link href="/contact#association-contact" className="min-h-80 bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+          <div className="mt-8 grid gap-5 lg:hidden">
+            <Link href="/contact#association-contact" className="bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">Join a Work Day</p>
-              <h3 className="mt-4 font-serif text-4xl font-semibold">Grounds care, cleanup, documentation, and seasonal projects.</h3>
+              <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Grounds care, cleanup, documentation, and seasonal projects.</h3>
             </Link>
             {[
               ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
               ["Contribute a Skill", "Research, landscaping, preservation, photography, mapping, design, technology, or outreach."],
             ].map(([title, body]) => (
-              <Link key={title} href="/contact#association-contact" className="bg-white p-6 text-[#243A2E] shadow-lg shadow-black/10 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+              <Link key={title} href="/contact#association-contact" className="bg-white p-7 text-[#243A2E] shadow-lg shadow-black/10 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">{title}</p>
                 <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
               </Link>
             ))}
-            <div className="bg-white p-6 text-[#243A2E] shadow-lg shadow-black/10">
+            <div className="bg-white p-7 text-[#243A2E] shadow-lg shadow-black/10">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
                 Help Preserve the Record
               </p>
@@ -141,9 +141,9 @@ export default function PreservationPage() {
                 Share Historical Materials
               </a>
             </div>
-            <div id="donation-support" className="scroll-mt-28 bg-[#702F35] p-7 text-white shadow-xl shadow-black/15 lg:col-span-2">
+            <div id="donation-support" className="scroll-mt-28 bg-[#702F35] p-7 text-white shadow-xl shadow-black/15">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
-              <h3 className="mt-4 font-serif text-4xl font-semibold">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
+              <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
               <p className="mt-5 text-sm leading-6 text-white/86">
                 The Association has 501(c)(3) nonprofit status. Donations are
                 tax-deductible to the extent permitted by law.
@@ -163,6 +163,77 @@ export default function PreservationPage() {
                 <Link href="/contact#association-contact" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
                   Contact About Giving
                 </Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 hidden items-stretch gap-5 lg:grid lg:grid-cols-[0.9fr_2fr]">
+            <div className="grid gap-5">
+              <Link href="/contact#association-contact" className="bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">Join a Work Day</p>
+                <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Grounds care, cleanup, documentation, and seasonal projects.</h3>
+              </Link>
+              <div className="bg-white p-7 text-[#243A2E] shadow-lg shadow-black/10">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
+                  Help Preserve the Record
+                </p>
+                <p className="mt-4 text-sm leading-6 text-[#514B42]">
+                  Family photographs, obituaries, documents, and other historical
+                  materials can help complete Henderson&apos;s story.
+                </p>
+                <p className="mt-4 text-xs leading-5 text-[#77746C]">
+                  {SUBMISSION_NOTICE}
+                </p>
+                <a
+                  href={DROPBOX_FILE_REQUEST_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Share historical materials for Henderson Cemetery through Dropbox"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#243A2E] px-5 py-3 text-sm font-semibold text-white hover:bg-[#1A2C22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 16V4" />
+                    <path d="m7 9 5-5 5 5" />
+                    <path d="M5 20h14" />
+                  </svg>
+                  Share Historical Materials
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-rows-[auto_1fr] gap-5">
+              <div className="grid grid-cols-2 gap-5">
+                {[
+                  ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
+                  ["Contribute a Skill", "Research, landscaping, preservation, photography, mapping, design, technology, or outreach."],
+                ].map(([title, body]) => (
+                  <Link key={title} href="/contact#association-contact" className="bg-white p-7 text-[#243A2E] shadow-lg shadow-black/10 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">{title}</p>
+                    <p className="mt-4 text-sm leading-6 text-[#514B42]">{body}</p>
+                  </Link>
+                ))}
+              </div>
+              <div className="bg-[#702F35] p-7 text-white shadow-xl shadow-black/15">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
+                <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
+                <p className="mt-5 text-sm leading-6 text-white/86">
+                  The Association has 501(c)(3) nonprofit status. Donations are
+                  tax-deductible to the extent permitted by law.
+                </p>
+                <address className="mt-5 not-italic text-sm leading-7 text-white/90">
+                  Harmarville Cemetery Association<br />
+                  c/o David Campbell<br />
+                  505 Bicker Road<br />
+                  Cabot, PA 16023
+                </address>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {donationUrl ? (
+                    <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
+                      Donate Online
+                    </a>
+                  ) : null}
+                  <Link href="/contact#association-contact" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                    Contact About Giving
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -107,10 +107,8 @@ export default function HistoryPage() {
       </section>
 
       <section id="timeline" className="scroll-mt-28 bg-[#F7F6F1]">
-        <div className="mx-auto w-full max-w-[86rem] px-5 py-14 sm:px-6 lg:px-10 lg:py-20">
-          <div className="grid gap-7 lg:grid-cols-[0.35fr_1fr]">
-            <div className="hidden border-r border-[#D8D4C8] lg:block" />
-            <div className="space-y-16">
+        <div className="mx-auto w-full max-w-[92rem] px-5 py-14 sm:px-6 lg:px-8 lg:py-20 xl:px-10">
+          <div className="space-y-16">
               {timelineItems.map((item, index) => (
                 <article
                   id={item.id}
@@ -170,7 +168,6 @@ export default function HistoryPage() {
                   </div>
                 </article>
               ))}
-            </div>
           </div>
         </div>
       </section>
