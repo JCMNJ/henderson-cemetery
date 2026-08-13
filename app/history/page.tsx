@@ -24,25 +24,25 @@ export const metadata: Metadata = {
 };
 
 const historyOrder = [
-  "denny-henderson-lands",
-  "ebenezer-denny",
-  "harmar-denny",
-  "early-burial-ground",
-  "plan-one-survey",
+  "original-graveyard",
+  "plan-one-1884",
   "association-formation",
-  "plan-two-expansion",
-  "stewardship-renewal",
+  "plan-two-1911",
+  "railroad-boundary-1916",
+  "turnpike-boundary-1951",
+  "renewed-interest-1952",
+  "final-land-acquisition-2020",
 ];
 
 const sectionKickers: Record<string, string> = {
-  "denny-henderson-lands": "A Burial Ground in a Changing Landscape",
-  "ebenezer-denny": "Ebenezer and Harmar Denny",
-  "harmar-denny": "Public Service and Family Legacy",
-  "early-burial-ground": "The Early Burial Ground",
-  "plan-one-survey": "Plan I and the Organized Cemetery",
+  "original-graveyard": "The Early Burial Ground",
+  "plan-one-1884": "Plan I and the Organized Cemetery",
   "association-formation": "Association Stewardship Begins",
-  "plan-two-expansion": "Plan II and Continued Stewardship",
-  "stewardship-renewal": "The 1952 Renewal",
+  "plan-two-1911": "Plan II and Continued Stewardship",
+  "railroad-boundary-1916": "Railroad Edge",
+  "turnpike-boundary-1951": "Modern Infrastructure",
+  "renewed-interest-1952": "The 1952 Renewal",
+  "final-land-acquisition-2020": "Protected Boundaries",
 };
 
 const sourceLabel: Record<HistoricalItem["confidence"], string> = {
@@ -68,11 +68,11 @@ export default function HistoryPage() {
       <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-0">
           <Image
-            src="/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg"
+            src="/gallery/tamsen-review-2026-08-06.jpg"
             alt="Wide view of Henderson Cemetery lawn and monuments"
             fill
             sizes="100vw"
-            className="object-cover object-[50%_78%] opacity-34"
+            className="object-cover object-[52%_54%] opacity-34"
             priority
           />
           <div className="absolute inset-0 bg-[linear-gradient(95deg,rgba(247,246,241,0.98),rgba(247,246,241,0.82),rgba(247,246,241,0.36))]" />
@@ -156,13 +156,13 @@ export default function HistoryPage() {
                         src={
                           item.image ??
                           (index % 2 === 0
-                            ? "/gallery/cemetery-wintersnow-flagsflowers.jpg"
+                            ? "/gallery/tamsen-review-2026-08-06.jpg"
                             : "/gallery/cemetery-summer-view03-obelisk-headstones.jpg")
                         }
                         alt=""
                         fill
                         sizes="(min-width: 1024px) 42vw, 100vw"
-                        className="object-cover"
+                        className="object-cover object-[52%_56%]"
                       />
                     </div>
                   </div>

@@ -51,11 +51,11 @@ export default function ContactPage() {
           </div>
           <div className="relative min-h-[360px] overflow-hidden lg:min-h-[460px]">
             <Image
-              src="/gallery/cemetery-summer-view08-large-tree-markers.jpg"
+              src="/gallery/tamsen-review-2026-08-05.jpg"
               alt="Large tree and cemetery markers at Henderson Cemetery"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[50%_58%]"
               priority
             />
           </div>

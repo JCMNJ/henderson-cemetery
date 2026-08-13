@@ -22,79 +22,34 @@ export type HistoricalItem = {
 
 export const historicalItems: HistoricalItem[] = [
   {
-    id: "denny-henderson-lands",
-    title: "Denny and Henderson Lands",
-    period: "Early Harmar Township",
+    id: "original-graveyard",
+    title: "Original Graveyard",
+    period: "Circa 1800",
     summary:
-      "An 1889 county history places James Henderson's tract immediately east of Ebenezer Denny's property near Harmarville.",
+      "Early pioneer families set aside portions of their properties for a public burial ground now known as Henderson Cemetery.",
     context:
-      "Available evidence establishes neighboring early properties; it does not yet prove which tract contained the original burial parcel.",
-    confidence: "verified",
-    image: "/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg",
+      "Tamsen Ercole's supplied history identifies Ebenezer Denny's 1795 land grant and James Henderson's 1790 land grant as part of the cemetery's origin story. Existing records also identify the oldest readable marker as JP 1807 and Hannah Henderson's 1828 grave as the oldest documented grave.",
+    confidence: "association-records",
+    image: "/gallery/tamsen-review-2026-08-06.jpg",
     links: [
-      { type: "explore-henderson", label: "Explore Cemetery History", href: "/history#denny-henderson-lands" },
       { type: "explore-henderson", label: "James Henderson Burial Record", href: "/burial-records/henderson-james-1758-may-6-1840-h-d-henderson" },
+      { type: "explore-henderson", label: "Hannah Henderson Burial Record", href: "/burial-records/henderson-hannah-1753-jul-12-1828-h-d-henderson" },
       { type: "view-source", label: "1889 History of Allegheny County", href: "https://www.allegheny.pagenweb.org/Individual_Townships/Harmer.html" },
     ],
   },
   {
-    id: "ebenezer-denny",
-    title: "Ebenezer Denny",
-    period: "1761-1822",
-    summary:
-      "Ebenezer Denny, associated with early Denny land in the region, became Pittsburgh's first mayor in 1816.",
-    context:
-      "The City of Pittsburgh identifies Denny as a Revolutionary War veteran and the city's first mayor.",
-    confidence: "verified",
-    links: [
-      { type: "explore-henderson", label: "Denny and Henderson Lands", href: "/history#denny-henderson-lands" },
-      { type: "view-source", label: "City of Pittsburgh", href: "https://www.pittsburghpa.gov/City-Government/The-Mayor/Mayors-of-Pittsburgh" },
-    ],
-  },
-  {
-    id: "harmar-denny",
-    title: "Harmar Denny",
-    period: "1794-1852",
-    summary:
-      "Named for General Josiah Harmar, Harmar Denny served in Pennsylvania's legislature and the United States Congress.",
-    context:
-      "Dickinson College Archives and the U.S. House historian document his education, public service, and transportation advocacy.",
-    confidence: "verified",
-    links: [
-      { type: "explore-henderson", label: "Denny and Henderson Lands", href: "/history#denny-henderson-lands" },
-      { type: "view-source", label: "Dickinson College Archives", href: "https://archives.dickinson.edu/encyclopedia/harmar-denny-1794-1852" },
-      { type: "view-source", label: "U.S. House of Representatives", href: "https://history.house.gov/People/Detail/12137" },
-      { type: "continue-exploring", label: "Harmar Township", href: "https://www.harmartownship-pa.gov/1396/About" },
-    ],
-  },
-  {
-    id: "early-burial-ground",
-    title: "Early Burial Ground",
-    period: "c. 1800-1828",
-    summary:
-      "The earliest surviving inscribed Henderson family marker in the records is for Hannah Henderson, who died in 1828.",
-    context:
-      "Local cemetery records also note older and fragmentary markers, including an 1807 stone bearing only initials.",
-    confidence: "local-records",
-    image: "/gallery/cemetery-summer-view03-obelisk-headstones.jpg",
-    links: [
-      { type: "explore-henderson", label: "Hannah Henderson Burial Record", href: "/burial-records/henderson-hannah-1753-jul-12-1828-h-d-henderson" },
-      { type: "explore-henderson", label: "Search Early Burials", href: "/burial-records?q=H%2FD" },
-      { type: "explore-henderson", label: "Open Plot Maps", href: "/plot-maps" },
-    ],
-  },
-  {
-    id: "plan-one-survey",
-    title: "Plan I Survey",
+    id: "plan-one-1884",
+    title: "Henderson Cemetery: Expansion, Plan I",
     period: "1884",
     summary:
-      "Association notes identify an 1884 Oliver P. Henderson survey that organized 54 cemetery lots.",
+      "Oliver Henderson expanded the original cemetery by donating 54 additional lots of eight graves each.",
     context:
-      "The surviving records connect this surveyed section with the cemetery's Plan I references.",
+      "Tamsen Ercole's supplied history states that the transaction was recorded in the Allegheny County Recorder's Office, the name legally became Henderson Cemetery, and this expansion is now known as Plan I.",
     confidence: "association-records",
+    image: "/gallery/tamsen-review-2026-08-01.jpg",
     links: [
-      { type: "explore-henderson", label: "Plan Map Experience", href: "/plot-maps" },
-      { type: "view-source", label: "Documents Archive", href: "/documents" },
+      { type: "explore-henderson", label: "View Henderson Cemetery Plan I - 1884", href: "/plot-maps#plan-i-1884" },
+      { type: "view-source", label: "View Original Plan I Map", href: "/documents/henderson-cemetery-plan-i-1884.pdf" },
       { type: "explore-henderson", label: "Search Plan I Burials", href: "/burial-records?plan=1" },
     ],
   },
@@ -103,42 +58,86 @@ export const historicalItems: HistoricalItem[] = [
     title: "Harmarville Cemetery Association",
     period: "1909",
     summary:
-      "In 1909, descendants and local residents transferred management of Henderson's Graveyard to the Harmarville Cemetery Association.",
+      "Rev. Harry Joseph Rose's interest in saving the overgrown cemetery helped inspire the Harmarville Cemetery Association.",
     context:
-      "The association records document the transfer of control, early by-laws, founding contributions, and charter application.",
+      "The association records document the transfer of control, early by-laws, founding contributions, and charter application. Tamsen Ercole's supplied history connects the association's formation with renewed preservation interest after Rev. Rose found the grounds overgrown.",
     confidence: "association-records",
     image: "/gallery/cemetery-wintersnow-flagsflowers.jpg",
     links: [
-      { type: "explore-henderson", label: "1909 Timeline Moment", href: "/history#association-formation" },
-      { type: "view-source", label: "View Original Minutes", href: "/documents/association-formation" },
+      { type: "view-source", label: "View Original Association Records", href: "/documents/original-association-records" },
+      { type: "view-source", label: "Read Existing Transcription", href: "/documents/association-formation" },
       { type: "explore-henderson", label: "Volunteer Stewardship", href: "/preservation#current-needs" },
     ],
   },
   {
-    id: "plan-two-expansion",
-    title: "Plan II Expansion",
+    id: "plan-two-1911",
+    title: "Expansion: Plan II",
     period: "1911",
     summary:
-      "Association history records a 1911 land gift from Anna Melzena Spring that established 100 additional lots.",
+      "Anna Melzena Spring donated an additional 100 lots of eight graves each, creating the expansion now known as Plan II.",
     context:
-      "The surviving records suggest the lot sales were intended to support cemetery maintenance.",
+      "Tamsen Ercole's supplied history describes Anna Melzena Spring as Ebenezer Denny's philanthropist great-granddaughter and sole heir to the Denny estate, and states that lot-sale proceeds were to be used only for cemetery maintenance.",
     confidence: "association-records",
     links: [
       { type: "explore-henderson", label: "Search Plan II Burials", href: "/burial-records?plan=2" },
       { type: "view-source", label: "Documents Archive", href: "/documents" },
-      { type: "continue-exploring", label: "Dickinson College Archives", href: "https://archives.dickinson.edu/encyclopedia/harmar-denny-1794-1852" },
     ],
   },
   {
-    id: "stewardship-renewal",
-    title: "Stewardship Renewal",
+    id: "railroad-boundary-1916",
+    title: "Railroad and Eastern Boundary",
+    period: "1916",
+    summary:
+      "The railroad buried an adjacent wooden trestle beneath slag, built a new elevated rail line, and a wall protected the cemetery grounds.",
+    context:
+      "Tamsen Ercole's supplied history states that the wall still stands today and forms part of the cemetery's eastern boundary.",
+    confidence: "association-records",
+    image: "/gallery/tamsen-review-2026-08-05.jpg",
+    links: [
+      { type: "explore-henderson", label: "Open Plot Maps", href: "/plot-maps" },
+      { type: "explore-henderson", label: "Contact With Historical Information", href: "/contact#association-contact" },
+    ],
+  },
+  {
+    id: "turnpike-boundary-1951",
+    title: "Pennsylvania Turnpike Western Boundary",
+    period: "1951",
+    summary:
+      "Construction of the western extension of the Pennsylvania Turnpike became the cemetery's permanent western border.",
+    context:
+      "Tamsen Ercole's supplied history describes the turnpike as a natural buffer that shields the grounds from nearby businesses and industry.",
+    confidence: "association-records",
+    image: "/gallery/tamsen-review-2026-08-03.jpg",
+    links: [
+      { type: "explore-henderson", label: "Open Plot Maps", href: "/plot-maps" },
+      { type: "explore-henderson", label: "Preservation Needs", href: "/preservation#current-needs" },
+    ],
+  },
+  {
+    id: "renewed-interest-1952",
+    title: "Renewed Interest",
     period: "1952",
     summary:
-      "Association history credits a renewed board in 1952 with reviving care after the cemetery again fell into neglect.",
+      "Charles Nixon Carson helped revive interest after the cemetery had again become overgrown and fallen into neglect.",
     context:
-      "This preservation story remains directly connected to today's volunteer, record, and grounds-care needs.",
+      "Tamsen Ercole's supplied history states that the Harmarville Cemetery Association was revived, renewed its core mission, cleaned up the grounds, elected a new board, and moved forward.",
     confidence: "association-records",
     image: "/gallery/cemetery-wintersnow-group.jpg",
+    links: [
+      { type: "explore-henderson", label: "Preservation Needs", href: "/preservation#current-needs" },
+      { type: "explore-henderson", label: "Contact the Association", href: "/contact#association-contact" },
+    ],
+  },
+  {
+    id: "final-land-acquisition-2020",
+    title: "Final Adjacent Land Acquisition",
+    period: "2020",
+    summary:
+      "The last privately held parcel directly adjacent to the cemetery became part of the cemetery grounds.",
+    context:
+      "Tamsen Ercole's supplied history identifies the parcel as 2.06 wooded acres extending from Plan I to the Route 28 expressway, creating cemetery property bounded by permanent physical barriers.",
+    confidence: "association-records",
+    image: "/gallery/tamsen-review-2026-08-04.jpg",
     links: [
       { type: "explore-henderson", label: "Preservation Needs", href: "/preservation#current-needs" },
       { type: "explore-henderson", label: "Contact the Association", href: "/contact#association-contact" },

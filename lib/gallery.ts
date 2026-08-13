@@ -70,7 +70,7 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
       season: "summer",
       relatedStory: {
         label: "Explore early burial ground history",
-        href: "/history#early-burial-ground",
+        href: "/history#original-graveyard",
       },
     },
   "cemetery-summer-view04-rows-lawn.jpg":
@@ -116,7 +116,7 @@ const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
       season: "summer",
       relatedStory: {
         label: "Explore Denny and Henderson lands",
-        href: "/history#denny-henderson-lands",
+        href: "/history#original-graveyard",
       },
     },
   "cemetery-summer-view11-headstones-clouds.jpg":

@@ -63,26 +63,18 @@ export default function PlotMapsPage() {
 
       <section id="plot-map" className="scroll-mt-28 bg-[#F7F6F1]">
         <div className="mx-auto w-full max-w-[92rem] px-5 py-12 sm:px-6 lg:px-10 lg:py-16">
-          <div className="mb-5 flex flex-wrap gap-3">
-            {[
-              "Original Burial Ground",
-              "Plan I",
-              "Plan II",
-            ].map((label, index) => (
-              <span
-                key={label}
-                className={[
-                  "rounded-full px-4 py-2 text-sm font-semibold",
-                  index === 0
-                    ? "bg-[#243A2E] text-white"
-                    : "bg-white text-[#243A2E] ring-1 ring-[#D8D4C8]",
-                ].join(" ")}
-              >
-                {label}
-              </span>
-            ))}
-          </div>
           <PlotMapViewer />
+          <p className="mt-4 text-sm leading-6 text-[#514B42]">
+            Historical archive: Henderson Cemetery Plan I, 1884{" "}
+            <a
+              href="/documents/henderson-cemetery-plan-i-1884.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-[#243A2E] underline decoration-[#B08A3E] underline-offset-4"
+            >
+              View Historical Map
+            </a>
+          </p>
         </div>
       </section>
 

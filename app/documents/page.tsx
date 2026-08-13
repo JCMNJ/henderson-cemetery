@@ -29,18 +29,32 @@ const documentCollections = [
       "Early records document transfer of control, by-laws, founding contributions, and the charter application.",
     href: "/documents/association-formation",
     transcriptionLabel: "View Transcription",
+    pdfHref: "/documents/harmarville-cemetery-association-original-records.pdf",
+    documentHref: "/documents/original-association-records",
     relatedHref: "/history#association-formation",
     relatedLabel: "View the 1909 Timeline",
+  },
+  {
+    title: "Original Harmarville Cemetery Association Records",
+    period: "Original Records",
+    summary:
+      "An 11-page scan of the supplied original Association records.",
+    href: "/documents/original-association-records",
+    transcriptionLabel: "View Document",
+    pdfHref: "/documents/harmarville-cemetery-association-original-records.pdf",
+    relatedHref: "/documents/association-formation",
+    relatedLabel: "Read Existing Transcription",
   },
   {
     title: "Cemetery Plans and Surveys",
     period: "1884-1911",
     summary:
       "Plan-era notes connect surveyed lots, Plan I, Plan II, and cemetery expansion.",
-    relatedHref: "/history#plan-one-survey",
+    pdfHref: "/documents/henderson-cemetery-plan-i-1884.pdf",
+    relatedHref: "/history#plan-one-1884",
     relatedLabel: "Explore Cemetery History",
-    extraHref: "/burial-records?plan=1",
-    extraLabel: "Search Plan I Burials",
+    extraHref: "/plot-maps#plan-i-1884",
+    extraLabel: "View Plan I Map",
   },
   {
     title: "Burial and Stone Records",
@@ -128,6 +142,16 @@ export default function DocumentsPage() {
                     <Link href={item.href} className="rounded-full bg-[#243A2E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A2C22]">
                       {item.transcriptionLabel}
                     </Link>
+                  ) : null}
+                  {item.documentHref ? (
+                    <Link href={item.documentHref} className="rounded-full bg-[#243A2E] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1A2C22]">
+                      View Document
+                    </Link>
+                  ) : null}
+                  {item.pdfHref ? (
+                    <a href={item.pdfHref} download className="rounded-full border border-[#B08A3E] bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">
+                      Download PDF
+                    </a>
                   ) : null}
                   <Link href={item.relatedHref} className="rounded-full border border-[#B08A3E] bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]">
                     {item.relatedLabel}

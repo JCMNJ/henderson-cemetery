@@ -54,7 +54,14 @@ export default async function HomePage() {
 
       <section className="relative overflow-hidden bg-[#F7F6F1]">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/gallery/hendersoncemetery1.jpg')] bg-cover bg-[position:center_34%] opacity-28" />
+          <Image
+            src="/gallery/tamsen-review-2026-08-04.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[52%_54%] opacity-28"
+            priority
+          />
           <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(247,246,241,0.98)_0%,rgba(247,246,241,0.84)_48%,rgba(247,246,241,0.52)_100%)]" />
         </div>
 
@@ -339,7 +346,7 @@ export default async function HomePage() {
                 Explore the Timeline
               </Link>
               <Link
-                href="/documents/association-formation"
+                href="/documents/original-association-records"
                 className="rounded-full border border-[#B08A3E] bg-white px-5 py-3 text-sm font-semibold text-[#243A2E] hover:bg-[#F7F6F1]"
               >
                 See Original Records

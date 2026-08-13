@@ -84,11 +84,11 @@ export default function ResearchPage() {
           </div>
           <div className="relative min-h-[360px] overflow-hidden lg:min-h-[460px]">
             <Image
-              src="/gallery/cemetery-wintersnow-contrast.jpg"
+              src="/gallery/tamsen-review-2026-08-01.jpg"
               alt="Henderson Cemetery stones in snow"
               fill
               sizes="(min-width: 1024px) 48vw, 100vw"
-              className="object-cover object-[50%_58%]"
+              className="object-cover object-[48%_54%]"
               priority
             />
           </div>

@@ -53,11 +53,11 @@ export default function PreservationPage() {
           </div>
           <div className="relative min-h-[420px] overflow-hidden">
             <Image
-              src="/gallery/cemetery-summer-view05-headstones-flag.jpg"
+              src="/gallery/tamsen-review-2026-08-03.jpg"
               alt="Headstones on a sunny Henderson Cemetery lawn with a flag"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[52%_62%]"
               priority
             />
           </div>
