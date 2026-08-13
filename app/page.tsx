@@ -4,18 +4,19 @@ import type { Metadata } from "next";
 import { FacebookFollow } from "@/app/components/site/FacebookFollow";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
+import { getActivePublicContent } from "@/lib/henderson-dashboard/publicContent";
+import { formatDashboardDateTime } from "@/lib/henderson-dashboard/time";
 import { getGalleryImages } from "@/lib/gallery";
 
 type HomepageAnnouncement = {
   id: string;
   title: string;
+  body?: string;
   date?: string;
   actionLabel?: string;
   actionHref?: string;
   tone?: "standard" | "urgent" | "support";
 };
-
-const publishedAnnouncements: HomepageAnnouncement[] = [];
 
 export const metadata: Metadata = {
   title: "Home",
@@ -36,7 +37,24 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
-  const galleryImages = await getGalleryImages();
+  const [galleryImages, activeContent] = await Promise.all([
+    getGalleryImages(),
+    getActivePublicContent(),
+  ]);
+  const publishedAnnouncements: HomepageAnnouncement[] = activeContent.map((item) => ({
+    id: item.id,
+    title: item.title,
+    body: item.body ?? undefined,
+    date:
+      item.content_type === "event"
+        ? formatDashboardDateTime(item.event_starts_at)
+        : item.publish_at
+          ? formatDashboardDateTime(item.publish_at)
+          : undefined,
+    actionLabel: item.action_label ?? undefined,
+    actionHref: item.action_href ?? undefined,
+    tone: item.tone,
+  }));
   const previewImages = [
     "/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg",
     "/gallery/cemetery-wintersnow-group.jpg",
@@ -288,6 +306,11 @@ export default async function HomePage() {
                       <h2 className="font-serif text-2xl font-semibold text-[#243A2E]">
                         {announcement.title}
                       </h2>
+                      {announcement.body ? (
+                        <p className="mt-2 text-sm leading-6 text-[#514B42]">
+                          {announcement.body}
+                        </p>
+                      ) : null}
                       {announcement.actionHref && announcement.actionLabel ? (
                         <Link
                           href={announcement.actionHref}
