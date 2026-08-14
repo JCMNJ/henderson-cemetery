@@ -28,13 +28,14 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Early pioneer families set aside portions of their properties for a public burial ground now known as Henderson Cemetery.",
     context:
-      "Tamsen Ercole's supplied history identifies Ebenezer Denny's 1795 land grant and James Henderson's 1790 land grant as part of the cemetery's origin story. Existing records also identify the oldest readable marker as JP 1807 and Hannah Henderson's 1828 grave as the oldest documented grave.",
+      "Cemetery archival materials identify Ebenezer Denny's 1795 land grant and James Henderson's 1790 land grant as part of the cemetery's origin story. Published county history places James Henderson's tract east of Ebenezer Denny's property, while cemetery burial records identify JP 1807 as the oldest readable marker and Hannah Henderson's 1828 grave as the oldest documented grave.",
     confidence: "association-records",
     image: "/gallery/tamsen-review-2026-08-06.jpg",
     links: [
       { type: "explore-henderson", label: "James Henderson Burial Record", href: "/burial-records/henderson-james-1758-may-6-1840-h-d-henderson" },
       { type: "explore-henderson", label: "Hannah Henderson Burial Record", href: "/burial-records/henderson-hannah-1753-jul-12-1828-h-d-henderson" },
-      { type: "view-source", label: "1889 History of Allegheny County", href: "https://www.allegheny.pagenweb.org/Individual_Townships/Harmer.html" },
+      { type: "view-source", label: "Public transcription of 1889 History of Allegheny County", href: "https://www.allegheny.pagenweb.org/Individual_Townships/Harmer.html" },
+      { type: "view-source", label: "Harmar Township History", href: "https://www.harmartownship-pa.gov/1396/About" },
     ],
   },
   {
@@ -44,7 +45,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Oliver Henderson expanded the original cemetery by donating 54 additional lots of eight graves each.",
     context:
-      "Tamsen Ercole's supplied history states that the transaction was recorded in the Allegheny County Recorder's Office, the name legally became Henderson Cemetery, and this expansion is now known as Plan I.",
+      "The 1884 Plan I map is held in the Henderson Cemetery archive. Cemetery archival materials state that the transaction was recorded in the Allegheny County Recorder's Office, the name legally became Henderson Cemetery, and this expansion is now known as Plan I. An independently accessible online source for the donation details has not yet been identified.",
     confidence: "association-records",
     image: "/gallery/tamsen-review-2026-08-01.jpg",
     links: [
@@ -60,7 +61,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Rev. Harry Joseph Rose's interest in saving the overgrown cemetery helped inspire the Harmarville Cemetery Association.",
     context:
-      "The association records document the transfer of control, early by-laws, founding contributions, and charter application. Tamsen Ercole's supplied history connects the association's formation with renewed preservation interest after Rev. Rose found the grounds overgrown.",
+      "Harmarville Cemetery Association records document the transfer of control, early by-laws, founding contributions, and charter application. Cemetery archival materials connect the association's formation with renewed preservation interest after Rev. Rose found the grounds overgrown.",
     confidence: "association-records",
     image: "/gallery/cemetery-wintersnow-flagsflowers.jpg",
     links: [
@@ -76,7 +77,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Anna Melzena Spring donated an additional 100 lots of eight graves each, creating the expansion now known as Plan II.",
     context:
-      "Tamsen Ercole's supplied history describes Anna Melzena Spring as Ebenezer Denny's philanthropist great-granddaughter and sole heir to the Denny estate, and states that lot-sale proceeds were to be used only for cemetery maintenance.",
+      "Cemetery archival materials describe Anna Melzena Spring as Ebenezer Denny's philanthropist great-granddaughter and sole heir to the Denny estate, and state that lot-sale proceeds were to be used only for cemetery maintenance. Independently accessible online corroboration for the Plan II donation details has not yet been identified.",
     confidence: "association-records",
     links: [
       { type: "explore-henderson", label: "Search Plan II Burials", href: "/burial-records?plan=2" },
@@ -90,7 +91,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "The railroad buried an adjacent wooden trestle beneath slag, built a new elevated rail line, and a wall protected the cemetery grounds.",
     context:
-      "Tamsen Ercole's supplied history states that the wall still stands today and forms part of the cemetery's eastern boundary.",
+      "Documented in Henderson Cemetery archival materials; independent online corroboration has not yet been identified. Cemetery archival materials state that the wall still stands today and forms part of the cemetery's eastern boundary.",
     confidence: "association-records",
     image: "/gallery/tamsen-review-2026-08-05.jpg",
     links: [
@@ -105,11 +106,12 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Construction of the western extension of the Pennsylvania Turnpike became the cemetery's permanent western border.",
     context:
-      "Tamsen Ercole's supplied history describes the turnpike as a natural buffer that shields the grounds from nearby businesses and industry.",
+      "The Pennsylvania Turnpike Commission's public history states that the Western Extension opened in stages in 1951. Cemetery archival materials describe the turnpike as a natural buffer that shields the grounds from nearby businesses and industry.",
     confidence: "association-records",
     image: "/gallery/tamsen-review-2026-08-03.jpg",
     links: [
       { type: "explore-henderson", label: "Open Plot Maps", href: "/plot-maps" },
+      { type: "view-source", label: "PA Turnpike History", href: "https://www.paturnpike.com/about-us/turnpike-history/interactive-timeline" },
       { type: "explore-henderson", label: "Preservation Needs", href: "/preservation#current-needs" },
     ],
   },
@@ -120,7 +122,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "Charles Nixon Carson helped revive interest after the cemetery had again become overgrown and fallen into neglect.",
     context:
-      "Tamsen Ercole's supplied history states that the Harmarville Cemetery Association was revived, renewed its core mission, cleaned up the grounds, elected a new board, and moved forward.",
+      "Cemetery archival materials state that the Harmarville Cemetery Association was revived, renewed its core mission, cleaned up the grounds, elected a new board, and moved forward. An independently accessible online source for the 1952 renewal has not yet been identified.",
     confidence: "association-records",
     image: "/gallery/cemetery-wintersnow-group.jpg",
     links: [
@@ -135,7 +137,7 @@ export const historicalItems: HistoricalItem[] = [
     summary:
       "The last privately held parcel directly adjacent to the cemetery became part of the cemetery grounds.",
     context:
-      "Tamsen Ercole's supplied history identifies the parcel as 2.06 wooded acres extending from Plan I to the Route 28 expressway, creating cemetery property bounded by permanent physical barriers.",
+      "Cemetery archival materials identify the parcel as 2.06 wooded acres extending from Plan I to the Route 28 expressway, creating cemetery property bounded by permanent physical barriers. An independently accessible online source for the parcel-transfer details has not yet been identified.",
     confidence: "association-records",
     image: "/gallery/tamsen-review-2026-08-04.jpg",
     links: [
