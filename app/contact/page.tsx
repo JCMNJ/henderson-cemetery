@@ -63,19 +63,7 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto w-full max-w-[86rem] px-5 py-14 sm:px-6 lg:px-10 lg:py-18">
-        <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr_0.85fr]">
-          <Link href="#association-contact" className="min-h-72 bg-[#243A2E] p-7 text-white shadow-xl shadow-[#243A2E]/16 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">
-              Volunteer or Join a Work Day
-            </p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold">
-              Tell us how you would like to help.
-            </h2>
-            <p className="mt-5 text-sm leading-6 text-white/84">
-              Include your availability, interests, skills, or resources you may
-              wish to contribute.
-            </p>
-          </Link>
+        <div className="grid gap-5 lg:grid-cols-3">
           {[
             ["Burial or Cemetery Question", "Ask about a record, burial, plan, lot, or cemetery visit."],
             ["Share a Correction", "Help improve names, dates, relationships, or notes."],
@@ -110,7 +98,7 @@ export default function ContactPage() {
               Upload Photos or Records
             </a>
           </div>
-          <div className="bg-[#702F35] p-6 text-white shadow-xl shadow-[#702F35]/18 lg:col-span-2">
+          <div className="bg-[#702F35] p-6 text-white shadow-xl shadow-[#702F35]/18 lg:col-span-3">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#F2D68B]">
               Support Preservation
             </p>

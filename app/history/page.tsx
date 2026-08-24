@@ -172,23 +172,6 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto grid w-full max-w-[86rem] gap-6 px-5 py-14 sm:px-6 lg:grid-cols-3 lg:px-10">
-          {[
-            ["Named for Harmar", "Harmar Denny was named for General Josiah Harmar."],
-            ["Neighboring Lands", "James Henderson's tract was recorded immediately east of Ebenezer Denny's property."],
-            ["Still Unproven", "Evidence does not yet establish which tract contained the original burial parcel."],
-          ].map(([title, body]) => (
-            <div key={title} className="border-l-4 border-[#B08A3E] bg-[#F7F6F1] p-6">
-              <p className="font-serif text-2xl font-semibold text-[#702F35]">
-                {title}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-[#514B42]">{body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="bg-[#F7F6F1]">
         <div className="mx-auto grid w-full max-w-[86rem] gap-8 px-5 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:px-10 lg:py-18">
           <div>

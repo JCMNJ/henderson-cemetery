@@ -102,10 +102,6 @@ export default function PreservationPage() {
             </h2>
           </div>
           <div className="mt-8 grid gap-5 lg:hidden">
-            <Link href="/contact#association-contact" className="bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">Join a Work Day</p>
-              <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Grounds care, cleanup, documentation, and seasonal projects.</h3>
-            </Link>
             {[
               ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
               ["Contribute a Skill", "Research, landscaping, preservation, photography, mapping, design, technology, or outreach."],
@@ -168,10 +164,6 @@ export default function PreservationPage() {
           </div>
           <div className="mt-8 hidden items-stretch gap-5 lg:grid lg:grid-cols-[0.9fr_2fr]">
             <div className="grid gap-5">
-              <Link href="/contact#association-contact" className="bg-[#1A2C22] p-7 shadow-xl shadow-black/15 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E7C16C]">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E7C16C]">Join a Work Day</p>
-                <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Grounds care, cleanup, documentation, and seasonal projects.</h3>
-              </Link>
               <div className="bg-white p-7 text-[#243A2E] shadow-lg shadow-black/10">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#B08A3E]">
                   Help Preserve the Record
