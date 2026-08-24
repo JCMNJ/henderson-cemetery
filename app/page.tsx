@@ -166,7 +166,6 @@ export default async function HomePage() {
                 Join the work.
               </h3>
               <ul className="mt-6 space-y-3 text-sm leading-6 text-white/86">
-                <li>Join a work day</li>
                 <li>Help document markers</li>
                 <li>Assist with grounds care</li>
               </ul>
