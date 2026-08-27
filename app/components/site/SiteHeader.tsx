@@ -89,7 +89,8 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             </span>
             <span className="min-w-0">
               <span className="block max-w-[12rem] font-serif text-base font-semibold leading-tight text-stone-900 min-[390px]:max-w-[15rem] min-[390px]:text-lg sm:max-w-none sm:text-2xl">
-                750 Gulf Lab Road, Cheswick, PA 15024
+                <span className="block">750 Gulf Lab Road</span>
+                <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
               </span>
             </span>
           </Link>
