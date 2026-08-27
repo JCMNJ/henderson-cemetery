@@ -68,31 +68,31 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "border-b border-stone-300 bg-stone-100/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
-        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-stone-100/90" : "",
+        "border-b border-[#d8d1bd] bg-[#f3efdf]/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
+        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[#f3efdf]/90" : "",
       ]
         .filter(Boolean)
         .join(" ")}
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-stone-300 bg-stone-200 shadow-sm sm:h-11 sm:w-11">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-4">
+            <span className="relative h-[3.25rem] w-[4.85rem] shrink-0 sm:h-[3.75rem] sm:w-[5.6rem]">
               <Image
-                src="/images/cemeteryheader.png"
-                alt=""
+                src="/images/henderson-logo.png"
+                alt="Henderson Cemetery"
                 fill
-                sizes="(min-width: 640px) 44px, 40px"
-                className="object-cover"
+                sizes="(min-width: 640px) 90px, 78px"
+                className="object-contain mix-blend-multiply"
                 priority
               />
             </span>
             <span className="min-w-0">
-              <span className="block text-[9px] uppercase tracking-[0.14em] text-stone-500 min-[375px]:text-[10px] min-[375px]:tracking-[0.18em] sm:text-[11px] sm:tracking-[0.24em]">
-                Henderson Cemetery · Harmar Township
+              <span className="block text-[9px] uppercase tracking-[0.16em] text-stone-600 min-[390px]:text-[10px] sm:text-[11px] sm:tracking-[0.2em]">
+                Mailing address
               </span>
-              <span className="block truncate font-serif text-base font-semibold text-stone-900 min-[375px]:text-lg sm:text-2xl">
-                750 Gulf Lab Road
+              <span className="block max-w-[11rem] font-serif text-sm font-semibold leading-tight text-stone-900 min-[390px]:max-w-none min-[390px]:text-base sm:text-lg">
+                750 Gulf Lab Road, Cheswick, PA 15024
               </span>
             </span>
           </Link>
