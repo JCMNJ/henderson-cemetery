@@ -197,7 +197,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             <div
               id={mobilePanelId}
               className={[
-                "fixed right-0 top-0 z-[60] flex h-dvh w-[min(88vw,24rem)] max-w-full flex-col overflow-y-auto bg-white shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
+                "fixed right-0 top-0 z-[60] flex h-dvh w-[min(82vw,22rem)] max-w-full flex-col overflow-y-auto bg-white shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
                 mobileMenuOpen ? "translate-x-0" : "pointer-events-none translate-x-full",
               ].join(" ")}
               aria-hidden={!mobileMenuOpen}
@@ -226,7 +226,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col px-4 py-4">
+              <div className="flex flex-col px-4 py-4">
                 <nav aria-label="Mobile primary navigation" className="grid gap-1">
                   {navLinks.map((link) => {
                     const active = isActive(link.href);
@@ -279,13 +279,6 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                   </a>
                 </div>
 
-                <div className="mt-auto pt-8">
-                  <address className="border-t border-[#D8D4C8] pt-4 text-xs leading-5 text-stone-600 not-italic">
-                    Harmarville Cemetery Association<br />
-                    505 Bicker Road<br />
-                    Cabot, PA 16023
-                  </address>
-                </div>
               </div>
             </div>
           </div>
