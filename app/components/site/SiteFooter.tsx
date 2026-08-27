@@ -23,7 +23,8 @@ export function SiteFooter() {
           </Link>
           <div>
             <p className="font-serif text-base font-semibold text-stone-900">
-              750 Gulf Lab Road, Cheswick, PA 15024
+              <span className="block">750 Gulf Lab Road</span>
+              <span className="block">Cheswick, PA 15024</span>
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-600">
             <Link
