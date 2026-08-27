@@ -21,19 +21,23 @@ export const metadata: Metadata = {
   },
   description:
     "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
+  alternates: {
+    canonical: "https://www.hendersoncemetery.com",
+  },
   openGraph: {
     title: "Henderson Cemetery Preserving Our History",
     description:
       "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
+    url: "https://www.hendersoncemetery.com",
     type: "website",
     locale: "en_US",
     siteName: "Henderson Cemetery Archive",
     images: [
       {
-        url: "/images/henderson-social-share.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Henderson Cemetery monogram and name on a cream background",
+        alt: "Henderson Cemetery monogram and preserving our history text over a cemetery photograph",
       },
     ],
   },
@@ -44,8 +48,8 @@ export const metadata: Metadata = {
       "Historical preservation archive and burial records for Henderson Cemetery in Harmarville, Pennsylvania.",
     images: [
       {
-        url: "/images/henderson-social-share.png",
-        alt: "Henderson Cemetery monogram and name on a cream background",
+        url: "/opengraph-image.png",
+        alt: "Henderson Cemetery monogram and preserving our history text over a cemetery photograph",
       },
     ],
   },
