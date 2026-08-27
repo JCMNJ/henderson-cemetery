@@ -68,8 +68,8 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "border-b border-[#d8d1bd] bg-[#f3efdf]/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
-        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[#f3efdf]/90" : "",
+        "border-b border-[#d8d1bd] bg-[#f3efdf] shadow-[0_1px_0_rgba(51,71,80,0.08)]",
+        sticky ? "sticky top-0 z-50" : "",
       ]
         .filter(Boolean)
         .join(" ")}

@@ -29,7 +29,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   line-height: 1.55;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1,
