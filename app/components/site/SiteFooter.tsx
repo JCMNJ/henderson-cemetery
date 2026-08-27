@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=750%20Gulf%20Lab%20Road%2C%20Cheswick%2C%20PA%2015024";
@@ -8,23 +9,37 @@ export function SiteFooter() {
   const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
 
   return (
-    <footer className="border-t border-stone-800 bg-stone-950 px-5 py-8 text-stone-300 sm:px-6">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 text-sm md:flex-row md:items-center md:justify-between">
-        <div>
-          <p>Henderson Cemetery · Harmar Township</p>
-          <p className="mt-1 text-xs text-stone-400">
-            750 Gulf Lab Road, Cheswick, PA 15024
-          </p>
-          <div className="mt-2 flex flex-wrap gap-4 text-xs text-stone-400">
+    <footer className="border-t border-[#d8d1bd] bg-[#f3efdf] px-5 py-8 text-stone-800 sm:px-6">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-sm md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+          <Link href="/" className="relative block h-16 w-[5.75rem] shrink-0">
+            <Image
+              src="/images/henderson-monogram.png"
+              alt="Henderson Cemetery"
+              fill
+              sizes="92px"
+              className="object-contain"
+              unoptimized
+            />
+          </Link>
+          <div>
+            <p className="font-serif text-xl font-semibold leading-tight text-stone-900">
+              Henderson Cemetery
+            </p>
+            <p className="font-serif text-base font-semibold text-stone-900">
+              <span className="block">750 Gulf Lab Road</span>
+              <span className="block">Cheswick, PA 15024</span>
+            </p>
+            <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-600">
             <Link
               href="/contact"
-              className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
             >
               Contact
             </Link>
             <Link
               href="/preservation#current-needs"
-              className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
             >
               Support
             </Link>
@@ -33,7 +48,7 @@ export function SiteFooter() {
                 href={donationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+                className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
               >
                 Donate
               </a>
@@ -42,7 +57,7 @@ export function SiteFooter() {
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
             >
               Get Directions
             </a>
@@ -50,21 +65,22 @@ export function SiteFooter() {
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
             >
               Facebook
             </a>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-start gap-1 md:items-end">
-          <p>Preserving Our History</p>
-          <p className="text-xs text-stone-400">
+          <p className="font-serif text-stone-900">Preserving Our History</p>
+          <p className="text-xs text-stone-600">
             Digital preservation by{" "}
             <Link
               href="https://www.jcmnj.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-stone-600 underline-offset-4 hover:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
             >
               JCMNJ
             </Link>

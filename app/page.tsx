@@ -67,10 +67,7 @@ export default async function HomePage() {
 
         <div className="relative mx-auto grid w-full max-w-[86rem] gap-10 px-5 pb-12 pt-12 sm:px-6 lg:grid-cols-[minmax(0,0.96fr)_minmax(420px,0.72fr)] lg:px-10 lg:pb-20 lg:pt-18">
           <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#77746C]">
-              Harmarville · Harmar Township
-            </p>
-            <h1 className="mt-5 max-w-4xl font-serif text-[2.8rem] font-semibold leading-[0.95] text-[#243A2E] sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl font-serif text-[2.8rem] font-semibold leading-[0.95] text-[#243A2E] sm:text-6xl lg:text-7xl">
               Preserving Henderson Cemetery&apos;s History and Future
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#514B42]">

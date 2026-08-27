@@ -68,31 +68,33 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "border-b border-stone-300 bg-stone-100/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
-        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-stone-100/90" : "",
+        "border-b border-[#d8d1bd] bg-[#f3efdf]/95 shadow-[0_1px_0_rgba(51,71,80,0.08)]",
+        sticky ? "sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[#f3efdf]/90" : "",
       ]
         .filter(Boolean)
         .join(" ")}
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-            <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-stone-300 bg-stone-200 shadow-sm sm:h-11 sm:w-11">
+          <Link href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center gap-2 overflow-hidden sm:gap-4 lg:max-w-none">
+            <span className="relative h-10 w-[3.3rem] shrink-0 sm:h-[3.75rem] sm:w-[4.95rem]">
               <Image
-                src="/images/cemeteryheader.png"
-                alt=""
+                src="/images/henderson-monogram.png"
+                alt="Henderson Cemetery"
                 fill
-                sizes="(min-width: 640px) 44px, 40px"
-                className="object-cover"
+                sizes="(min-width: 640px) 79px, 53px"
+                className="object-contain"
+                unoptimized
                 priority
               />
             </span>
-            <span className="min-w-0">
-              <span className="block text-[9px] uppercase tracking-[0.14em] text-stone-500 min-[375px]:text-[10px] min-[375px]:tracking-[0.18em] sm:text-[11px] sm:tracking-[0.24em]">
-                Henderson Cemetery · Harmar Township
+            <span className="min-w-0 text-stone-900">
+              <span className="block font-serif text-base font-semibold leading-none min-[390px]:text-lg sm:text-3xl lg:text-[1.7rem]">
+                Henderson Cemetery
               </span>
-              <span className="block truncate font-serif text-base font-semibold text-stone-900 min-[375px]:text-lg sm:text-2xl">
-                750 Gulf Lab Road
+              <span className="mt-1 block max-w-[9rem] font-serif text-xs font-semibold leading-tight min-[390px]:text-sm sm:max-w-none sm:text-2xl lg:text-xl">
+                <span className="block">750 Gulf Lab Road</span>
+                <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
               </span>
             </span>
           </Link>
@@ -153,16 +155,16 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             </a>
           </div>
 
-          <div ref={mobileMenuRef} className="lg:hidden">
+          <div ref={mobileMenuRef} className="fixed right-5 top-3 z-50 lg:hidden">
             <button
               type="button"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls={mobilePanelId}
               onClick={() => setMobileMenuOpen((open) => !open)}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] min-[430px]:px-4"
             >
-              <span>Menu</span>
+              <span className="sr-only min-[430px]:not-sr-only">Menu</span>
               <svg
                 viewBox="0 0 24 24"
                 aria-hidden="true"
