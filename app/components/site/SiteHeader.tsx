@@ -197,61 +197,95 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             <div
               id={mobilePanelId}
               className={[
-                "fixed right-0 top-0 z-[60] h-dvh w-[min(88vw,24rem)] max-w-full overflow-y-auto bg-white p-5 pt-20 shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
+                "fixed right-0 top-0 z-[60] flex h-dvh w-[min(88vw,24rem)] max-w-full flex-col overflow-y-auto bg-white shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
                 mobileMenuOpen ? "translate-x-0" : "pointer-events-none translate-x-full",
               ].join(" ")}
               aria-hidden={!mobileMenuOpen}
             >
-              <nav aria-label="Mobile primary navigation" className="grid gap-1">
-                {navLinks.map((link) => {
-                  const active = isActive(link.href);
+              <div className="bg-[#f3efdf] px-5 py-4 text-stone-900 ring-1 ring-[#d8d1bd]">
+                <div className="flex items-start gap-3 pr-12">
+                  <span className="relative h-12 w-16 shrink-0">
+                    <Image
+                      src="/images/henderson-monogram.png"
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-contain"
+                      unoptimized
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-serif text-xl font-semibold leading-none">
+                      Henderson Cemetery
+                    </p>
+                    <p className="mt-1 font-serif text-sm font-semibold leading-tight">
+                      <span className="block">750 Gulf Lab Road</span>
+                      <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      aria-current={active ? "page" : undefined}
-                      className={[
-                        "flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]",
-                        active
-                          ? "bg-[#243A2E] text-white"
-                          : "text-[#243A2E] hover:bg-[#F7F6F1]",
-                      ].join(" ")}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-              </nav>
+              <div className="flex flex-1 flex-col px-4 py-4">
+                <nav aria-label="Mobile primary navigation" className="grid gap-1">
+                  {navLinks.map((link) => {
+                    const active = isActive(link.href);
 
-              <div
-                className="mt-3 grid gap-2 border-t border-[#D8D4C8] pt-3 min-[360px]:grid-cols-[1fr_1fr_auto] min-[360px]:items-center"
-                aria-label="Mobile utility links"
-              >
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex min-h-11 items-center justify-center rounded-full border border-stone-300 px-3 text-sm font-semibold text-stone-700 transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        aria-current={active ? "page" : undefined}
+                        className={[
+                          "flex min-h-12 items-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]",
+                          active
+                            ? "bg-[#243A2E] text-white"
+                            : "text-[#243A2E] hover:bg-[#F7F6F1]",
+                        ].join(" ")}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  })}
+                </nav>
+
+                <div
+                  className="mt-4 grid gap-2 border-t border-[#D8D4C8] pt-4 min-[380px]:grid-cols-[1fr_1fr_auto] min-[380px]:items-center"
+                  aria-label="Mobile utility links"
                 >
-                  Contact
-                </Link>
-                <Link
-                  href="/preservation#current-needs"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex min-h-11 items-center justify-center rounded-full border border-[#B08A3E] bg-[#F6E6B8]/80 px-3 text-sm font-semibold text-[#243A2E] transition hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-                >
-                  Support
-                </Link>
-                <a
-                  href={facebookUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] max-[359px]:justify-self-center"
-                >
-                  <FacebookLogo className="h-5 w-5" />
-                </a>
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex min-h-12 items-center justify-center rounded-full border border-stone-300 px-3 text-sm font-semibold text-stone-700 transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                  >
+                    Contact
+                  </Link>
+                  <Link
+                    href="/preservation#current-needs"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex min-h-12 items-center justify-center rounded-full border border-[#B08A3E] bg-[#F6E6B8]/80 px-3 text-sm font-semibold text-[#243A2E] transition hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                  >
+                    Support
+                  </Link>
+                  <a
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] justify-self-center"
+                  >
+                    <FacebookLogo className="h-5 w-5" />
+                  </a>
+                </div>
+
+                <div className="mt-auto pt-8">
+                  <address className="border-t border-[#D8D4C8] pt-4 text-xs leading-5 text-stone-600 not-italic">
+                    Harmarville Cemetery Association<br />
+                    505 Bicker Road<br />
+                    Cabot, PA 16023
+                  </address>
+                </div>
               </div>
             </div>
           </div>
