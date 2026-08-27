@@ -155,14 +155,17 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             </a>
           </div>
 
-          <div ref={mobileMenuRef} className="fixed right-5 top-3 z-50 lg:hidden">
+          <div ref={mobileMenuRef} className="lg:hidden">
             <button
               type="button"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls={mobilePanelId}
               onClick={() => setMobileMenuOpen((open) => !open)}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] min-[430px]:px-4"
+              className={[
+                "inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] min-[430px]:px-4",
+                mobileMenuOpen ? "fixed right-5 top-3 z-[70]" : "relative z-10",
+              ].join(" ")}
             >
               <span className="sr-only min-[430px]:not-sr-only">Menu</span>
               <svg
@@ -181,64 +184,76 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               </svg>
             </button>
 
-            {mobileMenuOpen ? (
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setMobileMenuOpen(false)}
+              className={[
+                "fixed inset-0 z-[55] bg-[#243A2E]/35 transition-opacity duration-200",
+                mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
+              ].join(" ")}
+            />
+
+            <div
+              id={mobilePanelId}
+              className={[
+                "fixed right-0 top-0 z-[60] h-dvh w-[min(88vw,24rem)] max-w-full overflow-y-auto bg-white p-5 pt-20 shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
+                mobileMenuOpen ? "translate-x-0" : "pointer-events-none translate-x-full",
+              ].join(" ")}
+              aria-hidden={!mobileMenuOpen}
+            >
+              <nav aria-label="Mobile primary navigation" className="grid gap-1">
+                {navLinks.map((link) => {
+                  const active = isActive(link.href);
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={[
+                        "flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]",
+                        active
+                          ? "bg-[#243A2E] text-white"
+                          : "text-[#243A2E] hover:bg-[#F7F6F1]",
+                      ].join(" ")}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+
               <div
-                id={mobilePanelId}
-                className="absolute inset-x-0 top-full z-50 mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-[1.25rem] bg-white p-3 shadow-2xl shadow-[#243A2E]/20 ring-1 ring-[#D8D4C8]"
+                className="mt-3 grid gap-2 border-t border-[#D8D4C8] pt-3 min-[360px]:grid-cols-[1fr_1fr_auto] min-[360px]:items-center"
+                aria-label="Mobile utility links"
               >
-                <nav aria-label="Mobile primary navigation" className="grid gap-1">
-                  {navLinks.map((link) => {
-                    const active = isActive(link.href);
-
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        aria-current={active ? "page" : undefined}
-                        className={[
-                          "flex min-h-11 items-center rounded-xl px-4 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]",
-                          active
-                            ? "bg-[#243A2E] text-white"
-                            : "text-[#243A2E] hover:bg-[#F7F6F1]",
-                        ].join(" ")}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  })}
-                </nav>
-
-                <div
-                  className="mt-3 grid grid-cols-[1fr_1fr_auto] items-center gap-2 border-t border-[#D8D4C8] pt-3"
-                  aria-label="Mobile utility links"
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex min-h-11 items-center justify-center rounded-full border border-stone-300 px-3 text-sm font-semibold text-stone-700 transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
                 >
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex min-h-11 items-center justify-center rounded-full border border-stone-300 px-3 text-sm font-semibold text-stone-700 transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-                  >
-                    Contact
-                  </Link>
-                  <Link
-                    href="/preservation#current-needs"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex min-h-11 items-center justify-center rounded-full border border-[#B08A3E] bg-[#F6E6B8]/80 px-3 text-sm font-semibold text-[#243A2E] transition hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-                  >
-                    Support
-                  </Link>
-                  <a
-                    href={facebookUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-                  >
-                    <FacebookLogo className="h-5 w-5" />
-                  </a>
-                </div>
+                  Contact
+                </Link>
+                <Link
+                  href="/preservation#current-needs"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex min-h-11 items-center justify-center rounded-full border border-[#B08A3E] bg-[#F6E6B8]/80 px-3 text-sm font-semibold text-[#243A2E] transition hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+                >
+                  Support
+                </Link>
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white transition hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] max-[359px]:justify-self-center"
+                >
+                  <FacebookLogo className="h-5 w-5" />
+                </a>
               </div>
-            ) : null}
+            </div>
           </div>
         </div>
       </div>
