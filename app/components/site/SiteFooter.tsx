@@ -22,8 +22,7 @@ export function SiteFooter() {
             />
           </Link>
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-stone-600">Mailing address</p>
-            <p className="mt-1 font-serif text-base font-semibold text-stone-900">
+            <p className="font-serif text-base font-semibold text-stone-900">
               750 Gulf Lab Road, Cheswick, PA 15024
             </p>
             <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-600">

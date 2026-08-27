@@ -88,10 +88,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               />
             </span>
             <span className="min-w-0">
-              <span className="block text-[9px] uppercase tracking-[0.16em] text-stone-600 min-[390px]:text-[10px] sm:text-[11px] sm:tracking-[0.2em]">
-                Mailing address
-              </span>
-              <span className="block max-w-[11rem] font-serif text-sm font-semibold leading-tight text-stone-900 min-[390px]:max-w-none min-[390px]:text-base sm:text-lg">
+              <span className="block max-w-[12rem] font-serif text-base font-semibold leading-tight text-stone-900 min-[390px]:max-w-[15rem] min-[390px]:text-lg sm:max-w-none sm:text-2xl">
                 750 Gulf Lab Road, Cheswick, PA 15024
               </span>
             </span>
