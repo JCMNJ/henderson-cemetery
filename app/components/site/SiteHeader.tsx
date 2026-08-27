@@ -83,7 +83,8 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                 alt="Henderson Cemetery"
                 fill
                 sizes="(min-width: 640px) 79px, 53px"
-                className="object-contain mix-blend-multiply"
+                className="object-contain"
+                unoptimized
                 priority
               />
             </span>

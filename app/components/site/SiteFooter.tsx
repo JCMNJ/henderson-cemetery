@@ -18,7 +18,8 @@ export function SiteFooter() {
               alt="Henderson Cemetery"
               fill
               sizes="92px"
-              className="object-contain mix-blend-multiply"
+              className="object-contain"
+              unoptimized
             />
           </Link>
           <div>
