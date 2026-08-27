@@ -12,16 +12,19 @@ export function SiteFooter() {
     <footer className="border-t border-[#d8d1bd] bg-[#f3efdf] px-5 py-8 text-stone-800 sm:px-6">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-sm md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-          <Link href="/" className="relative block h-20 w-[7.45rem] shrink-0">
+          <Link href="/" className="relative block h-16 w-[5.75rem] shrink-0">
             <Image
-              src="/images/henderson-logo.png"
+              src="/images/henderson-monogram.png"
               alt="Henderson Cemetery"
               fill
-              sizes="119px"
+              sizes="92px"
               className="object-contain mix-blend-multiply"
             />
           </Link>
           <div>
+            <p className="font-serif text-xl font-semibold leading-tight text-stone-900">
+              Henderson Cemetery
+            </p>
             <p className="font-serif text-base font-semibold text-stone-900">
               <span className="block">750 Gulf Lab Road</span>
               <span className="block">Cheswick, PA 15024</span>

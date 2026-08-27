@@ -76,19 +76,22 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
     >
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-4">
-            <span className="relative h-[3.25rem] w-[4.85rem] shrink-0 sm:h-[3.75rem] sm:w-[5.6rem]">
+          <Link href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center gap-2 overflow-hidden sm:gap-4 lg:max-w-none">
+            <span className="relative h-10 w-[3.3rem] shrink-0 sm:h-[3.75rem] sm:w-[4.95rem]">
               <Image
-                src="/images/henderson-logo.png"
+                src="/images/henderson-monogram.png"
                 alt="Henderson Cemetery"
                 fill
-                sizes="(min-width: 640px) 90px, 78px"
+                sizes="(min-width: 640px) 79px, 53px"
                 className="object-contain mix-blend-multiply"
                 priority
               />
             </span>
-            <span className="min-w-0">
-              <span className="block max-w-[12rem] font-serif text-base font-semibold leading-tight text-stone-900 min-[390px]:max-w-[15rem] min-[390px]:text-lg sm:max-w-none sm:text-2xl">
+            <span className="min-w-0 text-stone-900">
+              <span className="block font-serif text-base font-semibold leading-none min-[390px]:text-lg sm:text-3xl lg:text-[1.7rem]">
+                Henderson Cemetery
+              </span>
+              <span className="mt-1 block max-w-[9rem] font-serif text-xs font-semibold leading-tight min-[390px]:text-sm sm:max-w-none sm:text-2xl lg:text-xl">
                 <span className="block">750 Gulf Lab Road</span>
                 <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
               </span>
@@ -151,16 +154,16 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             </a>
           </div>
 
-          <div ref={mobileMenuRef} className="lg:hidden">
+          <div ref={mobileMenuRef} className="fixed right-5 top-3 z-50 lg:hidden">
             <button
               type="button"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls={mobilePanelId}
               onClick={() => setMobileMenuOpen((open) => !open)}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] min-[430px]:px-4"
             >
-              <span>Menu</span>
+              <span className="sr-only min-[430px]:not-sr-only">Menu</span>
               <svg
                 viewBox="0 0 24 24"
                 aria-hidden="true"
