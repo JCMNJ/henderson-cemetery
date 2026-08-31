@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -68,7 +67,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   return (
     <header
       className={[
-        "border-b border-[#d8d1bd] bg-[#f3efdf] shadow-[0_1px_0_rgba(51,71,80,0.08)]",
+        "border-b border-[#B08A3E] bg-[#063F22] text-[#F5EFD8] shadow-[0_1px_0_rgba(176,138,62,0.35)]",
         sticky ? "sticky top-0 z-50" : "",
       ]
         .filter(Boolean)
@@ -77,22 +76,17 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
           <Link href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center gap-2 overflow-hidden sm:gap-4 lg:max-w-none">
-            <span className="relative h-10 w-[3.3rem] shrink-0 sm:h-[3.75rem] sm:w-[4.95rem]">
-              <Image
-                src="/images/henderson-monogram.png"
-                alt="Henderson Cemetery"
-                fill
-                sizes="(min-width: 640px) 79px, 53px"
-                className="object-contain"
-                unoptimized
-                priority
-              />
+            <span
+              className="h-10 w-[3.3rem] shrink-0 bg-[#F5EFD8] [mask-image:url('/images/henderson-monogram.png')] [mask-repeat:no-repeat] [mask-size:contain] [mask-position:center] sm:h-[3.75rem] sm:w-[4.95rem]"
+              aria-hidden="true"
+            >
+              <span className="sr-only">Henderson Cemetery</span>
             </span>
-            <span className="min-w-0 text-stone-900">
-              <span className="block font-serif text-base font-semibold leading-none min-[390px]:text-lg sm:text-3xl lg:text-[1.7rem]">
+            <span className="min-w-0">
+              <span className="block font-serif text-base font-bold uppercase leading-none tracking-normal text-[#F5EFD8] min-[390px]:text-lg sm:text-3xl lg:text-[1.7rem]">
                 Henderson Cemetery
               </span>
-              <span className="mt-1 block max-w-[9rem] font-serif text-xs font-semibold leading-tight min-[390px]:text-sm sm:max-w-none sm:text-2xl lg:text-xl">
+              <span className="mt-1 block max-w-[9rem] border-t border-[#B08A3E]/70 pt-1 font-serif text-xs font-semibold leading-tight text-[#F5EFD8]/90 min-[390px]:text-sm sm:max-w-none sm:text-2xl lg:text-xl">
                 <span className="block">750 Gulf Lab Road</span>
                 <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
               </span>
@@ -109,10 +103,10 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                   href={link.href}
                   aria-current={active ? "page" : undefined}
                   className={[
-                    "link-soft rounded-full px-2.5 py-1.5 text-[13px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500",
+                    "link-soft rounded-full px-2.5 py-1.5 text-[13px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5EFD8]",
                     active
-                      ? "bg-stone-900 text-stone-100"
-                      : "text-stone-700 hover:bg-stone-200",
+                      ? "bg-[#F5EFD8] text-[#063F22]"
+                      : "text-[#F5EFD8]/85 hover:bg-[#F5EFD8]/10 hover:text-[#F5EFD8]",
                   ].join(" ")}
                 >
                   {link.label}
@@ -124,13 +118,13 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
           <div className="hidden items-center gap-2 lg:flex" aria-label="Contact and support links">
             <Link
               href="/contact"
-              className="link-soft rounded-full border border-stone-300 px-3 py-1.5 text-[13px] text-stone-700 hover:bg-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="link-soft rounded-full border border-[#B08A3E]/70 px-3 py-1.5 text-[13px] text-[#F5EFD8]/90 hover:bg-[#F5EFD8]/10 hover:text-[#F5EFD8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5EFD8]"
             >
               Contact
             </Link>
             <Link
               href="/preservation#current-needs"
-              className="link-soft rounded-full border border-[#B08D3C] bg-[#F6E6B8]/55 px-3 py-1.5 text-[13px] font-medium text-stone-900 hover:bg-[#F6E6B8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+              className="link-soft rounded-full border border-[#B08A3E] bg-[#B08A3E]/20 px-3 py-1.5 text-[13px] font-medium text-[#F5EFD8] hover:bg-[#B08A3E]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5EFD8]"
             >
               Support
             </Link>
@@ -139,7 +133,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
                 href={donationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-soft rounded-full bg-[#6F1D1B] px-3 py-1.5 text-[13px] font-medium text-stone-50 hover:bg-[#5B1716] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
+                className="link-soft rounded-full bg-[#F5EFD8] px-3 py-1.5 text-[13px] font-medium text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
               >
                 Donate
               </a>
@@ -149,7 +143,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="link-soft inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#1877F2] text-white hover:bg-[#0F66D8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
+              className="link-soft inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#B08A3E]/70 text-[#F5EFD8] hover:bg-[#F5EFD8]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5EFD8]"
             >
               <FacebookLogo className="h-5 w-5" />
             </a>
@@ -163,7 +157,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               aria-controls={mobilePanelId}
               onClick={() => setMobileMenuOpen((open) => !open)}
               className={[
-                "inline-flex min-h-11 items-center gap-2 rounded-full border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-[#243A2E] shadow-sm transition hover:bg-[#F7F6F1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E] min-[430px]:px-4",
+                "inline-flex min-h-11 items-center gap-2 rounded-full border border-[#B08A3E] bg-[#F5EFD8] px-3 py-2 text-sm font-semibold text-[#063F22] shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5EFD8] min-[430px]:px-4",
                 mobileMenuOpen ? "fixed right-5 top-3 z-[70]" : "relative z-10",
               ].join(" ")}
             >
@@ -189,7 +183,7 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
               aria-label="Close menu"
               onClick={() => setMobileMenuOpen(false)}
               className={[
-                "fixed inset-0 z-[55] bg-[#243A2E]/35 transition-opacity duration-200",
+                "fixed inset-0 z-[55] bg-[#063F22]/50 transition-opacity duration-200",
                 mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0",
               ].join(" ")}
             />
@@ -197,28 +191,22 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             <div
               id={mobilePanelId}
               className={[
-                "fixed right-0 top-0 z-[60] flex h-dvh w-[min(82vw,22rem)] max-w-full flex-col overflow-y-auto bg-white shadow-2xl shadow-[#243A2E]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
+                "fixed right-0 top-0 z-[60] flex h-dvh w-[min(82vw,22rem)] max-w-full flex-col overflow-y-auto bg-white shadow-2xl shadow-[#063F22]/25 ring-1 ring-[#D8D4C8] transition-transform duration-300 ease-out",
                 mobileMenuOpen ? "translate-x-0" : "pointer-events-none translate-x-full",
               ].join(" ")}
               aria-hidden={!mobileMenuOpen}
             >
-              <div className="bg-[#f3efdf] px-5 py-4 text-stone-900 ring-1 ring-[#d8d1bd]">
+              <div className="bg-[#063F22] px-5 py-4 text-[#F5EFD8] ring-1 ring-[#B08A3E]">
                 <div className="flex items-start gap-3 pr-12">
-                  <span className="relative h-12 w-16 shrink-0">
-                    <Image
-                      src="/images/henderson-monogram.png"
-                      alt=""
-                      fill
-                      sizes="64px"
-                      className="object-contain"
-                      unoptimized
-                    />
-                  </span>
+                  <span
+                    className="h-12 w-16 shrink-0 bg-[#F5EFD8] [mask-image:url('/images/henderson-monogram.png')] [mask-repeat:no-repeat] [mask-size:contain] [mask-position:center]"
+                    aria-hidden="true"
+                  />
                   <div className="min-w-0">
-                    <p className="font-serif text-xl font-semibold leading-none">
+                    <p className="font-serif text-xl font-bold uppercase leading-none tracking-normal">
                       Henderson Cemetery
                     </p>
-                    <p className="mt-1 font-serif text-sm font-semibold leading-tight">
+                    <p className="mt-1 border-t border-[#B08A3E]/70 pt-1 font-serif text-sm font-semibold leading-tight text-[#F5EFD8]/90">
                       <span className="block">750 Gulf Lab Road</span>
                       <span className="block whitespace-nowrap">Cheswick, PA 15024</span>
                     </p>
