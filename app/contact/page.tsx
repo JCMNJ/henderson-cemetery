@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ContactForm } from "@/app/components/contact/ContactForm";
+import { DonateButton } from "@/app/components/site/DonateButton";
 import { FacebookFollow } from "@/app/components/site/FacebookFollow";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
@@ -28,8 +29,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
-
   return (
     <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
@@ -106,11 +105,9 @@ export default function ContactPage() {
               Donations help maintain grounds, records, and materials.
             </h2>
             <div className="mt-5 flex flex-wrap gap-3">
-              {donationUrl ? (
-                <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
-                  Donate Online
-                </a>
-              ) : null}
+              <DonateButton className="button-soft rounded-full border border-[#E0B85D] bg-[#F5EFD8] px-5 py-3 text-sm font-semibold text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0B85D]">
+                Donate Online
+              </DonateButton>
               <a href="#mailing-address" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
                 Mailing Address
               </a>

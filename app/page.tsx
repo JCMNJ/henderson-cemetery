@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { DonateButton } from "@/app/components/site/DonateButton";
 import { FacebookFollow } from "@/app/components/site/FacebookFollow";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
@@ -50,7 +51,6 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
   const galleryImages = await getGalleryImages();
   const previewImages = [
     "/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg",
@@ -213,16 +213,9 @@ export default async function HomePage() {
                   Support maintenance, records, and materials.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {donationUrl ? (
-                    <a
-                      href={donationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button-soft rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]"
-                    >
-                      Donate Online
-                    </a>
-                  ) : null}
+                  <DonateButton className="button-soft rounded-full border border-[#E0B85D] bg-[#F5EFD8] px-4 py-2 text-sm font-semibold text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0B85D]">
+                    Donate Online
+                  </DonateButton>
                   <Link
                     href="/contact#association-contact"
                     className="button-soft rounded-full border border-white/55 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
