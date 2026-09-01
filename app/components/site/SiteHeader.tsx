@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { DonateButton } from "@/app/components/site/DonateButton";
@@ -76,11 +77,16 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
           <Link href="/" className="flex min-w-0 max-w-[calc(100%-3.5rem)] items-center gap-2 overflow-hidden sm:gap-4 lg:max-w-none">
-            <span
-              className="h-10 w-[3.3rem] shrink-0 bg-[#F5EFD8] [mask-image:url('/images/henderson-monogram.png')] [mask-repeat:no-repeat] [mask-size:contain] [mask-position:center] sm:h-[3.75rem] sm:w-[4.95rem]"
-              aria-hidden="true"
-            >
-              <span className="sr-only">Henderson Cemetery</span>
+            <span className="relative block h-10 w-[3.3rem] shrink-0 rounded-sm bg-[#F5EFD8] p-1 sm:h-[3.75rem] sm:w-[4.95rem] sm:p-1.5">
+              <Image
+                src="/images/henderson-monogram.png"
+                alt="Henderson Cemetery"
+                fill
+                sizes="(min-width: 640px) 79px, 53px"
+                className="object-contain p-1"
+                unoptimized
+                priority
+              />
             </span>
             <span className="min-w-0">
               <span className="block font-serif text-base font-bold uppercase leading-none tracking-normal text-[#F5EFD8] min-[390px]:text-lg sm:text-3xl lg:text-[1.7rem]">
@@ -191,10 +197,16 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             >
               <div className="bg-[#063F22] px-5 py-4 text-[#F5EFD8] ring-1 ring-[#B08A3E]">
                 <div className="flex items-start gap-3 pr-12">
-                  <span
-                    className="h-12 w-16 shrink-0 bg-[#F5EFD8] [mask-image:url('/images/henderson-monogram.png')] [mask-repeat:no-repeat] [mask-size:contain] [mask-position:center]"
-                    aria-hidden="true"
-                  />
+                  <span className="relative block h-12 w-16 shrink-0 rounded-sm bg-[#F5EFD8] p-1.5">
+                    <Image
+                      src="/images/henderson-monogram.png"
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-contain p-1"
+                      unoptimized
+                    />
+                  </span>
                   <div className="min-w-0">
                     <p className="font-serif text-xl font-bold uppercase leading-none tracking-normal">
                       Henderson Cemetery
