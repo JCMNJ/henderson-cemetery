@@ -1,6 +1,6 @@
-export function DonationBanner() {
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
+import { DonateButton } from "@/app/components/site/DonateButton";
 
+export function DonationBanner() {
   return (
     <section className="section-reveal mx-auto mt-10 mb-6 w-full max-w-6xl px-4 sm:mb-8 sm:px-6">
       <div className="rounded-3xl border border-[#8B8E75] bg-[#68604D] p-4 shadow-sm sm:p-7">
@@ -23,18 +23,11 @@ export function DonationBanner() {
           <br />
           Cabot, PA 16023
         </p>
-        {donationUrl ? (
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href={donationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-soft inline-flex w-full justify-center rounded-full border border-[#F7F6F0] bg-[#F7F6F0] px-5 py-3 text-sm font-medium text-[#68604D] hover:bg-[#F1ECDD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F7F6F0] sm:w-auto"
-            >
-              Donate Online
-            </a>
-          </div>
-        ) : null}
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <DonateButton className="button-soft inline-flex w-full justify-center rounded-full border border-[#E0B85D] bg-[#F5EFD8] px-5 py-3 text-sm font-semibold text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F7F6F0] sm:w-auto">
+            Donate Online
+          </DonateButton>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -71,6 +72,10 @@ export default function RootLayout({
         className={`${cormorant.variable} ${inter.variable} antialiased`}
       >
         {children}
+        <Script
+          src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { DonateButton } from "@/app/components/site/DonateButton";
 import { FacebookLogo } from "@/app/components/site/FacebookFollow";
 
 const navLinks = [
@@ -21,7 +22,6 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ sticky = true }: SiteHeaderProps) {
   const pathname = usePathname();
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobilePanelId = useId();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -128,16 +128,9 @@ export function SiteHeader({ sticky = true }: SiteHeaderProps) {
             >
               Support
             </Link>
-            {donationUrl ? (
-              <a
-                href={donationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-soft rounded-full bg-[#F5EFD8] px-3 py-1.5 text-[13px] font-medium text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]"
-              >
-                Donate
-              </a>
-            ) : null}
+            <DonateButton className="link-soft rounded-full bg-[#F5EFD8] px-3 py-1.5 text-[13px] font-medium text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B08A3E]">
+              Donate
+            </DonateButton>
             <a
               href={facebookUrl}
               target="_blank"

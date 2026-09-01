@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import { DonateButton } from "@/app/components/site/DonateButton";
 
 const directionsUrl =
   "https://www.google.com/maps/dir/?api=1&destination=750%20Gulf%20Lab%20Road%2C%20Cheswick%2C%20PA%2015024";
 const facebookUrl = "https://www.facebook.com/profile.php?id=100057152182753";
 
 export function SiteFooter() {
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
-
   return (
     <footer className="border-t border-[#d8d1bd] bg-[#f3efdf] px-5 py-8 text-stone-800 sm:px-6">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 text-sm md:flex-row md:items-center md:justify-between">
@@ -43,16 +42,9 @@ export function SiteFooter() {
             >
               Support
             </Link>
-            {donationUrl ? (
-              <a
-                href={donationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]"
-              >
-                Donate
-              </a>
-            ) : null}
+            <DonateButton className="underline decoration-stone-400 underline-offset-4 hover:text-[#173f18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#315f32]">
+              Donate
+            </DonateButton>
             <a
               href={directionsUrl}
               target="_blank"

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { DonateButton } from "@/app/components/site/DonateButton";
 import { SiteFooter } from "@/app/components/site/SiteFooter";
 import { SiteHeader } from "@/app/components/site/SiteHeader";
 import { DROPBOX_FILE_REQUEST_URL, SUBMISSION_NOTICE } from "@/app/lib/siteLinks";
@@ -23,8 +24,6 @@ export const metadata: Metadata = {
 };
 
 export default function PreservationPage() {
-  const donationUrl = process.env.NEXT_PUBLIC_DONATION_URL?.trim();
-
   return (
     <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
       <SiteHeader />
@@ -101,6 +100,7 @@ export default function PreservationPage() {
               Choose the work you can carry.
             </h2>
           </div>
+          <div id="donation-support" className="scroll-mt-28" aria-hidden="true" />
           <div className="mt-8 grid gap-5 lg:hidden">
             {[
               ["Help Document the Cemetery", "Marker photographs, inscriptions, condition notes, and record corrections."],
@@ -137,26 +137,24 @@ export default function PreservationPage() {
                 Share Historical Materials
               </a>
             </div>
-            <div id="donation-support" className="scroll-mt-28 bg-[#702F35] p-7 text-white shadow-xl shadow-black/15">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
+            <div className="bg-[#063F22] p-7 text-[#F5EFD8] shadow-xl shadow-black/15 ring-1 ring-[#B08A3E]/40">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E0B85D]">Support Financially</p>
               <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
-              <p className="mt-5 text-sm leading-6 text-white/86">
+              <p className="mt-5 text-sm leading-6 text-[#F5EFD8]/86">
                 The Association has 501(c)(3) nonprofit status. Donations are
                 tax-deductible to the extent permitted by law.
               </p>
-              <address className="mt-5 not-italic text-sm leading-7 text-white/90">
+              <address className="mt-5 not-italic text-sm leading-7 text-[#F5EFD8]/90">
                 Harmarville Cemetery Association<br />
                 c/o David Campbell<br />
                 505 Bicker Road<br />
                 Cabot, PA 16023
               </address>
               <div className="mt-6 flex flex-wrap gap-3">
-                {donationUrl ? (
-                  <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
-                    Donate Online
-                  </a>
-                ) : null}
-                <Link href="/contact#association-contact" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                <DonateButton className="button-soft rounded-full border border-[#E0B85D] bg-[#F5EFD8] px-6 py-3 text-sm font-semibold text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0B85D]">
+                  Donate Now
+                </DonateButton>
+                <Link href="/contact#association-contact" className="rounded-full border border-[#F5EFD8]/60 px-5 py-3 text-sm font-semibold text-[#F5EFD8] hover:bg-white/10">
                   Contact About Giving
                 </Link>
               </div>
@@ -203,26 +201,24 @@ export default function PreservationPage() {
                   </Link>
                 ))}
               </div>
-              <div className="bg-[#702F35] p-7 text-white shadow-xl shadow-black/15">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#F2D68B]">Support Financially</p>
+              <div className="bg-[#063F22] p-7 text-[#F5EFD8] shadow-xl shadow-black/15 ring-1 ring-[#B08A3E]/40">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E0B85D]">Support Financially</p>
                 <h3 className="mt-4 font-serif text-3xl font-semibold leading-tight sm:text-4xl">Donations support maintenance, stone care, record preservation, materials, and future projects.</h3>
-                <p className="mt-5 text-sm leading-6 text-white/86">
+                <p className="mt-5 text-sm leading-6 text-[#F5EFD8]/86">
                   The Association has 501(c)(3) nonprofit status. Donations are
                   tax-deductible to the extent permitted by law.
                 </p>
-                <address className="mt-5 not-italic text-sm leading-7 text-white/90">
+                <address className="mt-5 not-italic text-sm leading-7 text-[#F5EFD8]/90">
                   Harmarville Cemetery Association<br />
                   c/o David Campbell<br />
                   505 Bicker Road<br />
                   Cabot, PA 16023
                 </address>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  {donationUrl ? (
-                    <a href={donationUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#702F35] hover:bg-[#F7F6F1]">
-                      Donate Online
-                    </a>
-                  ) : null}
-                  <Link href="/contact#association-contact" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                  <DonateButton className="button-soft rounded-full border border-[#E0B85D] bg-[#F5EFD8] px-6 py-3 text-sm font-semibold text-[#063F22] hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E0B85D]">
+                    Donate Now
+                  </DonateButton>
+                  <Link href="/contact#association-contact" className="rounded-full border border-[#F5EFD8]/60 px-5 py-3 text-sm font-semibold text-[#F5EFD8] hover:bg-white/10">
                     Contact About Giving
                   </Link>
                 </div>
