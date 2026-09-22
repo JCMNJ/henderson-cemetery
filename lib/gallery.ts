@@ -31,6 +31,66 @@ type GalleryImageMetadata = {
 };
 
 const GALLERY_IMAGE_METADATA: Record<string, GalleryImageMetadata> = {
+  "2026-sean-blair-aerial-context.webp": {
+    alt: "Aerial view of Henderson Cemetery with the surrounding roads, rail line, and landscape visible.",
+    caption: "Henderson Cemetery within its surrounding landscape.",
+    season: "summer",
+  },
+  "2026-sean-blair-overhead-overview.webp": {
+    alt: "Straight-down aerial view showing the full Henderson Cemetery grounds and curved drive.",
+    caption: "Overhead view of the cemetery grounds and curved drive.",
+    season: "summer",
+  },
+  "2026-sean-blair-north-south-aerial.webp": {
+    alt: "Elevated aerial view looking along Henderson Cemetery from the road toward the monuments.",
+    caption: "Aerial view along the length of the cemetery grounds.",
+    season: "summer",
+  },
+  "2026-sean-blair-obelisk-lawn.webp": {
+    alt: "Tall stone obelisk surrounded by smaller grave markers on a sunny green lawn.",
+    caption: "Obelisk and surrounding markers on the cemetery lawn.",
+    season: "summer",
+  },
+  "2026-sean-blair-monuments-wide.webp": {
+    alt: "Wide view across Henderson Cemetery with monuments, headstones, mature trees, and blue sky.",
+    caption: "Monuments and headstones across the open grounds.",
+    season: "summer",
+  },
+  "2026-sean-blair-dark-obelisk.webp": {
+    alt: "Dark stone obelisk in the foreground with rows of monuments extending across the cemetery.",
+    caption: "Dark obelisk overlooking rows of cemetery monuments.",
+    season: "summer",
+  },
+  "2026-sean-blair-open-lawn.webp": {
+    alt: "Balanced view across an open cemetery lawn with monuments and trees in the distance.",
+    caption: "Open lawn framed by monuments and mature trees.",
+    season: "summer",
+  },
+  "2026-sean-blair-mature-trees-markers.webp": {
+    alt: "Older grave markers beneath mature trees in a shaded section of Henderson Cemetery.",
+    caption: "Older markers gathered beneath mature trees.",
+    season: "summer",
+  },
+  "2026-sean-blair-monument-view.webp": {
+    alt: "Stone monuments and headstones arranged across a bright green cemetery lawn.",
+    caption: "Stone monuments across the sunlit lawn.",
+    season: "summer",
+  },
+  "2026-sean-blair-elevated-overview.webp": {
+    alt: "Elevated aerial view across Henderson Cemetery showing rows of markers and surrounding trees.",
+    caption: "Elevated view across rows of markers and surrounding trees.",
+    season: "summer",
+  },
+  "2026-sean-blair-entrance-drive.webp": {
+    alt: "Henderson Cemetery entrance sign, curved drive, open lawn, and surrounding trees viewed from above.",
+    caption: "The entrance, curved drive, and open cemetery lawn.",
+    season: "summer",
+  },
+  "2026-sean-blair-overhead-panorama.webp": {
+    alt: "Wide overhead panorama showing the complete Henderson Cemetery grounds, curved drive, and tree line.",
+    caption: "Complete overhead panorama of Henderson Cemetery.",
+    season: "summer",
+  },
   "cemetery-fall-flagsflowers.jpg": {
     alt: "American flags and flowers placed beside headstones among fallen leaves.",
     caption: "Flags and flowers beside headstones with fallen leaves.",

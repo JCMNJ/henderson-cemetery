@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default async function GalleryPage() {
   const images = await getGalleryImages();
-  const heroImage = images.find((image) => image.src === "/gallery/cemetery-summer-view10-wide-lawn-monuments.jpg") ?? images[0];
+  const heroImage = images.find((image) => image.src === "/gallery/2026-sean-blair-north-south-aerial.webp") ?? images[0];
 
   return (
     <main className="min-h-screen bg-[#F7F6F1] text-[#243A2E]">
@@ -80,7 +80,7 @@ export default async function GalleryPage() {
               {SUBMISSION_NOTICE}
             </p>
             <p className="mt-5 text-xs uppercase tracking-[0.18em] text-white/60">
-              Photographs courtesy of Tamsen Ercole
+              Aerial photographs by Sean Blair Studio. Additional photographs courtesy of Tamsen Ercole.
             </p>
           </div>
           <a
